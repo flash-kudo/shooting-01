@@ -14,10 +14,12 @@ namespace Test
         public float RotateSpeed = 0;
         public float Accelerate = 0;
 
+        private Vector3 BaseAngle;
+
         // Start is called before the first frame update
         void Start()
         {
-
+            BaseAngle = transform.eulerAngles;
         }
 
         // Update is called once per frame
@@ -26,10 +28,11 @@ namespace Test
             MoveSpeed += Accelerate;
             Direction = ((Direction + RotateSpeed + 180f) % 360f) - 180f;
 
-            Position.x = Position.x + Mathf.Cos(Direction * Mathf.Deg2Rad) * MoveSpeed;
-            Position.y = Position.y + Mathf.Sin(Direction * Mathf.Deg2Rad) * MoveSpeed;
+            Position.x = Position.x + Mathf.Sin(Direction * Mathf.Deg2Rad) * MoveSpeed;
+            Position.y = Position.y + Mathf.Cos(Direction * Mathf.Deg2Rad) * MoveSpeed;
 
-            transform.position = Position;
+            transform.localPosition = Position;
+            transform.localEulerAngles = BaseAngle + new Vector3(0, 0, -Direction);
         }
     }
 }
