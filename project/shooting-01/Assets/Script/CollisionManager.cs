@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Test
+namespace BarrageShooting
 {
     public enum CharacterTyep
     {
@@ -18,14 +18,13 @@ namespace Test
         private const int CHARACTER_TYPE_COUNT = 3;
         private const float AREA_SIZE = 1.0f;
 
-        [SerializeField]
-        public Camera GameCamera;
-        private Camera FieldCamera { get { return (GameCamera == null) ? Camera.main : GameCamera; } }
-
         private Vector2 AreaScale;
         private List<List<List<List<CharacterControll>>>> AreaLists;
 
         private static CollisionManager _Instance;
+        /// *******************************************************
+        /// <summary>Singleton参照</summary>
+        /// *******************************************************
         public static CollisionManager Instance
         {
             get
@@ -35,18 +34,27 @@ namespace Test
             }
         }
 
+        /// *******************************************************
+        /// <summary>初期処理</summary>
+        /// *******************************************************
         void Awake()
         {
             _Instance = this;
             InitArea();
         }
 
+        /// *******************************************************
+        /// <summary>後期フレーム処理</summary>
+        /// *******************************************************
         void LateUpdate()
         {
             HitCheckField();
             ClearArea();
         }
 
+        /// *******************************************************
+        /// <summary>エリア初期処理</summary>
+        /// *******************************************************
         private void InitArea()
         {
             AreaScale = new Vector2(AREA_SIZE, AREA_SIZE);
@@ -67,21 +75,24 @@ namespace Test
             ClearArea();
         }
 
+        /// *******************************************************
+        /// <summary>エリア掃除</summary>
+        /// *******************************************************
         private void ClearArea()
         {
             AreaLists.ForEach(v => v.ForEach(t => t.ForEach(c => c.Clear())));
         }
+
+        /// *******************************************************
+        /// <summary>当たり判定登録</summary>
+        /// <param name="ctrl">登録アイテム</param>
+        /// *******************************************************
         public void EntryHitCheck(CharacterControll ctrl)
         {
-            if (ctrl.Collider == null) return;
+            Vector2Int areamin = GetPointArea(ctrl.BoundsMinX, ctrl.BoundsMinY);
+            Vector2Int areamax = GetPointArea(ctrl.BoundsMaxX, ctrl.BoundsMaxY);
 
-            Vector3 min = ctrl.Collider.bounds.min + ctrl.WorldPosition;
-            Vector3 max = ctrl.Collider.bounds.max + ctrl.WorldPosition;
-
-            Vector2Int areamin = GetPointArea(min.x, min.y);
-            Vector2Int areamax = GetPointArea(max.x, max.y);
-
-            for(int h = areamin.x; h <= areamax.x; h++)
+            for (int h = areamin.x; h <= areamax.x; h++)
             {
                 for (int v = areamin.y; v <= areamax.y; v++)
                 {
@@ -89,6 +100,13 @@ namespace Test
                 }
             }
         }
+
+        /// *******************************************************
+        /// <summary>当たり判定エリア算出</summary>
+        /// <param name="world_x">X座標</param>
+        /// <param name="world_y">Y座標</param>
+        /// <returns>エリア</returns>
+        /// *******************************************************
         private Vector2Int GetPointArea(float world_x, float world_y)
         {
             return new Vector2Int(
@@ -96,6 +114,14 @@ namespace Test
                 Mathf.FloorToInt(world_y / AreaScale.y) + (SPLIT_V / 2)
                 );
         }
+
+        /// *******************************************************
+        /// <summary>エリア登録</summary>
+        /// <param name="ctrl">対象コントロール</param>
+        /// <param name="area_x">X座標</param>
+        /// <param name="area_y">Y座標</param>
+        /// <param name="char_type">キャラクタータイプ</param>
+        /// *******************************************************
         private void AddHitArea(CharacterControll ctrl, int area_x, int area_y, CharacterTyep char_type)
         {
             if (area_x < 0) return;
@@ -109,6 +135,9 @@ namespace Test
             AreaLists[area_x][area_y][ctype].Add(ctrl);
         }
 
+        /// *******************************************************
+        /// <summary>フィールド内当たり判定処理</summary>
+        /// *******************************************************
         private void HitCheckField()
         {
             for (int h = 0; h < SPLIT_H; h++)
@@ -123,6 +152,10 @@ namespace Test
             }
         }
 
+        /// *******************************************************
+        /// <summary>エリア内当たり判定処理</summary>
+        /// <param name="area">対象エリア</param>
+        /// *******************************************************
         private void HitCheckArea(List<List<CharacterControll>> area)
         {
             area[(int)CharacterTyep.NONE].ForEach(src => {
@@ -140,9 +173,14 @@ namespace Test
             });
         }
 
+        /// *******************************************************
+        /// <summary>キャラ同士当たり判定</summary>
+        /// <param name="self">判定対象１</param>
+        /// <param name="target">判定対象２</param>
+        /// *******************************************************
         private void HitCheckChar(CharacterControll self, CharacterControll target)
         {
-            if(self.Collider.IsTouching(target.Collider) == true)
+            if(self.HitTest(target) == true)
             {
                 self.AddHitTarget(target);
                 target.AddHitTarget(self);

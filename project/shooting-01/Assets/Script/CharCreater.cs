@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Test;
+using BarrageShooting;
 using UnityEngine;
 
 public class CharCreater : MonoBehaviour
@@ -8,8 +8,6 @@ public class CharCreater : MonoBehaviour
     public GameObject Self;
     public GameObject Enemy;
 
-    private int Counter = 0;
-    private int CountLimit = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -20,12 +18,10 @@ public class CharCreater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Counter++;
-        if(Counter > CountLimit)
+        for(int i = 0; i < 5; i++)
         {
             CreateChar(Self, new Vector3(Random.Range(-3.0f, 3.0f), -5, 0));
             CreateChar(Enemy, new Vector3(-3.0f, Random.Range(-5.0f, 5.0f), 0));
-            Counter = 0;
         }
     }
 
