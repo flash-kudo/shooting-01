@@ -193,7 +193,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3682805318916689459}
-  - component: {fileID: 3682805318916689460}
+  - component: {fileID: 2393892352073612396}
   m_Layer: 0
   m_Name: TestEnemy
   m_TagString: Untagged
@@ -218,7 +218,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3682805318916689460
+--- !u!114 &2393892352073612396
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -227,17 +227,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 3682805318916689461}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea450b9a3502ae3418f9243417081437, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c322ccbd80b5bf4ca29d926c0e59fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Position: {x: 0, y: 0}
-  Direction: 90
-  MoveSpeed: 0.1
+  Direction: 180
+  MoveSpeed: 0
+  MaxSpeed: 1
   RotateSpeed: 0
   Accelerate: 0
-  ColliderScale: 0.08
+  ShiftSpeed: 0
+  ShiftAngle: 0
+  ShiftDamp: 0
+  ColliderScale: 0.1
   ColliderPosition: {x: 0, y: 0}
   CharType: 2
+  MaxRotateSpeed: 0
+  TargetDirection: 0
+  LeftTargetAngle: 0
+  TargetPosition: {x: 0, y: 0}
+  TargetCharacter: {fileID: 0}
+  Script: {fileID: 4900000, guid: c1951db0cf08bc64dbfe4ec957808daa, type: 3}
 --- !u!1 &3682805319337812099
 GameObject:
   m_ObjectHideFlags: 0

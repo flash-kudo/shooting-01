@@ -1,1 +1,27 @@
-12345
+spawn	target	absolute
+	position	relative/absolute
+	direction	relative/absolute
+	movespeed	absolute
+	maxspeed	absolute
+	rotatespeed	absolute
+	accelarate	absolute
+	shiftspeed	absolute
+	shiftdirection	relative/absolute
+	shiftdamp	absolute
+
+<common>	accelarate	absolute
+	rotatespeed	absolute
+	to_face	absolute
+	spawn	absolute
+
+follow	followee
+
+past	<common>
+
+arrive	<common>
+
+hit	<common>
+
+destroy	spawn
+
+release	<common>

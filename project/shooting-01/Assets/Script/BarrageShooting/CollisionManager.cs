@@ -80,6 +80,7 @@ namespace BarrageShooting
         /// *******************************************************
         private void ClearArea()
         {
+            if (AreaLists == null) return;
             AreaLists.ForEach(v => v.ForEach(t => t.ForEach(c => c.Clear())));
         }
 
@@ -140,6 +141,7 @@ namespace BarrageShooting
         /// *******************************************************
         private void HitCheckField()
         {
+            if (AreaLists == null) return;
             for (int h = 0; h < SPLIT_H; h++)
             {
                 for (int v = 0; v < SPLIT_V; v++)

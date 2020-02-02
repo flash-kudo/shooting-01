@@ -9,15 +9,25 @@ namespace BarrageShooting
         [SerializeField]
         public Vector2 Position;
 
+
         [SerializeField]
         public float Direction = 0;
         [SerializeField]
         public float MoveSpeed = 0;
+        [SerializeField]
+        public float MaxSpeed = 1;
 
         [SerializeField]
         public float RotateSpeed = 0;
         [SerializeField]
         public float Accelerate = 0;
+
+        [SerializeField]
+        public float ShiftSpeed = 0;
+        [SerializeField]
+        public float ShiftAngle = 0;
+        [SerializeField]
+        public float ShiftDamp = 0;
 
 
         [SerializeField]
@@ -37,18 +47,44 @@ namespace BarrageShooting
         private List<CharacterControll> HitTarget;
 
         /// *******************************************************
-        /// <summary>初期処理</summary>
+        /// <summary>builtin初期処理</summary>
         /// *******************************************************
         void Start()
         {
+            OnStart();
+        }
+
+        /// *******************************************************
+        /// <summary>builtin更新処理</summary>
+        /// *******************************************************
+        public void Update()
+        {
+            OnUpdate();
+        }
+
+        /// *******************************************************
+        /// <summary>builtinGizmo描画</summary>
+        /// *******************************************************
+        void OnDrawGizmos()
+        {
+            OnGizmo();
+        }
+
+        /// *******************************************************
+        /// <summary>初期処理</summary>
+        /// *******************************************************
+        protected virtual void OnStart()
+        {
+            if(Position == null) Position = new Vector2();
             InitMove();
             InitHitCheck();
+            UpdatePosition();
         }
 
         /// *******************************************************
         /// <summary>更新処理</summary>
         /// *******************************************************
-        public void Update()
+        protected virtual void OnUpdate()
         {
             if (HitCheck() == false)
             {
@@ -58,9 +94,9 @@ namespace BarrageShooting
         }
 
         /// *******************************************************
-        /// <summary>Gizmo描画</summary>
+        /// <summary>初期処理</summary>
         /// *******************************************************
-        void OnDrawGizmos()
+        protected virtual void OnGizmo()
         {
             Color prev_color = Gizmos.color;
 
@@ -71,10 +107,12 @@ namespace BarrageShooting
             Gizmos.color = prev_color;
         }
 
+        // ########################################################
+
         /// *******************************************************
         /// <summary>移動初期処理</summary>
         /// *******************************************************
-        protected virtual void InitMove()
+        private void InitMove()
         {
             BaseAngle = transform.eulerAngles;
         }
@@ -84,19 +122,62 @@ namespace BarrageShooting
         /// *******************************************************
         protected virtual void ProcMove()
         {
-            MoveSpeed += Accelerate;
+            if (Accelerate < 0)
+            {
+                MoveSpeed += Accelerate;
+                if (MoveSpeed < 0)
+                {
+                    MoveSpeed = 0;
+                    Accelerate = 0;
+                }
+            }
+            else
+            {
+                MoveSpeed += Accelerate;
+                if (MoveSpeed > MaxSpeed)
+                {
+                    MoveSpeed = MaxSpeed;
+                    Accelerate = 0;
+                }
+            }
             Direction = ((Direction + RotateSpeed + 180f) % 360f) - 180f;
 
-            Position.x = Position.x + Mathf.Sin(Direction * Mathf.Deg2Rad) * MoveSpeed;
-            Position.y = Position.y + Mathf.Cos(Direction * Mathf.Deg2Rad) * MoveSpeed;
+            ShiftSpeed = Mathf.Max(ShiftSpeed - Mathf.Abs(ShiftDamp), 0);
+            if (ShiftSpeed <= 0) ShiftDamp = 0;
 
-            transform.localPosition = Position;
-            transform.localEulerAngles = BaseAngle + new Vector3(0, 0, -Direction);
+            Position.x = Position.x + GetMoveX(MoveSpeed, Direction) + GetMoveX(ShiftSpeed, ShiftAngle);
+            Position.y = Position.y + GetMoveY(MoveSpeed, Direction) + GetMoveY(ShiftSpeed, ShiftAngle);
+
+            UpdatePosition();
 
             if (Position.x < -4) RemoveField();
             if (Position.x > 4) RemoveField();
             if (Position.y < -6) RemoveField();
             if (Position.y > 6) RemoveField();
+        }
+
+        /// *******************************************************
+        /// <summary>X軸移動</summary>
+        /// *******************************************************
+        private float GetMoveX(float speed, float diredtion)
+        {
+            return Mathf.Sin(diredtion * Mathf.Deg2Rad) * speed;
+        }
+        /// *******************************************************
+        /// <summary>Y軸移動</summary>
+        /// *******************************************************
+        private float GetMoveY(float speed, float diredtion)
+        {
+            return Mathf.Cos(diredtion * Mathf.Deg2Rad) * speed;
+        }
+
+        /// *******************************************************
+        /// <summary>位置更新処理</summary>
+        /// *******************************************************
+        private void UpdatePosition()
+        {
+            transform.localPosition = Position;
+            transform.localEulerAngles = BaseAngle + new Vector3(0, 0, -Direction);
         }
 
         /// *******************************************************

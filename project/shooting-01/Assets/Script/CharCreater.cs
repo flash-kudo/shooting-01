@@ -5,23 +5,25 @@ using UnityEngine;
 
 public class CharCreater : MonoBehaviour
 {
-    public GameObject Self;
     public GameObject Enemy;
 
+    private int Count = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        Self.SetActive(false);
+        Count = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        for(int i = 0; i < 5; i++)
+        Count++;
+        if(Count > 60)
         {
-            CreateChar(Self, new Vector3(Random.Range(-3.0f, 3.0f), -5, 0));
-            CreateChar(Enemy, new Vector3(-3.0f, Random.Range(-5.0f, 5.0f), 0));
+            if(Random.value < 0.5f) CreateChar(Enemy, new Vector3(-2.0f, 5.0f, 0));
+            else CreateChar(Enemy, new Vector3(2.0f, 5.0f, 0));
+            Count = 0;
         }
     }
 

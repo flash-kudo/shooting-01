@@ -1,0 +1,11 @@
+abcdefg
+efghijk
+{  group1}
+<lmn><o  pqr>
+<stu    vwxyz>
+{group2  }{group3}
+<abc def><g>
+{}<lmn><o  pqr>{  group4  }
+<ef   ghijk
+lmno+-*/=p><qr
+st uv><><w   xyz>
