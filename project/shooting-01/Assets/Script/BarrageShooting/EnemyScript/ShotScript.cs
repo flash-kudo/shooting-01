@@ -1,0 +1,133 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using TextScript;
+using UnityEngine;
+
+namespace BarrageShooting.EnemyScript
+{
+    public class ShotScript
+    {
+        public MoveScript Manager;
+
+        GameObject SourcePrefab;
+
+        private int ShotTime;
+        private float Interval;
+        private int StartCount;
+        private int EndCount;
+        private float StartWidth;
+        private float EndWidth;
+
+        private int CurrentShotTimes;
+        private float PastInterval;
+
+        /// *******************************************************
+        /// <summary>コンストラクタ</summary>
+        /// *******************************************************
+        public ShotScript(MoveScript mng, ScriptLine line)
+        {
+            Manager = mng;
+
+            CurrentShotTimes = 0;
+
+            string path = null;
+            ShotTime = 0;
+            Interval = 1;
+            StartCount = 1;
+            EndCount = 1;
+            StartWidth = 0;
+            EndWidth = 0;
+
+            line.Attributes.ForEach(atr => {
+                switch (atr.Name)
+                {
+                    case "path": path = atr.StringValue; break;
+                    case "shot_time": ShotTime = atr.IntValue - 1; break;
+                    case "interval": Interval = atr.FloatValue; break;
+                    case "st_count": StartCount = atr.IntValue; break;
+                    case "ed_count": EndCount = atr.IntValue; break;
+                    case "st_width": StartWidth = atr.FloatValue; break;
+                    case "ed_width": EndWidth = atr.FloatValue; break;
+                }
+            });
+
+            SourcePrefab = (GameObject)Resources.Load(path);
+            PastInterval = Interval;
+        }
+
+        /// *******************************************************
+        /// <summary>更新処理</summary>
+        /// *******************************************************
+        public void OnUpdate(EnemyControll character)
+        {
+            PastInterval++;
+            if (PastInterval >= Interval)
+            {
+                ShotSame(character);
+                CurrentShotTimes++;
+                PastInterval = 0;
+                if(CurrentShotTimes > ShotTime)
+                {
+                    Manager.RemoveShot(this);
+                }
+            }
+
+        }
+
+        private void ShotSame(EnemyControll character)
+        {
+            float rate = CurrentRate();
+            int count = CurrentCount(rate) - 1;
+            float width = CurrentWidth(rate);
+            float half_width = -width / 2f;
+
+            if (count == 0)
+            {
+                ShotOne(character, 0);
+            }
+            else
+            {
+                float tics = width / count;
+                for (int i = 0; i <= count; i++)
+                {
+                    ShotOne(character, half_width + tics * i);
+                }
+            }
+        }
+
+        private void ShotOne(EnemyControll character, float direction)
+        {
+            GameObject blt_go = Object.Instantiate(SourcePrefab);
+            EnemyControll blt_ctrl = blt_go.GetComponent<EnemyControll>();
+            blt_ctrl.Position = character.Position;
+            blt_ctrl.Direction = character.Direction + direction;
+            blt_go.SetActive(true);
+        }
+
+        /// *******************************************************
+        /// <summary>進捗割合</summary>
+        /// *******************************************************
+        private float CurrentRate()
+        {
+            if (ShotTime <= 0) return 1;
+            return (float)CurrentShotTimes / (float)ShotTime;
+        }
+
+        /// *******************************************************
+        /// <summary>現発射数</summary>
+        /// *******************************************************
+        private int CurrentCount(float rate)
+        {
+            return Mathf.Max(Mathf.RoundToInt((float)StartCount + (float)(EndCount - StartCount) * rate), 1);
+        }
+
+        /// *******************************************************
+        /// <summary>現発射角度</summary>
+        /// *******************************************************
+        private float CurrentWidth(float rate)
+        {
+            return StartWidth + (EndWidth - StartWidth) * rate;
+        }
+    }
+
+}

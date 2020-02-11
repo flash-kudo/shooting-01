@@ -21,17 +21,19 @@ public class CharCreater : MonoBehaviour
         Count++;
         if(Count > 60)
         {
-            if(Random.value < 0.5f) CreateChar(Enemy, new Vector3(-2.0f, 5.0f, 0));
-            else CreateChar(Enemy, new Vector3(2.0f, 5.0f, 0));
+            if(Random.value < 0.5f) CreateChar(Enemy, null);
+            else CreateChar(Enemy, "right");
             Count = 0;
         }
     }
 
-    private void CreateChar(GameObject obj, Vector3 pos)
+    private void CreateChar(GameObject obj, string keyword)
     {
-        GameObject self_go = Instantiate(obj, pos, Quaternion.identity);
-        CharacterControll self_ctrl = self_go.GetComponent<CharacterControll>();
-        self_ctrl.Position = pos;
+        GameObject prefab = (GameObject)Resources.Load("TestEnemy");
+        // GameObject self_go = Instantiate(obj);
+        GameObject self_go = Instantiate(prefab);
+        EnemyControll self_ctrl = self_go.GetComponent<EnemyControll>();
+        self_ctrl.SpawnKey = keyword;
         self_go.SetActive(true);
     }
 }

@@ -48,6 +48,15 @@ namespace TextScript
                     sentences.RemoveAt(0);
                     continue;
                 }
+                if ((sentences.Count >= 2) &&
+                    (sentences[0].Type == CHAR_TYPE.CALC_MINUS) &&
+                    (sentences[1].Type == CHAR_TYPE.STRING))
+                {
+                    sentences[1].SourceStr = "-" + sentences[1].SourceStr;
+                    att.AddData(sentences[1]);
+                    sentences.RemoveRange(0, 2);
+                    continue;
+                }
                 if ((sentences.Count >= 5) &&
                     (sentences[0].Type == CHAR_TYPE.BRACKET_OPEN) &&
                     (sentences[1].Type == CHAR_TYPE.STRING) &&

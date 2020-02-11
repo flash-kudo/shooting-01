@@ -68,8 +68,11 @@ namespace BarrageShooting
 
         [SerializeField]
         public TextAsset Script;
+        [SerializeField]
+        public string SpawnKey;
 
-        private SpawnPosition SpawnSide;
+        [SerializeField]
+        public SpawnPosition SpawnSide;
         private EnemyScriptMain ScriptMain;
 
         /// *******************************************************
@@ -79,10 +82,11 @@ namespace BarrageShooting
         {
             CharType = CharacterTyep.ENEMY;
             if(TargetPosition == null) TargetPosition = new Vector2();
-            ScriptMain = new EnemyScriptMain(this);
+            ScriptMain = new EnemyScriptMain(this, SpawnKey);
             base.OnStart();
-            SpawnSide = (Position.x < 0) ? SpawnPosition.LEFT : SpawnPosition.RIGHT;
+
             if (Script != null) ScriptMain.ReadScriptText(Script.text);
+            SpawnSide = (Position.x < 0) ? SpawnPosition.LEFT : SpawnPosition.RIGHT;
         }
 
         /// *******************************************************
@@ -92,7 +96,7 @@ namespace BarrageShooting
         {
             SetNextAngle();
             base.OnUpdate();
-            ScriptMain.OnUpdate();
+            if(ScriptMain != null) ScriptMain.OnUpdate();
         }
 
         /// *******************************************************
@@ -124,16 +128,16 @@ namespace BarrageShooting
         /// *******************************************************
         private float TargetAngle()
         {
-            if(TargetDirection == TargetType.DIRECTION_TARGET)
-            {
-                TargetPosition = TargetCharacter.Position;
-            }
+            Vector2 dp;
 
             switch (TargetDirection)
             {
                 case TargetType.DIRECTION_TARGET:
+                    TargetPosition = TargetCharacter.Position;
+                    dp = TargetPosition - Position;
+                    return Mathf.Atan2(dp.x, dp.y) * Mathf.Rad2Deg;
                 case TargetType.DIRECTION_POSITION:
-                    Vector2 dp = TargetPosition - Position;
+                    dp = TargetPosition - Position;
                     return Mathf.Atan2(dp.x, dp.y) * Mathf.Rad2Deg;
                 case TargetType.DIRECTION_ANGLE:
                     return (SpawnSide == SpawnPosition.LEFT) ? LeftTargetAngle : (360 - LeftTargetAngle);

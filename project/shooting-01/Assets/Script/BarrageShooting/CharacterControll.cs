@@ -52,6 +52,7 @@ namespace BarrageShooting
         void Start()
         {
             OnStart();
+            UpdatePosition();
         }
 
         /// *******************************************************
@@ -78,7 +79,6 @@ namespace BarrageShooting
             if(Position == null) Position = new Vector2();
             InitMove();
             InitHitCheck();
-            UpdatePosition();
         }
 
         /// *******************************************************
