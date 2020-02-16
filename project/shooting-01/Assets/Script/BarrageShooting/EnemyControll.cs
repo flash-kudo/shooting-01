@@ -71,7 +71,9 @@ namespace BarrageShooting
         [SerializeField]
         public string SpawnKey;
 
-        [SerializeField]
+        [HideInInspector]
+        public InitialData Initial;
+        [HideInInspector]
         public SpawnPosition SpawnSide;
         private EnemyScriptMain ScriptMain;
 
@@ -82,7 +84,10 @@ namespace BarrageShooting
         {
             CharType = CharacterTyep.ENEMY;
             if(TargetPosition == null) TargetPosition = new Vector2();
-            ScriptMain = new EnemyScriptMain(this, SpawnKey);
+            ScriptMain = new EnemyScriptMain(this, Initial, SpawnKey);
+
+            if (Initial != null) SetInitial(Initial);
+
             base.OnStart();
 
             if (Script != null) ScriptMain.ReadScriptText(Script.text);
@@ -120,6 +125,17 @@ namespace BarrageShooting
             {
                 Direction += speed;
             }
+        }
+
+        /// *******************************************************
+        /// <summary>初期データ登録</summary>
+        /// *******************************************************
+        private void SetInitial(InitialData initial)
+        {
+            if (initial.Override_Direction) Direction = initial.Direction;
+            if (initial.Override_ShiftSpeed) ShiftSpeed = initial.ShiftSpeed;
+            if (initial.Override_ShiftAngle) ShiftAngle = initial.ShiftAngle;
+            if (initial.Override_ShiftDamp) ShiftDamp = initial.ShiftDamp;
         }
 
 

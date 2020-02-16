@@ -19,7 +19,7 @@ public class CharCreater : MonoBehaviour
     void Update()
     {
         Count++;
-        if(Count > 60)
+        if(Count > 80)
         {
             if(Random.value < 0.5f) CreateChar(Enemy, null);
             else CreateChar(Enemy, "right");

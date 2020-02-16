@@ -30,14 +30,14 @@ namespace BarrageShooting.EnemyScript
         /// *******************************************************
         /// <summary>コンストラクタ</summary>
         /// *******************************************************
-        public MoveScript(EnemyScriptMain mng, ScriptGroup group)
+        public MoveScript(EnemyScriptMain mng, ScriptGroup group, float wait = -1)
         {
             Manager = mng;
             Scripts = group;
 
             Limit = LIMIT_TYPE.TIME;
             PastTime = 0;
-            WaitTime = -1;
+            WaitTime = Mathf.RoundToInt(wait);
             LineIndex = -1;
 
             Shots = new List<ShotScript>();
@@ -55,7 +55,10 @@ namespace BarrageShooting.EnemyScript
             if(Limit == LIMIT_TYPE.TIME)
             {
                 PastTime++;
-                if (PastTime > WaitTime) PlayNextLine(character);
+                if (PastTime > WaitTime)
+                {
+                    PlayNextLine(character);
+                }
             }
             if (Limit == LIMIT_TYPE.NEAR)
             {
@@ -76,8 +79,9 @@ namespace BarrageShooting.EnemyScript
         {
             LineIndex++;
             if (LineIndex >= Scripts.ScriptLine.Count) LineIndex = 0;
-            PlayLine(character, Scripts.ScriptLine[LineIndex]);
+            WaitTime = 0;
             PastTime = 0;
+            PlayLine(character, Scripts.ScriptLine[LineIndex]);
         }
 
         /// *******************************************************
@@ -126,26 +130,22 @@ namespace BarrageShooting.EnemyScript
         /// *******************************************************
         private void ShotCommand(EnemyControll character, ScriptLine line)
         {
-            //string path = "";
-
+            Limit = LIMIT_TYPE.TIME;
+            WaitTime = 0;
+            PastTime = 0;
             line.Attributes.ForEach(atr => {
                 switch (atr.Name)
                 {
-                    case "time": WaitTime = atr.IntValue; Limit = LIMIT_TYPE.TIME; break;
-                    //case "path": path = atr.StringValue; break;
+                    case "time": WaitTime = atr.IntValue;break;
                 }
             });
-
-            //GameObject prefab = (GameObject)Resources.Load(path);
-            //GameObject blt_go = Object.Instantiate(prefab);
-            //EnemyControll blt_ctrl = blt_go.GetComponent<EnemyControll>();
-            //blt_ctrl.Position = character.Position;
-            //blt_ctrl.Direction = character.Direction;
-            //blt_go.SetActive(true);
 
             Shots.Add(new ShotScript(this, line));
         }
 
+        /// *******************************************************
+        /// <summary>射撃スクリプト破棄</summary>
+        /// *******************************************************
         public void RemoveShot(ShotScript shot)
         {
             RemoveShots.Add(shot);

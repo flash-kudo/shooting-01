@@ -5,6 +5,12 @@ using UnityEngine;
 
 namespace BarrageShooting.EnemyScript
 {
+    public enum AngleType
+    {
+        RELATIVE,
+        ABSOLUTE,
+    }
+
     public class ShotScript
     {
         public MoveScript Manager;
@@ -15,8 +21,14 @@ namespace BarrageShooting.EnemyScript
         private float Interval;
         private int StartCount;
         private int EndCount;
+        private AngleType AngleBase;
         private float StartWidth;
         private float EndWidth;
+        private float StartShiftAngle;
+        private float EndShiftAngle;
+        private int Delay;
+        private float ShiftSpeed;
+        private float ShiftDamp;
 
         private int CurrentShotTimes;
         private float PastInterval;
@@ -35,8 +47,14 @@ namespace BarrageShooting.EnemyScript
             Interval = 1;
             StartCount = 1;
             EndCount = 1;
+            AngleBase = AngleType.RELATIVE;
             StartWidth = 0;
             EndWidth = 0;
+            StartShiftAngle = 0;
+            EndShiftAngle = 0;
+            Delay = -1;
+            ShiftSpeed = 0;
+            ShiftDamp = 0;
 
             line.Attributes.ForEach(atr => {
                 switch (atr.Name)
@@ -46,8 +64,14 @@ namespace BarrageShooting.EnemyScript
                     case "interval": Interval = atr.FloatValue; break;
                     case "st_count": StartCount = atr.IntValue; break;
                     case "ed_count": EndCount = atr.IntValue; break;
+                    case "angle_base": if(atr.StringValue == "absolute") AngleBase = AngleType.ABSOLUTE; break;
                     case "st_width": StartWidth = atr.FloatValue; break;
                     case "ed_width": EndWidth = atr.FloatValue; break;
+                    case "st_sftang": StartShiftAngle = atr.FloatValue; break;
+                    case "ed_sftang": EndShiftAngle = atr.FloatValue; break;
+                    case "delay": Delay = atr.IntValue; break;
+                    case "speed": ShiftSpeed = atr.FloatValue; break;
+                    case "damp": ShiftDamp = atr.FloatValue; break;
                 }
             });
 
@@ -74,33 +98,54 @@ namespace BarrageShooting.EnemyScript
 
         }
 
+        /// *******************************************************
+        /// <summary>同時発射処理</summary>
+        /// *******************************************************
         private void ShotSame(EnemyControll character)
         {
             float rate = CurrentRate();
             int count = CurrentCount(rate) - 1;
             float width = CurrentWidth(rate);
             float half_width = -width / 2f;
+            float sftwidth = CurrentShiftAngle(rate);
+            float half_sftwidth = -sftwidth / 2f;
+
 
             if (count == 0)
             {
-                ShotOne(character, 0);
+                ShotOne(character, 0, 0);
             }
             else
             {
                 float tics = width / count;
+                float sfttics = sftwidth / count;
                 for (int i = 0; i <= count; i++)
                 {
-                    ShotOne(character, half_width + tics * i);
+                    ShotOne(character, half_sftwidth + sfttics * i, half_width + tics * i);
                 }
             }
         }
 
-        private void ShotOne(EnemyControll character, float direction)
+        /// *******************************************************
+        /// <summary>単発発射処理</summary>
+        /// *******************************************************
+        private void ShotOne(EnemyControll character, float shift_direction, float direction)
         {
             GameObject blt_go = Object.Instantiate(SourcePrefab);
             EnemyControll blt_ctrl = blt_go.GetComponent<EnemyControll>();
             blt_ctrl.Position = character.Position;
-            blt_ctrl.Direction = character.Direction + direction;
+
+            InitialData initial = new InitialData();
+
+            float angle = (AngleBase == AngleType.ABSOLUTE) ? 180f : character.Direction;
+
+            initial.Direction = angle + direction;
+            initial.ShiftAngle = character.Direction + shift_direction;
+            initial.ShiftSpeed = ShiftSpeed;
+            initial.ShiftDamp = ShiftDamp;
+            initial.WateTime = Delay;
+
+            blt_ctrl.Initial = initial;
             blt_go.SetActive(true);
         }
 
@@ -122,11 +167,18 @@ namespace BarrageShooting.EnemyScript
         }
 
         /// *******************************************************
-        /// <summary>現発射角度</summary>
+        /// <summary>現弾角度</summary>
         /// *******************************************************
         private float CurrentWidth(float rate)
         {
             return StartWidth + (EndWidth - StartWidth) * rate;
+        }
+        /// *******************************************************
+        /// <summary>現発射角度</summary>
+        /// *******************************************************
+        private float CurrentShiftAngle(float rate)
+        {
+            return StartShiftAngle + (EndShiftAngle - StartShiftAngle) * rate;
         }
     }
 

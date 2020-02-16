@@ -13,14 +13,18 @@ namespace BarrageShooting.EnemyScript
         public EnemyControll Character;
         public MoveScript MovePlayer;
 
+        [HideInInspector]
+        public InitialData Initial;
+
         public string SpawnKey;
 
         /// *******************************************************
         /// <summary>コンストラクタ</summary>
         /// *******************************************************
-        public EnemyScriptMain(EnemyControll character, string key)
+        public EnemyScriptMain(EnemyControll character, InitialData initial, string key)
         {
             Character = character;
+            Initial = initial;
             SpawnKey = key;
         }
 
@@ -47,8 +51,12 @@ namespace BarrageShooting.EnemyScript
         {
             ScriptGroup spawn = Group.Find(grp => grp.GroupName == SPAWN_SCRIPT);
             ScriptGroup move = Group.Find(grp => grp.GroupName == MOVE_SCRIPT);
+
+            float wait = -1;
+            if ((Initial != null) && (Initial.Override_WateTime == true)) wait = Initial.WateTime;
+
             if (spawn != null) new SpawnScript(this, spawn, SpawnKey);
-            if (move != null) MovePlayer = new MoveScript(this, move);
+            if (move != null) MovePlayer = new MoveScript(this, move, wait);
         }
 
         /// *******************************************************

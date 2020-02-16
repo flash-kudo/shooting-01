@@ -18,10 +18,7 @@ namespace BarrageShooting.EnemyScript
             Manager = mng;
             Scripts = group;
 
-            if (Scripts.ScriptLine.Count < 0) return;
-
             FindRunScript("common");
-
             if (string.IsNullOrEmpty(keyword)) keyword = "default";
             FindRunScript(keyword);
         }
