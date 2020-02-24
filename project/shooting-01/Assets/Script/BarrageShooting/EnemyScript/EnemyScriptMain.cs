@@ -5,8 +5,11 @@ using TextScript;
 
 namespace BarrageShooting.EnemyScript
 {
+
     public class EnemyScriptMain : TextScriptCore
     {
+        public const float SPEED_RATE = 0.001f;
+
         private const string SPAWN_SCRIPT = "spawn";
         private const string MOVE_SCRIPT = "move";
 
@@ -39,9 +42,9 @@ namespace BarrageShooting.EnemyScript
         /// *******************************************************
         /// <summary>テキスト読み込み</summary>
         /// *******************************************************
-        public void ReadScriptText(string path)
+        public void ReadScriptText(string source)
         {
-            ReadText(path);
+            ReadText(source);
             ParseScript();
         }
         /// *******************************************************
@@ -53,9 +56,13 @@ namespace BarrageShooting.EnemyScript
             ScriptGroup move = Group.Find(grp => grp.GroupName == MOVE_SCRIPT);
 
             float wait = -1;
-            if ((Initial != null) && (Initial.Override_WateTime == true)) wait = Initial.WateTime;
 
-            if (spawn != null) new SpawnScript(this, spawn, SpawnKey);
+            if (spawn != null)
+            {
+                SpawnScript spawn_script = new SpawnScript(this, spawn, SpawnKey);
+                wait = spawn_script.WaitTime;
+            }
+            if ((Initial != null) && (Initial.Override_WateTime == true)) wait = Initial.WateTime;
             if (move != null) MovePlayer = new MoveScript(this, move, wait);
         }
 
@@ -77,14 +84,11 @@ namespace BarrageShooting.EnemyScript
                 case "pos_x": Character.Position.x = attribute.FloatValue; break;
                 case "pos_y": Character.Position.y = attribute.FloatValue; break;
                 case "dir": Character.Direction = attribute.FloatValue; break;
-                case "spd": Character.MoveSpeed = attribute.FloatValue; break;
-                case "max_spd": Character.MaxSpeed = attribute.FloatValue; break;
+                case "spd": Character.MoveSpeed = attribute.FloatValue * SPEED_RATE; break;
+                case "max_spd": Character.MaxSpeed = attribute.FloatValue * SPEED_RATE; break;
                 case "rot_spd": Character.RotateSpeed = attribute.FloatValue; break;
                 case "max_rot": Character.MaxRotateSpeed = attribute.FloatValue; break;
                 case "acc": Character.Accelerate = attribute.FloatValue; break;
-                case "shift_spd": Character.ShiftSpeed = attribute.FloatValue; break;
-                case "shift_ang": Character.ShiftAngle = attribute.FloatValue; break;
-                case "shift_dmp": Character.ShiftDamp = attribute.FloatValue; break;
                 case "trg_ang": Character.LeftTargetAngle = attribute.FloatValue; break;
                 case "trg_pos_x": Character.TargetPosition.x = 
                         (Character.SpawnSide == SpawnPosition.LEFT)? 

@@ -71,7 +71,7 @@ namespace TextScript
             }
 
 
-            //Group.ForEach(_ => Debug.Log(_.ToString()));
+//            Group.ForEach(_ => Debug.Log(_.ToString()));
         }
 
         /// *******************************************************
@@ -81,6 +81,8 @@ namespace TextScript
         {
             src = Regex.Replace(src, "\\/\\/.*$", "", RegexOptions.Multiline);
             src = Regex.Replace(src, "\\/\\*[^(*/)]*\\*\\/", "", RegexOptions.Singleline);
+
+            src = Regex.Replace(src, "\"", "", RegexOptions.Singleline);
 
             return src;
         }

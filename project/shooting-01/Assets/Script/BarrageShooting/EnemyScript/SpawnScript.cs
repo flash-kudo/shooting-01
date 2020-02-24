@@ -9,6 +9,7 @@ namespace BarrageShooting.EnemyScript
     {
         private EnemyScriptMain Manager;
         private ScriptGroup Scripts;
+        public float WaitTime;
 
         /// *******************************************************
         /// <summary>コンストラクタ</summary>
@@ -28,6 +29,7 @@ namespace BarrageShooting.EnemyScript
         /// *******************************************************
         private bool FindRunScript(string keyword)
         {
+            WaitTime = -1;
             ScriptLine script_line = Scripts.ScriptLine.Find(line => line.CommandName.CompareTo(keyword) == 0);
             if (script_line != null)
             {
@@ -45,7 +47,14 @@ namespace BarrageShooting.EnemyScript
         {
 
             line.Attributes.ForEach(atr => {
-                Manager.OverrideParam(atr);
+                if (atr.Name.CompareTo("time") == 0)
+                {
+                    WaitTime = atr.FloatValue;
+                }
+                else
+                {
+                    Manager.OverrideParam(atr);
+                }
             });
         }
 

@@ -1,0 +1,44 @@
+{wave_list}
+<wave target="wave1">
+<wave target="wave2">
+<wave target="wave3">
+<wave target="wave3">
+<wave target="wave4">
+<wave target="wave3">
+<wave target="wave4">
+<wave target="wave3">
+
+{wave1}
+<spawn source=TestEnemy2 key=left3>
+<interval delay=20>
+<spawn source=TestEnemy2 key=left2>
+<interval delay=20>
+<spawn source=TestEnemy2 key=left1>
+
+{wave2}
+<spawn source=TestEnemy2 key=right3>
+<interval delay=20>
+<spawn source=TestEnemy2 key=right2>
+<interval delay=20>
+<spawn source=TestEnemy2 key=right1>
+
+{wave3}
+<spawn source=TestEnemy2 key=left3>
+<spawn source=TestEnemy2 key=right3>
+<interval delay=20>
+<spawn source=TestEnemy2 key=left2>
+<spawn source=TestEnemy2 key=right2>
+<interval delay=20>
+<spawn source=TestEnemy2 key=left1>
+<spawn source=TestEnemy2 key=right1>
+
+{wave4}
+<spawn source=TestEnemy key=left>
+<spawn source=TestEnemy key=right>
+<interval delay=20>
+<spawn source=TestEnemy key=left>
+<spawn source=TestEnemy key=right>
+<interval delay=20>
+<spawn source=TestEnemy key=left>
+<spawn source=TestEnemy key=right>
+

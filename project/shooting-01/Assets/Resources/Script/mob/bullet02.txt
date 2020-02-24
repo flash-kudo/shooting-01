@@ -1,5 +1,5 @@
 {spawn}
 <common>
 {move}
-<position trg_pos_x=0 trg_pos_y=-5 max_rot=2 spd=0.05>
+<position trg_pos_x=0 trg_pos_y=-5 max_rot=2 spd=50>
 <angle unlimited max_rot=10 trg_ang=180>

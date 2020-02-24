@@ -15,7 +15,7 @@ namespace BarrageShooting.EnemyScript
     {
         public MoveScript Manager;
 
-        GameObject SourcePrefab;
+        private string SourcePath;
 
         private int ShotTime;
         private float Interval;
@@ -42,7 +42,7 @@ namespace BarrageShooting.EnemyScript
 
             CurrentShotTimes = 0;
 
-            string path = null;
+            SourcePath = null;
             ShotTime = 0;
             Interval = 1;
             StartCount = 1;
@@ -59,7 +59,7 @@ namespace BarrageShooting.EnemyScript
             line.Attributes.ForEach(atr => {
                 switch (atr.Name)
                 {
-                    case "path": path = atr.StringValue; break;
+                    case "path": SourcePath = atr.StringValue; break;
                     case "shot_time": ShotTime = atr.IntValue - 1; break;
                     case "interval": Interval = atr.FloatValue; break;
                     case "st_count": StartCount = atr.IntValue; break;
@@ -70,12 +70,11 @@ namespace BarrageShooting.EnemyScript
                     case "st_sftang": StartShiftAngle = atr.FloatValue; break;
                     case "ed_sftang": EndShiftAngle = atr.FloatValue; break;
                     case "delay": Delay = atr.IntValue; break;
-                    case "speed": ShiftSpeed = atr.FloatValue; break;
-                    case "damp": ShiftDamp = atr.FloatValue; break;
+                    case "speed": ShiftSpeed = atr.FloatValue * EnemyScriptMain.SPEED_RATE; break;
+                    case "damp": ShiftDamp = atr.FloatValue * EnemyScriptMain.SPEED_RATE; break;
                 }
             });
 
-            SourcePrefab = (GameObject)Resources.Load(path);
             PastInterval = Interval;
         }
 
@@ -131,7 +130,7 @@ namespace BarrageShooting.EnemyScript
         /// *******************************************************
         private void ShotOne(EnemyControll character, float shift_direction, float direction)
         {
-            GameObject blt_go = Object.Instantiate(SourcePrefab);
+            GameObject blt_go = StageManager.Instance.InstantiateObject(SourcePath);
             EnemyControll blt_ctrl = blt_go.GetComponent<EnemyControll>();
             blt_ctrl.Position = character.Position;
 
