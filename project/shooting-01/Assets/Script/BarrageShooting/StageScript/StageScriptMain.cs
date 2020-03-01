@@ -9,7 +9,8 @@ namespace BarrageShooting.StageScript
     {
         private const string LIST_SCRIPT = "wave_list";
         private const int START_INTERVAL = 120;
-        private const int WAVE_INTERVAL = 120;
+        private const int WAVE_INTERVAL = 30;
+        private const int STEP_LNG = 3;
 
         private bool IsProcStage;
         private int StepIndex;
@@ -87,12 +88,14 @@ namespace BarrageShooting.StageScript
         {
             if (IsProcStage == false) return;
 
-            if ((StepIndex & 0x01) == 0)
+            int wave_index = StepIndex / STEP_LNG;
+
+            if ((StepIndex % STEP_LNG) == 0)
             {
                 PastTime++;
                 if(PastTime > WaitTime)
                 {
-                    CurrentWave = WaveWarehouse[WaveList[StepIndex / 2]];
+                    CurrentWave = WaveWarehouse[WaveList[wave_index]];
                     CurrentWave.StartWave();
 
                     StepIndex++;
@@ -100,9 +103,15 @@ namespace BarrageShooting.StageScript
                     PastTime = 0;
                 }
             }
-            else {
+            else if ((StepIndex % STEP_LNG) == 1)
+            {
                 if (CurrentWave.OnUpdate() == false) StepIndex++;
-                if ((StepIndex / 2) >= WaveList.Count) OnFInishStage();
+                if (wave_index >= WaveList.Count) OnFInishStage();
+            }
+            else if ((StepIndex % STEP_LNG) == 2)
+            {
+                if (StageManager.Instance == null) return;
+                if (StageManager.Instance.EnemyCount <= 0) StepIndex++;
             }
         }
 

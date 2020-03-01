@@ -74,6 +74,36 @@ namespace TextScript
         }
 
         /// *******************************************************
+        /// <summary>コンストラクタ（内部用）</summary>
+        /// *******************************************************
+        private ScriptLine()
+        {
+
+        }
+
+        /// *******************************************************
+        /// <summary>アトリビュート取得</summary>
+        /// *******************************************************
+        public CommandAttribute GetAttribute(string key)
+        {
+            if (Attributes == null) return null;
+            return Attributes.Find(atr => { return (atr.Name.CompareTo(key) == 0); });
+        }
+
+        /// *******************************************************
+        /// <summary>複製</summary>
+        /// *******************************************************
+        public ScriptLine Duplicate()
+        {
+            ScriptLine line = new ScriptLine();
+            line.CommandName = CommandName;
+            List<CommandAttribute> atr_list = new List<CommandAttribute>();
+            Attributes.ForEach(atr => { atr_list.Add(atr.Duplicate()); });
+            line.Attributes = atr_list;
+            return line;
+        }
+
+        /// *******************************************************
         /// <summary>センテンス解析</summary>
         /// *******************************************************
         private List<ScriptSentence> ParseToSentence(string str)

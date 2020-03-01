@@ -15,6 +15,7 @@ namespace BarrageShooting
 
 
         public StageScriptMain StageProc;
+        private List<EnemyControll> EnemyList;
 
         private static StageManager _Instance;
         /// *******************************************************
@@ -73,6 +74,36 @@ namespace BarrageShooting
             }
             if (source == null) return null;
             return Object.Instantiate(source);
+        }
+
+        /// *******************************************************
+        /// <summary>敵出現リスト追加</summary>
+        /// *******************************************************
+        public void AddEnemyList(EnemyControll ctrl)
+        {
+            if (EnemyList == null) EnemyList = new List<EnemyControll>();
+            EnemyList.Add(ctrl);
+        }
+
+        /// *******************************************************
+        /// <summary>敵出現リスト削除</summary>
+        /// *******************************************************
+        public void RemoveEnemyList(EnemyControll ctrl)
+        {
+            if (EnemyList == null) return;
+            EnemyList.Remove(ctrl);
+        }
+
+        /// *******************************************************
+        /// <summary>敵出現数</summary>
+        /// *******************************************************
+        public int EnemyCount
+        {
+            get
+            {
+                if (EnemyList == null) return 0;
+                return EnemyList.Count;
+            }
         }
     }
 }

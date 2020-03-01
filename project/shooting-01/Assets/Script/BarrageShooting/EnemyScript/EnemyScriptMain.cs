@@ -63,7 +63,7 @@ namespace BarrageShooting.EnemyScript
                 wait = spawn_script.WaitTime;
             }
             if ((Initial != null) && (Initial.Override_WateTime == true)) wait = Initial.WateTime;
-            if (move != null) MovePlayer = new MoveScript(this, move, wait);
+            if (move != null) MovePlayer = new MoveScript(this, move, SpawnKey, wait);
         }
 
         /// *******************************************************

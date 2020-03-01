@@ -45,6 +45,23 @@ namespace TextScript
         }
 
         /// *******************************************************
+        /// <summary>複製用コンストラクタ</summary>
+        /// *******************************************************
+        private ScriptSentence(string source, CHAR_TYPE type)
+        {
+            SourceStr = source;
+            Type = type;
+        }
+
+        /// *******************************************************
+        /// <summary>複製</summary>
+        /// *******************************************************
+        public ScriptSentence Duplicate()
+        {
+            return new ScriptSentence(SourceStr, Type);
+        }
+
+        /// *******************************************************
         /// <summary>文字列出力</summary>
         /// *******************************************************
         public override string ToString()

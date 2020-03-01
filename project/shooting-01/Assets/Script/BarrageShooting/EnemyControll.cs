@@ -88,6 +88,8 @@ namespace BarrageShooting
 
             if (Initial != null) SetInitial(Initial);
 
+            if(StageManager.Instance != null) StageManager.Instance.AddEnemyList(this);
+
             base.OnStart();
 
             if (Script != null) ScriptMain.ReadScriptText(Script.text);
@@ -165,5 +167,15 @@ namespace BarrageShooting
 
             return 180;
         }
+
+        /// *******************************************************
+        /// <summary>破棄処理</summary>
+        /// *******************************************************
+        protected override void RemoveField()
+        {
+            if (StageManager.Instance != null) StageManager.Instance.RemoveEnemyList(this);
+            base.RemoveField();
+        }
+
     }
 }

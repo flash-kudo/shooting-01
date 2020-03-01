@@ -30,10 +30,19 @@ namespace BarrageShooting.EnemyScript
         /// *******************************************************
         /// <summary>コンストラクタ</summary>
         /// *******************************************************
-        public MoveScript(EnemyScriptMain mng, ScriptGroup group, float wait = -1)
+        public MoveScript(EnemyScriptMain mng, ScriptGroup group, string key, float wait = -1)
         {
             Manager = mng;
             Scripts = group;
+
+            if(string.IsNullOrEmpty(key) == false)
+            {
+                Scripts.ActivateLine(line => {
+                    CommandAttribute atr = line.GetAttribute("key");
+                    if (atr == null) return true;
+                    return atr.CompareStrValue(key);
+                });
+            }
 
             Limit = LIMIT_TYPE.TIME;
             PastTime = 0;

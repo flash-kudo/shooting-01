@@ -68,6 +68,31 @@ namespace TextScript
         }
 
         /// *******************************************************
+        /// <summary>string表現が指定の文字列と同等か</summary>
+        /// *******************************************************
+        public bool CompareStrValue(string value)
+        {
+            if (DataSrc.Count == 0) return false;
+            if (DataSrc[0].SourceStr == null) return false;
+
+            return (DataSrc[0].SourceStr.CompareTo(value) == 0);
+        }
+
+        /// *******************************************************
+        /// <summary>複製</summary>
+        /// *******************************************************
+        public CommandAttribute Duplicate()
+        {
+            CommandAttribute atr = new CommandAttribute(Name);
+            List<ScriptSentence> stc_list = new List<ScriptSentence>();
+            DataSrc.ForEach(stc => {
+                stc_list.Add(stc.Duplicate());
+            });
+            atr.DataSrc = stc_list;
+            return atr;
+        }
+
+        /// *******************************************************
         /// <summary>Float解析</summary>
         /// *******************************************************
         private float ParseFloat(int index)

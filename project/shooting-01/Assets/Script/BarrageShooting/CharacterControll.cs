@@ -183,7 +183,7 @@ namespace BarrageShooting
         /// *******************************************************
         /// <summary>破棄処理</summary>
         /// *******************************************************
-        private void RemoveField()
+        protected virtual void RemoveField()
         {
             Destroy(gameObject);
         }
