@@ -1,0 +1,245 @@
+fileFormatVersion: 2
+guid: 91d3d0ce3bd68ae40bc5ff9b7d4b8367
+timeCreated: 1540021500
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: hmd_aura_line01
+    100002: hmd_aura_line02
+    100004: hmd_aura_line03
+    100006: hmd_cone01
+    100008: hmd_cone02
+    100010: hmd_cone03
+    100012: hmd_cylinder01
+    100014: hmd_cylinder03
+    100016: hmd_cylinder04
+    100018: hmd_cylinder05
+    100020: hmd_cylinder06
+    100022: hmd_cylinder07
+    100024: hmd_Disk02
+    100026: hmd_Disk03
+    100028: //RootNode
+    100030: hmd_Ice01
+    100032: hmd_Ice02
+    100034: hmd_puls_block
+    100036: hmd_Rock01
+    100038: hmd_Rock02
+    100040: hmd_Slash
+    100042: hmd_torus01
+    100044: hmd_Twist01
+    100046: hmd_Twist02
+    100048: hmd_twist_puls01
+    100050: hmd_twist_puls02
+    100052: hmd_twist_puls03
+    100054: hmd_x_ring01
+    100056: hmd_Slash01
+    100058: hmd_Slash02
+    100060: hmd_Speedline01
+    400000: hmd_aura_line01
+    400002: hmd_aura_line02
+    400004: hmd_aura_line03
+    400006: hmd_cone01
+    400008: hmd_cone02
+    400010: hmd_cone03
+    400012: hmd_cylinder01
+    400014: hmd_cylinder03
+    400016: hmd_cylinder04
+    400018: hmd_cylinder05
+    400020: hmd_cylinder06
+    400022: hmd_cylinder07
+    400024: hmd_Disk02
+    400026: hmd_Disk03
+    400028: //RootNode
+    400030: hmd_Ice01
+    400032: hmd_Ice02
+    400034: hmd_puls_block
+    400036: hmd_Rock01
+    400038: hmd_Rock02
+    400040: hmd_Slash
+    400042: hmd_torus01
+    400044: hmd_Twist01
+    400046: hmd_Twist02
+    400048: hmd_twist_puls01
+    400050: hmd_twist_puls02
+    400052: hmd_twist_puls03
+    400054: hmd_x_ring01
+    400056: hmd_Slash01
+    400058: hmd_Slash02
+    400060: hmd_Speedline01
+    2100000: lambert2
+    2100002: lambert3
+    2100004: lambert4
+    2100006: lambert5
+    2100008: lambert6
+    2100010: lambert1
+    2300000: hmd_aura_line01
+    2300002: hmd_aura_line02
+    2300004: hmd_aura_line03
+    2300006: hmd_cone01
+    2300008: hmd_cone02
+    2300010: hmd_cone03
+    2300012: hmd_cylinder01
+    2300014: hmd_cylinder03
+    2300016: hmd_cylinder04
+    2300018: hmd_cylinder05
+    2300020: hmd_cylinder06
+    2300022: hmd_cylinder07
+    2300024: hmd_Disk02
+    2300026: hmd_Disk03
+    2300028: hmd_Ice01
+    2300030: hmd_Ice02
+    2300032: hmd_puls_block
+    2300034: hmd_Rock01
+    2300036: hmd_Rock02
+    2300038: hmd_Slash
+    2300040: hmd_torus01
+    2300042: hmd_Twist01
+    2300044: hmd_Twist02
+    2300046: hmd_twist_puls01
+    2300048: hmd_twist_puls02
+    2300050: hmd_twist_puls03
+    2300052: hmd_x_ring01
+    2300054: hmd_Slash01
+    2300056: hmd_Slash02
+    2300058: hmd_Speedline01
+    3300000: hmd_aura_line01
+    3300002: hmd_aura_line02
+    3300004: hmd_aura_line03
+    3300006: hmd_cone01
+    3300008: hmd_cone02
+    3300010: hmd_cone03
+    3300012: hmd_cylinder01
+    3300014: hmd_cylinder03
+    3300016: hmd_cylinder04
+    3300018: hmd_cylinder05
+    3300020: hmd_cylinder06
+    3300022: hmd_cylinder07
+    3300024: hmd_Disk02
+    3300026: hmd_Disk03
+    3300028: hmd_Ice01
+    3300030: hmd_Ice02
+    3300032: hmd_puls_block
+    3300034: hmd_Rock01
+    3300036: hmd_Rock02
+    3300038: hmd_Slash
+    3300040: hmd_torus01
+    3300042: hmd_Twist01
+    3300044: hmd_Twist02
+    3300046: hmd_twist_puls01
+    3300048: hmd_twist_puls02
+    3300050: hmd_twist_puls03
+    3300052: hmd_x_ring01
+    3300054: hmd_Slash01
+    3300056: hmd_Slash02
+    3300058: hmd_Speedline01
+    4300000: hmd_twist_puls01
+    4300002: hmd_twist_puls02
+    4300004: hmd_twist_puls03
+    4300006: hmd_torus01
+    4300008: hmd_cone01
+    4300010: hmd_cone02
+    4300012: hmd_cone03
+    4300014: hmd_Twist02
+    4300016: hmd_Twist01
+    4300018: hmd_puls_block
+    4300020: hmd_Slash
+    4300022: hmd_Ice01
+    4300024: hmd_Ice02
+    4300026: hmd_Rock01
+    4300028: hmd_Rock02
+    4300030: hmd_Disk02
+    4300032: hmd_Disk03
+    4300034: hmd_cylinder01
+    4300036: hmd_cylinder03
+    4300038: hmd_cylinder04
+    4300040: hmd_cylinder05
+    4300042: hmd_cylinder06
+    4300044: hmd_cylinder07
+    4300046: hmd_aura_line01
+    4300048: hmd_aura_line02
+    4300050: hmd_aura_line03
+    4300052: hmd_x_ring01
+    4300054: hmd_Slash01
+    4300056: hmd_Slash02
+    4300058: hmd_Speedline01
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
