@@ -90,6 +90,8 @@ namespace BarrageShooting.StageScript
 
             int wave_index = StepIndex / STEP_LNG;
 
+            if (wave_index >= WaveList.Count) return;
+
             if ((StepIndex % STEP_LNG) == 0)
             {
                 PastTime++;

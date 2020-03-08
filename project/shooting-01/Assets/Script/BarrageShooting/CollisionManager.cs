@@ -133,7 +133,10 @@ namespace BarrageShooting
             if (ctype < 0) return;
             if (ctype >= CHARACTER_TYPE_COUNT) return;
 
-            AreaLists[area_x][area_y][ctype].Add(ctrl);
+            List<CharacterControll> area = AreaLists[area_x][area_y][ctype];
+            if (area.Contains(ctrl) == false) area.Add(ctrl);
+
+            //AreaLists[area_x][area_y][ctype].Add(ctrl);
         }
 
         /// *******************************************************

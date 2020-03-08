@@ -53,6 +53,11 @@ namespace BarrageShooting
         // [SerializeField]
         // public Vector2 ColliderPosition;
 
+        // [SerializeField]
+        // public float ToughPoint = 1;
+        // [SerializeField]
+        // public float AttackPoint = 10;
+
         [SerializeField]
         public float MaxRotateSpeed;
 

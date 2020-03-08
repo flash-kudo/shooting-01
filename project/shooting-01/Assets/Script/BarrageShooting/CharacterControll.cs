@@ -6,6 +6,9 @@ namespace BarrageShooting
 {
     public class CharacterControll : MonoBehaviour
     {
+        public const float FRAME_RATE = 60f;
+        public const float FRAME_TIME = 1f / 60f;
+
         [SerializeField]
         public Vector2 Position;
 
@@ -35,6 +38,11 @@ namespace BarrageShooting
         [SerializeField]
         public Vector2 ColliderPosition;
 
+        [SerializeField]
+        public float ToughPoint = 1;
+        [SerializeField]
+        public float AttackPoint = 10;
+
 
         [SerializeField]
         public CharacterTyep CharType;
@@ -44,7 +52,7 @@ namespace BarrageShooting
         private Vector3 BaseAngle;
 
 
-        private List<CharacterControll> HitTarget;
+        protected List<CharacterControll> HitTarget;
 
         /// *******************************************************
         /// <summary>builtin初期処理</summary>
@@ -100,7 +108,6 @@ namespace BarrageShooting
         {
             Color prev_color = Gizmos.color;
 
-            EntryHitCheck();
             Color gizcol = (CharType == CharacterTyep.NONE) ? Color.green : (CharType == CharacterTyep.ENEMY) ? Color.red : Color.blue;
             BarrageCollider.DrawGizmoLine(gizcol);
 
@@ -247,7 +254,7 @@ namespace BarrageShooting
         /// *******************************************************
         public virtual void AddHitTarget(CharacterControll target)
         {
-            HitTarget.Add(target);
+            if(HitTarget.Contains(target) == false) HitTarget.Add(target);
         }
 
         /// *******************************************************
@@ -258,8 +265,17 @@ namespace BarrageShooting
         {
             if (HitTarget == null) return false;
             if (HitTarget.Count == 0) return false;
-            RemoveField();
-            return true;
+
+            HitTarget.ForEach(trg => {
+                ToughPoint -= trg.AttackPoint;
+            });
+            if (ToughPoint < 0)
+            {
+                RemoveField();
+                return true;
+            }
+            HitTarget.Clear();
+            return false;
         }
 
     }

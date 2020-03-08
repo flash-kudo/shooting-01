@@ -241,6 +241,8 @@ MonoBehaviour:
   ShiftDamp: 0
   ColliderScale: 0.1
   ColliderPosition: {x: 0, y: 0}
+  ToughPoint: 1
+  Sharpness: 10
   CharType: 2
   MaxRotateSpeed: 0
   TargetDirection: 0
