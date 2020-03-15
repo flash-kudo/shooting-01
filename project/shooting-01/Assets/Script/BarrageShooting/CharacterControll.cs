@@ -109,7 +109,7 @@ namespace BarrageShooting
             Color prev_color = Gizmos.color;
 
             Color gizcol = (CharType == CharacterTyep.NONE) ? Color.green : (CharType == CharacterTyep.ENEMY) ? Color.red : Color.blue;
-            BarrageCollider.DrawGizmoLine(gizcol);
+            if(BarrageCollider != null) BarrageCollider.DrawGizmoLine(gizcol);
 
             Gizmos.color = prev_color;
         }
@@ -128,6 +128,15 @@ namespace BarrageShooting
         /// <summary>移動処理</summary>
         /// *******************************************************
         protected virtual void ProcMove()
+        {
+            Vector2 move = CalcurateMove();
+            UpodatePosition(move);
+        }
+
+        /// *******************************************************
+        /// <summary>移動計算</summary>
+        /// *******************************************************
+        protected Vector2 CalcurateMove()
         {
             if (Accelerate < 0)
             {
@@ -152,8 +161,18 @@ namespace BarrageShooting
             ShiftSpeed = Mathf.Max(ShiftSpeed - Mathf.Abs(ShiftDamp), 0);
             if (ShiftSpeed <= 0) ShiftDamp = 0;
 
-            Position.x = Position.x + GetMoveX(MoveSpeed, Direction) + GetMoveX(ShiftSpeed, ShiftAngle);
-            Position.y = Position.y + GetMoveY(MoveSpeed, Direction) + GetMoveY(ShiftSpeed, ShiftAngle);
+            float ret_x = GetMoveX(MoveSpeed, Direction) + GetMoveX(ShiftSpeed, ShiftAngle);
+            float ret_y = GetMoveY(MoveSpeed, Direction) + GetMoveY(ShiftSpeed, ShiftAngle);
+
+            return new Vector2(ret_x, ret_y);
+        }
+
+        /// *******************************************************
+        /// <summary>位置処理</summary>
+        /// *******************************************************
+        protected void UpodatePosition(Vector2 move)
+        {
+            Position = Position + move;
 
             UpdatePosition();
 

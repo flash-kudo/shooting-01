@@ -23,18 +23,24 @@ namespace BarrageShooting
 
         private float GranadePast = 0;
 
+        public GameObject MirrorEdge;
+
 
         public bool UseShot;
         public bool UseGranade;
-
+        [Range(0,8)]
+        public int MirrorCount = 0;
 
         private Vector3 Target = new Vector3();
         private float Distance = 0;
         private float Direction = 0;
+        public List<GameObject> MirrirEdgeList;
 
         private Vector3 Position { get { return transform.position; } }
 
-        // Update is called once per frame
+        /// *******************************************************
+        /// <summary>更新処理</summary>
+        /// *******************************************************
         void Update()
         {
             if (Input.GetMouseButton(0))
@@ -45,8 +51,12 @@ namespace BarrageShooting
             }
             if(UseShot) ProcShot();
             if(UseGranade) ProcGranade();
+            UpdateMirrorEdges();
         }
 
+        /// *******************************************************
+        /// <summary>主砲間隔処理</summary>
+        /// *******************************************************
         private void ProcShot()
         {
             ShotPast += CharacterControll.FRAME_TIME;
@@ -64,15 +74,22 @@ namespace BarrageShooting
             }
         }
 
+        /// *******************************************************
+        /// <summary>主砲発射処理</summary>
+        /// *******************************************************
         private void CreateShot(float direction)
         {
             GameObject self_go = Instantiate(ShotPrefab);
-            CharacterControll self_ctrl = self_go.GetComponent<CharacterControll>();
+            ShotControll self_ctrl = self_go.GetComponent<ShotControll>();
             self_ctrl.Position = Position;
             self_ctrl.Direction = direction;
+            self_ctrl.Player = this;
             self_go.SetActive(true);
         }
 
+        /// *******************************************************
+        /// <summary>榴弾間隔処理</summary>
+        /// *******************************************************
         private void ProcGranade()
         {
             GranadePast += CharacterControll.FRAME_TIME;
@@ -83,6 +100,9 @@ namespace BarrageShooting
             }
         }
 
+        /// *******************************************************
+        /// <summary>榴弾発射処理</summary>
+        /// *******************************************************
         private void CreateGranade()
         {
             GameObject self_go = Instantiate(GranadePrefab);
@@ -92,5 +112,46 @@ namespace BarrageShooting
             self_ctrl.TargetDistance = Distance;
             self_go.SetActive(true);
         }
+
+        /// *******************************************************
+        /// <summary>ミラー増減処理</summary>
+        /// *******************************************************
+        private void UpdateMirrorEdges()
+        {
+            if (MirrirEdgeList == null) MirrirEdgeList = new List<GameObject>();
+
+            int distance = (MirrorCount * 2) - MirrirEdgeList.Count;
+            if (distance > 0)
+            {
+                GameObject last_edge = null;
+                for(int i = 0; i < distance; i++)
+                {
+                    GameObject mirror_go = Instantiate(MirrorEdge);
+                    mirror_go.transform.parent = this.transform;
+                    mirror_go.SetActive(true);
+                    MirrirEdgeList.Add(mirror_go);
+
+                    if((i % 2) != 0)
+                    {
+                        MirrorGraphics graph = mirror_go.GetComponent<MirrorGraphics>();
+                        graph.AnotherEdge = last_edge;
+                    }
+
+                    last_edge = mirror_go;
+
+                }
+            }
+            if (distance < 0)
+            {
+                for (int i = 0; i > distance; i--)
+                {
+                    int index = MirrirEdgeList.Count - 1;
+                    GameObject trsh = MirrirEdgeList[index];
+                    MirrirEdgeList.RemoveAt(index);
+                    Destroy(trsh);
+                }
+            }
+        }
+
     }
 }
