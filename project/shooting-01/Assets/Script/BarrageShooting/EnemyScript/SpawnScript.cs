@@ -53,7 +53,7 @@ namespace BarrageShooting.EnemyScript
                 }
                 else
                 {
-                    Manager.OverrideParam(atr);
+                    Manager.OverrideParam(atr, false);
                 }
             });
         }

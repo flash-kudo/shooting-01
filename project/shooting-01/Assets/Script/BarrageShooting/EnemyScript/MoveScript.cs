@@ -100,6 +100,9 @@ namespace BarrageShooting.EnemyScript
         {
             var last_limit = Limit;
 
+            CommandAttribute keY_atr = line.GetAttribute("key");
+            bool have_key = (keY_atr != null);
+
             Limit = LIMIT_TYPE.NEAR;
             switch (line.CommandName)
             {
@@ -116,7 +119,7 @@ namespace BarrageShooting.EnemyScript
             line.Attributes.ForEach(atr => { 
                 if(RunAttribute(atr) == false)
                 {
-                    Manager.OverrideParam(atr);
+                    Manager.OverrideParam(atr, have_key);
                 } 
             });
         }

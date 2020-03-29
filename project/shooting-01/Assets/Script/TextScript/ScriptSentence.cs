@@ -8,8 +8,6 @@ namespace TextScript
     {
         CALC_PLUS,
         CALC_MINUS,
-        CALC_STAR,
-        CALC_SLASH,
         CALC_EQUAL,
         DOUBLE_QUOTATION,
         PARENTHESIS_OPEN,
@@ -24,7 +22,7 @@ namespace TextScript
 
     public class ScriptSentence
     {
-        public const string CALCURATE_SIGN = "+-*/=\"(){}[]";
+        public const string CALCURATE_SIGN = "+-=\"(){}[]";
 
         public string SourceStr;
         public CHAR_TYPE Type;

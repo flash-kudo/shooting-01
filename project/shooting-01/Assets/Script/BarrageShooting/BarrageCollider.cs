@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 namespace BarrageShooting
 {
@@ -57,11 +58,12 @@ namespace BarrageShooting
             float dist = Vector2.Distance(target.ColliderCenter, ColliderCenter);
             return (dist < (target.ColliderRadius + ColliderRadius));
         }
-
+#if UNITY_EDITOR
         /// *******************************************************
         /// <summary>Gizmo用範囲描画</summary>
         /// <param name="gizmo_color">描画色</param>
         /// *******************************************************
+        [DrawGizmo(GizmoType.NonSelected | GizmoType.Selected)]
         public void DrawGizmoLine(Color gizmo_color)
         {
             Gizmos.color = gizmo_color;
@@ -78,5 +80,6 @@ namespace BarrageShooting
                 Gizmos.DrawLine(pos1, pos2);
             }
         }
+#endif
     }
 }
