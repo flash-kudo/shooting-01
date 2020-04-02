@@ -65,7 +65,7 @@ namespace BarrageShooting
         public TargetType TargetDirection;
 
         [SerializeField]
-        public float LeftTargetAngle;
+        public float ScriptTargetAngle;
         [SerializeField]
         public Vector2 TargetPosition;
         [SerializeField]
@@ -162,8 +162,7 @@ namespace BarrageShooting
                 case TargetType.DIRECTION_POSITION:
                     dp = TargetPosition - Position;
                     return Mathf.Atan2(dp.x, dp.y) * Mathf.Rad2Deg;
-                case TargetType.DIRECTION_ANGLE:
-                    return (SpawnSide == SpawnPosition.LEFT) ? LeftTargetAngle : (360 - LeftTargetAngle);
+                case TargetType.DIRECTION_ANGLE: return ScriptTargetAngle;
                 case TargetType.DIRECTION_BOTTOM: return 180;
                 case TargetType.DIRECTION_TOP: return 0;
                 case TargetType.DIRECTION_LEFT: return 270;

@@ -1,95 +1,97 @@
 {wave_list}
-<wave target="wave1">
-<wave target="wave2">
-<wave target="wave3">
-<wave target="wave3">
-<wave target="wave4">
-<wave target="wave3">
-<wave target="wave4">
-<wave target="wave3">
+<wave target="wave_inseki">
+<wave target="wave_en1_1">
+<wave target="wave_en1_2">
+<wave target="wave_en1_3">
+<wave target="wave_en1_4">
+<wave target="wave_en1_5">
+<wave target="wave_en1_6">
 
-{wave1}
-<spawn source=TestEnemy2 key=left3>
+{wave_inseki}
+<spawn source=Enemy_00_innseki_01 key=pos15>
+<spawn source=Enemy_00_innseki_02 key=pos53>
 <interval delay=20>
-<spawn source=TestEnemy2 key=left2>
+<spawn source=Enemy_00_innseki_02 key=pos32>
+<spawn source=Enemy_00_innseki_01 key=pos61>
 <interval delay=20>
-<spawn source=TestEnemy2 key=left1>
-<interval delay=90>
-<spawn source=TestEnemy2 key=left3>
+<spawn source=Enemy_00_innseki_02 key=pos25>
+<spawn source=Enemy_00_innseki_02 key=pos52>
 <interval delay=20>
-<spawn source=TestEnemy2 key=left2>
+<spawn source=Enemy_00_innseki_01 key=pos42>
+<spawn source=Enemy_00_innseki_02 key=pos71>
 <interval delay=20>
-<spawn source=TestEnemy2 key=left1>
-<interval delay=90>
-<spawn source=TestEnemy2 key=left3>
-<interval delay=20>
-<spawn source=TestEnemy2 key=left2>
-<interval delay=20>
-<spawn source=TestEnemy2 key=left1>
+<spawn source=Enemy_00_innseki_01 key=pos24>
+<spawn source=Enemy_00_innseki_01 key=pos51>
 
-{wave2}
-<spawn source=TestEnemy2 key=right3>
+{wave_en1_1}
+<spawn source=Enemy_01_totugeki key=pt1_1>
 <interval delay=20>
-<spawn source=TestEnemy2 key=right2>
+<spawn source=Enemy_01_totugeki key=pt1_2>
 <interval delay=20>
-<spawn source=TestEnemy2 key=right1>
-<interval delay=90>
-<spawn source=TestEnemy2 key=right3>
-<interval delay=20>
-<spawn source=TestEnemy2 key=right2>
-<interval delay=20>
-<spawn source=TestEnemy2 key=right1>
-<interval delay=90>
-<spawn source=TestEnemy2 key=right3>
-<interval delay=20>
-<spawn source=TestEnemy2 key=right2>
-<interval delay=20>
-<spawn source=TestEnemy2 key=right1>
+<spawn source=Enemy_01_totugeki key=pt1_3>
 
-{wave3}
-<spawn source=TestEnemy2 key=left3>
-<spawn source=TestEnemy2 key=right3>
+{wave_en1_3}
+<spawn source=Enemy_01_totugeki key=pt3_1>
 <interval delay=20>
-<spawn source=TestEnemy2 key=left2>
-<spawn source=TestEnemy2 key=right2>
+<spawn source=Enemy_01_totugeki key=pt3_2>
 <interval delay=20>
-<spawn source=TestEnemy2 key=left1>
-<spawn source=TestEnemy2 key=right1>
-<interval delay=90>
-<spawn source=TestEnemy2 key=left3>
-<spawn source=TestEnemy2 key=right3>
-<interval delay=20>
-<spawn source=TestEnemy2 key=left2>
-<spawn source=TestEnemy2 key=right2>
-<interval delay=20>
-<spawn source=TestEnemy2 key=left1>
-<spawn source=TestEnemy2 key=right1>
-<interval delay=90>
-<spawn source=TestEnemy2 key=left3>
-<spawn source=TestEnemy2 key=right3>
-<interval delay=20>
-<spawn source=TestEnemy2 key=left2>
-<spawn source=TestEnemy2 key=right2>
-<interval delay=20>
-<spawn source=TestEnemy2 key=left1>
-<spawn source=TestEnemy2 key=right1>
+<spawn source=Enemy_01_totugeki key=pt3_3>
 
-{wave4}
-<spawn source=TestEnemy key=left>
-<spawn source=TestEnemy key=right>
+{wave_en1_13}
+<spawn source=Enemy_01_totugeki key=pt1_1>
+<spawn source=Enemy_01_totugeki key=pt3_1>
 <interval delay=20>
-<spawn source=TestEnemy key=left>
-<spawn source=TestEnemy key=right>
+<spawn source=Enemy_01_totugeki key=pt1_2>
+<spawn source=Enemy_01_totugeki key=pt3_2>
 <interval delay=20>
-<spawn source=TestEnemy key=left>
-<spawn source=TestEnemy key=right>
-<interval delay=240>
-<spawn source=TestEnemy key=left>
-<spawn source=TestEnemy key=right>
+<spawn source=Enemy_01_totugeki key=pt1_3>
+<spawn source=Enemy_01_totugeki key=pt3_3>
+
+{wave_en1_2}
+<spawn source=Enemy_01_totugeki key=pt2_1>
 <interval delay=20>
-<spawn source=TestEnemy key=left>
-<spawn source=TestEnemy key=right>
+<spawn source=Enemy_01_totugeki key=pt2_2>
 <interval delay=20>
-<spawn source=TestEnemy key=left>
-<spawn source=TestEnemy key=right>
+<spawn source=Enemy_01_totugeki key=pt2_3>
+
+{wave_en1_4}
+<spawn source=Enemy_01_totugeki key=pt4_1>
+<interval delay=20>
+<spawn source=Enemy_01_totugeki key=pt4_2>
+<interval delay=20>
+<spawn source=Enemy_01_totugeki key=pt4_3>
+
+{wave_en1_24}
+<spawn source=Enemy_01_totugeki key=pt2_1>
+<spawn source=Enemy_01_totugeki key=pt4_1>
+<interval delay=20>
+<spawn source=Enemy_01_totugeki key=pt2_2>
+<spawn source=Enemy_01_totugeki key=pt4_2>
+<interval delay=20>
+<spawn source=Enemy_01_totugeki key=pt2_3>
+<spawn source=Enemy_01_totugeki key=pt4_3>
+
+{wave_en1_5}
+<spawn source=Enemy_01_totugeki key=pt5_1>
+<interval delay=20>
+<spawn source=Enemy_01_totugeki key=pt5_2>
+<interval delay=20>
+<spawn source=Enemy_01_totugeki key=pt5_3>
+
+{wave_en1_6}
+<spawn source=Enemy_01_totugeki key=pt6_1>
+<interval delay=20>
+<spawn source=Enemy_01_totugeki key=pt6_2>
+<interval delay=20>
+<spawn source=Enemy_01_totugeki key=pt6_3>
+
+{wave_en1_56}
+<spawn source=Enemy_01_totugeki key=pt5_1>
+<spawn source=Enemy_01_totugeki key=pt6_1>
+<interval delay=20>
+<spawn source=Enemy_01_totugeki key=pt5_2>
+<spawn source=Enemy_01_totugeki key=pt6_2>
+<interval delay=20>
+<spawn source=Enemy_01_totugeki key=pt5_3>
+<spawn source=Enemy_01_totugeki key=pt6_3>
 

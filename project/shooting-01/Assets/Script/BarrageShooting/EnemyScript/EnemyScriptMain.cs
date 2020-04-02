@@ -77,7 +77,7 @@ namespace BarrageShooting.EnemyScript
         /// *******************************************************
         /// <summary>共通パラメータ更新</summary>
         /// *******************************************************
-        public void OverrideParam(CommandAttribute attribute)
+        public void OverrideParam(CommandAttribute attribute, bool inckude_key)
         {
             switch (attribute.Name)
             {
@@ -89,9 +89,11 @@ namespace BarrageShooting.EnemyScript
                 case "rot_spd": Character.RotateSpeed = attribute.FloatValue; break;
                 case "max_rot": Character.MaxRotateSpeed = attribute.FloatValue; break;
                 case "acc": Character.Accelerate = attribute.FloatValue; break;
-                case "trg_ang": Character.LeftTargetAngle = attribute.FloatValue; break;
+                case "trg_ang": Character.ScriptTargetAngle =
+                    ((inckude_key == true) || (Character.SpawnSide == SpawnPosition.LEFT)) ?
+                    attribute.FloatValue : (360 - attribute.FloatValue); break;
                 case "trg_pos_x": Character.TargetPosition.x = 
-                        (Character.SpawnSide == SpawnPosition.LEFT)? 
+                        ((inckude_key == true) || (Character.SpawnSide == SpawnPosition.LEFT))? 
                         attribute.FloatValue : -attribute.FloatValue; break;
                 case "trg_pos_y": Character.TargetPosition.y = attribute.FloatValue; break;
             }
