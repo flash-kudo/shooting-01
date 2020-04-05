@@ -54,14 +54,14 @@ MonoBehaviour:
   ShiftSpeed: 0
   ShiftAngle: 0
   ShiftDamp: 0
-  ColliderScale: 0.02
+  ColliderScale: 0.05
   ColliderPosition: {x: 0, y: 0}
   ToughPoint: 1
   AttackPoint: 10
   CharType: 2
   MaxRotateSpeed: 0
   TargetDirection: 0
-  LeftTargetAngle: 0
+  ScriptTargetAngle: 0
   TargetPosition: {x: 0, y: 0}
   TargetCharacter: {fileID: 0}
   Script: {fileID: 4900000, guid: c23c6fa4c91022d4dbc6060019e442b0, type: 3}
@@ -94,7 +94,7 @@ Transform:
   m_GameObject: {fileID: 6328973677421974331}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.04, y: 0.07, z: 0.04}
+  m_LocalScale: {x: 0.08, y: 0.14, z: 0.08}
   m_Children: []
   m_Father: {fileID: 6597898452726792453}
   m_RootOrder: 0
@@ -171,8 +171,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6551672301354674296}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.05, z: 0}
-  m_LocalScale: {x: 0.08, y: 0.04, z: 0.01}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
+  m_LocalScale: {x: 0.16, y: 0.08, z: 0.01}
   m_Children: []
   m_Father: {fileID: 6597898452726792453}
   m_RootOrder: 1

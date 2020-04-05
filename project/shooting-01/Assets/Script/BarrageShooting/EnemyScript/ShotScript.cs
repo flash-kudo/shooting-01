@@ -15,7 +15,7 @@ namespace BarrageShooting.EnemyScript
     {
         public MoveScript Manager;
 
-        private string SourcePath;
+        private string Source;
 
         private int ShotTime;
         private float Interval;
@@ -42,7 +42,7 @@ namespace BarrageShooting.EnemyScript
 
             CurrentShotTimes = 0;
 
-            SourcePath = null;
+            Source = null;
             ShotTime = 0;
             Interval = 1;
             StartCount = 1;
@@ -59,7 +59,7 @@ namespace BarrageShooting.EnemyScript
             line.Attributes.ForEach(atr => {
                 switch (atr.Name)
                 {
-                    case "path": SourcePath = atr.StringValue; break;
+                    case "path": Source = atr.StringValue; break;
                     case "shot_time": ShotTime = atr.IntValue - 1; break;
                     case "interval": Interval = atr.FloatValue; break;
                     case "st_count": StartCount = atr.IntValue; break;
@@ -130,7 +130,7 @@ namespace BarrageShooting.EnemyScript
         /// *******************************************************
         private void ShotOne(EnemyControll character, float shift_direction, float direction)
         {
-            GameObject blt_go = StageManager.Instance.InstantiateObject(SourcePath);
+            GameObject blt_go = StageManager.Instance.InstantiateObject(Source);
             EnemyControll blt_ctrl = blt_go.GetComponent<EnemyControll>();
             blt_ctrl.Position = character.Position;
 
@@ -139,7 +139,7 @@ namespace BarrageShooting.EnemyScript
             float angle = (AngleBase == AngleType.ABSOLUTE) ? 180f : character.Direction;
 
             initial.Direction = angle + direction;
-            initial.ShiftAngle = character.Direction + shift_direction;
+            initial.ShiftAngle = angle + shift_direction;
             initial.ShiftSpeed = ShiftSpeed;
             initial.ShiftDamp = ShiftDamp;
             initial.WateTime = Delay;

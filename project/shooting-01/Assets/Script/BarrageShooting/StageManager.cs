@@ -61,19 +61,21 @@ namespace BarrageShooting
         /// *******************************************************
         /// <summary>リソース取得</summary>
         /// *******************************************************
-        public GameObject InstantiateObject(string path)
+        public GameObject InstantiateObject(string source_id)
         {
             if (ResourceList == null) ResourceList = new Dictionary<string, GameObject>();
 
-            GameObject source = null;
-            if (ResourceList.TryGetValue(path, out source) == false)
+            string path = GameResourceList.PathList[source_id];
+
+            GameObject gameobj_source = null;
+            if (ResourceList.TryGetValue(path, out gameobj_source) == false)
             {
-                source = (GameObject)Resources.Load(path);
-                source.SetActive(false);
-                ResourceList.Add(path, source);
+                gameobj_source = (GameObject)Resources.Load(path);
+                gameobj_source.SetActive(false);
+                ResourceList.Add(path, gameobj_source);
             }
-            if (source == null) return null;
-            return Object.Instantiate(source);
+            if (gameobj_source == null) return null;
+            return Object.Instantiate(gameobj_source);
         }
 
         /// *******************************************************

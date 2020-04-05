@@ -1,4 +1,6 @@
 {wave_list}
+<wave target="wave_en22">
+<wave target="wave_en21">
 <wave target="wave_inseki">
 <wave target="wave_en1_1">
 <wave target="wave_en1_2">
@@ -94,4 +96,24 @@
 <interval delay=20>
 <spawn source=Enemy_01_totugeki key=pt5_3>
 <spawn source=Enemy_01_totugeki key=pt6_3>
+
+{wave_en21}
+<spawn source=Enemy_02_syageki_01 key=left>
+<spawn source=Enemy_02_syageki_01 key=right>
+<interval delay=80>
+<spawn source=Enemy_02_syageki_01 key=left>
+<spawn source=Enemy_02_syageki_01 key=right>
+<interval delay=80>
+<spawn source=Enemy_02_syageki_01 key=left>
+<spawn source=Enemy_02_syageki_01 key=right>
+
+{wave_en22}
+<spawn source=Enemy_02_syageki_02 key=left>
+<spawn source=Enemy_02_syageki_02 key=right>
+<interval delay=60>
+<spawn source=Enemy_02_syageki_02 key=left>
+<spawn source=Enemy_02_syageki_02 key=right>
+<interval delay=60>
+<spawn source=Enemy_02_syageki_02 key=left>
+<spawn source=Enemy_02_syageki_02 key=right>
 

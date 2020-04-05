@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// カメラのOrthographicSizeをアス比に応じて更新するクラス
 /// </summary>
-[RequireComponent(typeof(Camera)), ExecuteInEditMode]
+[RequireComponent(typeof(Camera)), ExecuteAlways]
 public class CameraSizeUpdater : MonoBehaviour
 {
 
@@ -22,11 +22,11 @@ public class CameraSizeUpdater : MonoBehaviour
 
     //基準の画面サイズ
     [SerializeField]
-    private float _baseWidth = 1280, _baseHeight = 1920;
+    private float _baseWidth = 720, _baseHeight = 1280;
 
     //画像のPixel Per Unit
     [SerializeField]
-    private float _pixelPerUnit = 100f;
+    private float _pixelPerUnit = 128;
 
     //常に(Update中も)更新するか
     [SerializeField]

@@ -1,0 +1,22 @@
+{spawn}
+<common>
+<left pos_x=-2 pos_y=5 dir=180 spd=20>
+
+<right pos_x=2 pos_y=5 dir=180 spd=20>
+
+{move}
+<angle    key=left time=100 trg_ang=90 max_rot=1>
+<shot     key=left path=TestBullet2 shot_time=4 interval=180 st_count=1 ed_count=1 st_width=60 ed_width=60 angle_base=absolute damp=1 delay=25 speed=50 st_sftang=45 ed_sftang=-45>
+<angle    key=left time=100 trg_ang=90 max_rot=1>
+<angle    key=left time=10 trg_ang=180 max_rot=2>
+<angle    key=left time=230 trg_ang=270 max_rot=2>
+<angle    key=left time=10 trg_ang=0 max_rot=2>
+<angle    key=left time=5000 trg_ang=90 max_rot=2>
+
+<angle    key=right time=100 trg_ang=270 max_rot=1>
+<shot     key=right path=TestBullet2 shot_time=4 interval=180 st_count=1 ed_count=1 st_width=60 ed_width=60 angle_base=absolute damp=1 delay=25 speed=50 st_sftang=45 ed_sftang=-45>
+<angle    key=right time=100 trg_ang=270 max_rot=1>
+<angle    key=right time=10 trg_ang=180 max_rot=2>
+<angle    key=right time=230 trg_ang=90 max_rot=2>
+<angle    key=right time=10 trg_ang=0 max_rot=2>
+<angle    key=right time=5000 trg_ang=270 max_rot=2>
