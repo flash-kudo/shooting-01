@@ -63,8 +63,23 @@ namespace BarrageShooting
         {
             Vector2 move = CalcurateMove();
             move = WallCheck(move);
+
+            if((GameManager.Instance != null) &&  (GameManager.Instance.IsHitFortress(Position + move, ColliderScale) == true)){
+                RemoveField();
+            }
+
             UpodatePosition(move);
         }
+
+        /// *******************************************************
+        /// <summary>破棄処理</summary>
+        /// *******************************************************
+        protected override void RemoveField()
+        {
+            Destroy(gameObject);
+        }
+
+
 
         /// *******************************************************
         /// <summary>ミラー当たり判定処理</summary>

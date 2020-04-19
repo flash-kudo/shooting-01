@@ -101,8 +101,9 @@ namespace BarrageShooting
             }
         }
 
+#if UNITY_EDITOR
         /// *******************************************************
-        /// <summary>初期処理</summary>
+        /// <summary>Gizmo描画</summary>
         /// *******************************************************
         protected virtual void OnGizmo()
         {
@@ -113,6 +114,7 @@ namespace BarrageShooting
 
             Gizmos.color = prev_color;
         }
+#endif
 
         // ########################################################
 
@@ -170,7 +172,7 @@ namespace BarrageShooting
         /// *******************************************************
         /// <summary>位置処理</summary>
         /// *******************************************************
-        protected void UpodatePosition(Vector2 move)
+        protected virtual void UpodatePosition(Vector2 move)
         {
             Position = Position + move;
 
@@ -200,7 +202,7 @@ namespace BarrageShooting
         /// *******************************************************
         /// <summary>位置更新処理</summary>
         /// *******************************************************
-        private void UpdatePosition()
+        protected void UpdatePosition()
         {
             transform.localPosition = Position;
             transform.localEulerAngles = BaseAngle + new Vector3(0, 0, -Direction);

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public int CurrentPlayerLevel = 1;
 
+    public Func<Vector2, float, bool> FortressHitCheck;
+
     /// *******************************************************
     /// <summary>プレイヤーレベル割合</summary>
     /// *******************************************************
@@ -17,8 +20,14 @@ public class GameManager : MonoBehaviour
         return Mathf.Clamp01((float)(CurrentPlayerLevel - MinPlayerLevel) / (float)(MaxPlayerLevel - MinPlayerLevel));
     }
 
-
-
+    /// *******************************************************
+    /// <summary>要塞ヒットチェック</summary>
+    /// *******************************************************
+    public bool IsHitFortress(Vector2 position, float scale)
+    {
+        if (FortressHitCheck == null) return false;
+        return FortressHitCheck(position, scale);
+    }
 
     // ########################################################
     // ########################################################
