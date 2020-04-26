@@ -1,75 +1,37 @@
 {spawn}
-<common spd=30 pos_y=5 dir=180>
-<pos11 pos_x=-3>
-<pos12 pos_x=-3>
-<pos13 pos_x=-3>
-<pos14 pos_x=-3>
-<pos15 pos_x=-3>
-<pos21 pos_x=-2>
-<pos22 pos_x=-2>
-<pos23 pos_x=-2>
-<pos24 pos_x=-2>
-<pos25 pos_x=-2>
-<pos31 pos_x=-1>
-<pos32 pos_x=-1>
-<pos33 pos_x=-1>
-<pos34 pos_x=-1>
-<pos35 pos_x=-1>
-<pos41 pos_x=0>
-<pos42 pos_x=0>
-<pos43 pos_x=0>
-<pos44 pos_x=0>
-<pos45 pos_x=0>
-<pos51 pos_x=1>
-<pos52 pos_x=1>
-<pos53 pos_x=1>
-<pos54 pos_x=1>
-<pos55 pos_x=1>
-<pos61 pos_x=2>
-<pos62 pos_x=2>
-<pos63 pos_x=2>
-<pos64 pos_x=2>
-<pos65 pos_x=2>
-<pos71 pos_x=3>
-<pos72 pos_x=3>
-<pos73 pos_x=3>
-<pos74 pos_x=3>
-<pos75 pos_x=3>
-
-{move}
-<position trg_pos_x=-4 trg_pos_y=-6 max_rot=100 key=pos11>
-<position trg_pos_x=-3 trg_pos_y=-6 max_rot=100 key=pos12>
-<position trg_pos_x=-2 trg_pos_y=-6 max_rot=100 key=pos13>
-<position trg_pos_x=-1 trg_pos_y=-6 max_rot=100 key=pos14>
-<position trg_pos_x=0 trg_pos_y=-6 max_rot=100 key=pos15>
-<position trg_pos_x=-4 trg_pos_y=-6 max_rot=100 key=pos21>
-<position trg_pos_x=-3 trg_pos_y=-6 max_rot=100 key=pos22>
-<position trg_pos_x=-2 trg_pos_y=-6 max_rot=100 key=pos23>
-<position trg_pos_x=-1 trg_pos_y=-6 max_rot=100 key=pos24>
-<position trg_pos_x=0 trg_pos_y=-6 max_rot=100 key=pos25>
-<position trg_pos_x=-3 trg_pos_y=-6 max_rot=100 key=pos31>
-<position trg_pos_x=-2 trg_pos_y=-6 max_rot=100 key=pos32>
-<position trg_pos_x=-1 trg_pos_y=-6 max_rot=100 key=pos33>
-<position trg_pos_x=0 trg_pos_y=-6 max_rot=100 key=pos34>
-<position trg_pos_x=1 trg_pos_y=-6 max_rot=100 key=pos35>
-<position trg_pos_x=-2 trg_pos_y=-6 max_rot=100 key=pos41>
-<position trg_pos_x=-1 trg_pos_y=-6 max_rot=100 key=pos42>
-<position trg_pos_x=0 trg_pos_y=-6 max_rot=100 key=pos43>
-<position trg_pos_x=1 trg_pos_y=-6 max_rot=100 key=pos44>
-<position trg_pos_x=2 trg_pos_y=-6 max_rot=100 key=pos45>
-<position trg_pos_x=-1 trg_pos_y=-6 max_rot=100 key=pos51>
-<position trg_pos_x=0 trg_pos_y=-6 max_rot=100 key=pos52>
-<position trg_pos_x=1 trg_pos_y=-6 max_rot=100 key=pos53>
-<position trg_pos_x=2 trg_pos_y=-6 max_rot=100 key=pos54>
-<position trg_pos_x=3 trg_pos_y=-6 max_rot=100 key=pos55>
-<position trg_pos_x=0 trg_pos_y=-6 max_rot=100 key=pos61>
-<position trg_pos_x=1 trg_pos_y=-6 max_rot=100 key=pos62>
-<position trg_pos_x=2 trg_pos_y=-6 max_rot=100 key=pos63>
-<position trg_pos_x=3 trg_pos_y=-6 max_rot=100 key=pos64>
-<position trg_pos_x=4 trg_pos_y=-6 max_rot=100 key=pos65>
-<position trg_pos_x=0 trg_pos_y=-6 max_rot=100 key=pos71>
-<position trg_pos_x=1 trg_pos_y=-6 max_rot=100 key=pos72>
-<position trg_pos_x=2 trg_pos_y=-6 max_rot=100 key=pos73>
-<position trg_pos_x=3 trg_pos_y=-6 max_rot=100 key=pos74>
-<position trg_pos_x=4 trg_pos_y=-6 max_rot=100 key=pos75>
-
+<common spd=30>
+<pos11 pos_x=-3 pos_y=5 dir=180>
+<pos12 pos_x=-3 pos_y=5 dir=175>
+<pos13 pos_x=-3 pos_y=5 dir=170>
+<pos14 pos_x=-3 pos_y=5 dir=165>
+<pos15 pos_x=-3 pos_y=5 dir=160>
+<pos21 pos_x=-2 pos_y=5 dir=185>
+<pos22 pos_x=-2 pos_y=5 dir=180>
+<pos23 pos_x=-2 pos_y=5 dir=175>
+<pos24 pos_x=-2 pos_y=5 dir=170>
+<pos25 pos_x=-2 pos_y=5 dir=165>
+<pos31 pos_x=-1 pos_y=5 dir=190>
+<pos32 pos_x=-1 pos_y=5 dir=185>
+<pos33 pos_x=-1 pos_y=5 dir=180>
+<pos34 pos_x=-1 pos_y=5 dir=175>
+<pos35 pos_x=-1 pos_y=5 dir=170>
+<pos41 pos_x=0 pos_y=5 dir=190>
+<pos42 pos_x=0 pos_y=5 dir=185>
+<pos43 pos_x=0 pos_y=5 dir=180>
+<pos44 pos_x=0 pos_y=5 dir=175>
+<pos45 pos_x=0 pos_y=5 dir=170>
+<pos51 pos_x=1 pos_y=5 dir=190>
+<pos52 pos_x=1 pos_y=5 dir=185>
+<pos53 pos_x=1 pos_y=5 dir=180>
+<pos54 pos_x=1 pos_y=5 dir=175>
+<pos55 pos_x=1 pos_y=5 dir=170>
+<pos61 pos_x=2 pos_y=5 dir=195>
+<pos62 pos_x=2 pos_y=5 dir=190>
+<pos63 pos_x=2 pos_y=5 dir=185>
+<pos64 pos_x=2 pos_y=5 dir=180>
+<pos65 pos_x=2 pos_y=5 dir=175>
+<pos71 pos_x=3 pos_y=5 dir=200>
+<pos72 pos_x=3 pos_y=5 dir=195>
+<pos73 pos_x=3 pos_y=5 dir=190>
+<pos74 pos_x=3 pos_y=5 dir=185>
+<pos75 pos_x=3 pos_y=5 dir=180>

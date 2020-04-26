@@ -13,6 +13,7 @@ public class GameResourceList
         {"Enemy_01_totugeki".ToLower(), "Enemy_01_totugeki"},
         {"Enemy_02_syageki_01".ToLower(), "Enemy_02_syageki_01" },
         {"Enemy_02_syageki_02".ToLower(), "Enemy_02_syageki_02" },
+        {"Enemy_04_big_innseki".ToLower(), "Enemy_04_big_innseki" },
     };
 }
 

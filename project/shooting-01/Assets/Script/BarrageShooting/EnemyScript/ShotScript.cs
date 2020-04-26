@@ -100,7 +100,7 @@ namespace BarrageShooting.EnemyScript
         /// *******************************************************
         /// <summary>同時発射処理</summary>
         /// *******************************************************
-        private void ShotSame(EnemyControll character)
+        internal void ShotSame(EnemyControll character)
         {
             float rate = CurrentRate();
             int count = CurrentCount(rate) - 1;

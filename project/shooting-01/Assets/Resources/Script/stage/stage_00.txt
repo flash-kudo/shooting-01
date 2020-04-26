@@ -1,13 +1,25 @@
 {wave_list}
+<wave target="wave_hugeinseki">
+<wave target="wave_inseki">
 <wave target="wave_en22">
 <wave target="wave_en21">
-<wave target="wave_inseki">
 <wave target="wave_en1_1">
 <wave target="wave_en1_2">
 <wave target="wave_en1_3">
 <wave target="wave_en1_4">
 <wave target="wave_en1_5">
 <wave target="wave_en1_6">
+
+{wave_hugeinseki}
+<spawn source=Enemy_04_big_innseki key=pos2>
+<interval delay=180>
+<spawn source=Enemy_04_big_innseki key=pos3>
+<interval delay=180>
+<spawn source=Enemy_04_big_innseki key=pos4>
+<interval delay=180>
+<spawn source=Enemy_04_big_innseki key=pos5>
+<interval delay=180>
+<spawn source=Enemy_04_big_innseki key=pos6>
 
 {wave_inseki}
 <spawn source=Enemy_00_innseki_01 key=pos15>

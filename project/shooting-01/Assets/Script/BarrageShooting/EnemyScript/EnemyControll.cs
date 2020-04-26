@@ -80,7 +80,7 @@ namespace BarrageShooting
         public InitialData Initial;
         [HideInInspector]
         public SpawnPosition SpawnSide;
-        private EnemyScriptMain ScriptMain;
+        protected EnemyScriptMain ScriptMain;
 
         /// *******************************************************
         /// <summary>初期処理</summary>

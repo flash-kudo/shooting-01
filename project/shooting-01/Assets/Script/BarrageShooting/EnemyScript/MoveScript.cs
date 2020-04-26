@@ -24,8 +24,8 @@ namespace BarrageShooting.EnemyScript
         private int PastTime;
         private int WaitTime;
 
-        private List<ShotScript> Shots;
-        private List<ShotScript> RemoveShots;
+        public List<ShotScript> Shots;
+        public List<ShotScript> RemoveShots;
 
         /// *******************************************************
         /// <summary>コンストラクタ</summary>
@@ -84,7 +84,7 @@ namespace BarrageShooting.EnemyScript
         /// *******************************************************
         /// <summary>次コマンド実行</summary>
         /// *******************************************************
-        private void PlayNextLine(EnemyControll character)
+        public void PlayNextLine(EnemyControll character)
         {
             LineIndex++;
             if (LineIndex >= Scripts.ScriptLine.Count) LineIndex = 0;
