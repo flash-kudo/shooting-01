@@ -1,2 +1,2 @@
 {spawn}
-<common spd=30>
+<common spd=[30,0.3] tough=1>

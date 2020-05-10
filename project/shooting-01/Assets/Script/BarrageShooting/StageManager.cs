@@ -13,6 +13,8 @@ namespace BarrageShooting
         [SerializeField]
         public TextAsset StageScript;
 
+        public int WaveNumber;
+        public int WavePlayerLevel;
 
         public StageScriptMain StageProc;
         private List<EnemyControll> EnemyList;
@@ -43,7 +45,7 @@ namespace BarrageShooting
         /// *******************************************************
         void Start()
         {
-            StageProc = new StageScriptMain();
+            StageProc = new StageScriptMain(this);
             if(StageScript != null)
             {
                 StageProc.ReadScriptText(StageScript.text);
@@ -54,6 +56,17 @@ namespace BarrageShooting
         private void Update()
         {
             if(StageProc != null) StageProc.OnUpdate();
+        }
+        
+        public void SetWaveNumber(int num)
+        {
+            WaveNumber = num;
+            if (GameManager.Instance != null)
+                WavePlayerLevel = Mathf.FloorToInt(GameManager.Instance.PlayerCalcLevel());
+        }
+        public int GetWaveNumber()
+        {
+            return WaveNumber;
         }
 
         // ########################################################

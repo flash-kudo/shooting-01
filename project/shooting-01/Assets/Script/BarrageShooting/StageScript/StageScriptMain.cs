@@ -7,6 +7,8 @@ namespace BarrageShooting.StageScript
 {
     public class StageScriptMain : TextScriptCore
     {
+        private StageManager Manager;
+
         private const string LIST_SCRIPT = "wave_list";
         private const int START_INTERVAL = 120;
         private const int WAVE_INTERVAL = 30;
@@ -21,6 +23,14 @@ namespace BarrageShooting.StageScript
         private List<string> WaveList;
         private Dictionary<string, WaveScript> WaveWarehouse;
         private WaveScript CurrentWave;
+
+        /// *******************************************************
+        /// <summary>コンストラクタ</summary>
+        /// *******************************************************
+        public StageScriptMain(StageManager mng)
+        {
+            Manager = mng;
+        }
 
         /// *******************************************************
         /// <summary>ファイル読み込み</summary>
@@ -88,16 +98,16 @@ namespace BarrageShooting.StageScript
         {
             if (IsProcStage == false) return;
 
-            int wave_index = StepIndex / STEP_LNG;
+            Manager.SetWaveNumber(StepIndex / STEP_LNG);
 
-            if (wave_index >= WaveList.Count) return;
+            if (Manager.GetWaveNumber() >= WaveList.Count) return;
 
             if ((StepIndex % STEP_LNG) == 0)
             {
                 PastTime++;
                 if(PastTime > WaitTime)
                 {
-                    CurrentWave = WaveWarehouse[WaveList[wave_index]];
+                    CurrentWave = WaveWarehouse[WaveList[Manager.GetWaveNumber()]];
                     CurrentWave.StartWave();
 
                     StepIndex++;
@@ -108,7 +118,7 @@ namespace BarrageShooting.StageScript
             else if ((StepIndex % STEP_LNG) == 1)
             {
                 if (CurrentWave.OnUpdate() == false) StepIndex++;
-                if (wave_index >= WaveList.Count) OnFInishStage();
+                if (Manager.GetWaveNumber() >= WaveList.Count) OnFInishStage();
             }
             else if ((StepIndex % STEP_LNG) == 2)
             {

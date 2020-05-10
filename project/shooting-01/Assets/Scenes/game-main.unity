@@ -587,8 +587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MinPlayerLevel: 1
-  MaxPlayerLevel: 100
-  CurrentPlayerLevel: 1
+  CurrentPlayerLevel: 101
 --- !u!114 &888761387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -614,6 +613,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StageScript: {fileID: 4900000, guid: e9cc16cdd9c729248857056163e71923, type: 3}
+  WaveNumber: 0
+  WavePlayerLevel: 0
 --- !u!1 &1181200999
 GameObject:
   m_ObjectHideFlags: 0

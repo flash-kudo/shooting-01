@@ -39,6 +39,8 @@ namespace TextScript
                 Attributes.Add(att);
                 sentences.RemoveAt(0);
 
+                if (sentences.Count == 0) break;
+
                 if (sentences[0].Type != CHAR_TYPE.CALC_EQUAL) continue;
                 sentences.RemoveAt(0);
 
@@ -60,13 +62,57 @@ namespace TextScript
                 if ((sentences.Count >= 5) &&
                     (sentences[0].Type == CHAR_TYPE.BRACKET_OPEN) &&
                     (sentences[1].Type == CHAR_TYPE.STRING) &&
-                    (sentences[2].Type == CHAR_TYPE.CALC_MINUS) &&
-                    (sentences[1].Type == CHAR_TYPE.STRING) &&
+                    (sentences[2].Type == CHAR_TYPE.COMMA) &&
+                    (sentences[3].Type == CHAR_TYPE.STRING) &&
                     (sentences[4].Type == CHAR_TYPE.BRACKET_CLOSE))
                 {
                     att.AddData(sentences[1]);
                     att.AddData(sentences[3]);
                     sentences.RemoveRange(0, 5);
+                    continue;
+                }
+                if ((sentences.Count >= 6) &&
+                    (sentences[0].Type == CHAR_TYPE.BRACKET_OPEN) &&
+                    (sentences[1].Type == CHAR_TYPE.CALC_MINUS) &&
+                    (sentences[2].Type == CHAR_TYPE.STRING) &&
+                    (sentences[3].Type == CHAR_TYPE.COMMA) &&
+                    (sentences[4].Type == CHAR_TYPE.STRING) &&
+                    (sentences[5].Type == CHAR_TYPE.BRACKET_CLOSE))
+                {
+                    sentences[2].SourceStr = "-" + sentences[2].SourceStr;
+                    att.AddData(sentences[2]);
+                    att.AddData(sentences[4]);
+                    sentences.RemoveRange(0, 6);
+                    continue;
+                }
+                if ((sentences.Count >= 6) &&
+                    (sentences[0].Type == CHAR_TYPE.BRACKET_OPEN) &&
+                    (sentences[1].Type == CHAR_TYPE.STRING) &&
+                    (sentences[2].Type == CHAR_TYPE.COMMA) &&
+                    (sentences[3].Type == CHAR_TYPE.CALC_MINUS) &&
+                    (sentences[4].Type == CHAR_TYPE.STRING) &&
+                    (sentences[5].Type == CHAR_TYPE.BRACKET_CLOSE))
+                {
+                    sentences[4].SourceStr = "-" + sentences[4].SourceStr;
+                    att.AddData(sentences[1]);
+                    att.AddData(sentences[4]);
+                    sentences.RemoveRange(0, 6);
+                    continue;
+                }
+                if ((sentences.Count >= 7) &&
+                    (sentences[0].Type == CHAR_TYPE.BRACKET_OPEN) &&
+                    (sentences[1].Type == CHAR_TYPE.CALC_MINUS) &&
+                    (sentences[2].Type == CHAR_TYPE.STRING) &&
+                    (sentences[3].Type == CHAR_TYPE.COMMA) &&
+                    (sentences[4].Type == CHAR_TYPE.CALC_MINUS) &&
+                    (sentences[5].Type == CHAR_TYPE.STRING) &&
+                    (sentences[6].Type == CHAR_TYPE.BRACKET_CLOSE))
+                {
+                    sentences[2].SourceStr = "-" + sentences[2].SourceStr;
+                    sentences[5].SourceStr = "-" + sentences[5].SourceStr;
+                    att.AddData(sentences[2]);
+                    att.AddData(sentences[5]);
+                    sentences.RemoveRange(0, 7);
                     continue;
                 }
                 sentences.RemoveAt(0);

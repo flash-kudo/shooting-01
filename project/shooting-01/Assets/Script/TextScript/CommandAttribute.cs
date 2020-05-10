@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using BarrageShooting;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,10 +37,10 @@ namespace TextScript
                 if (DataSrc.Count == 1) return ParseFloat(0);
                 else
                 {
-                    float min = ParseFloat(0);
-                    float max = ParseFloat(1);
-                    if (GameManager.Instance == null) return 0;
-                    return Mathf.Lerp(min, max, GameManager.Instance.PlayerLevelRate());
+                    float base_param = ParseFloat(0);
+                    float add_param = ParseFloat(1);
+                    if (StageManager.Instance == null) return base_param;
+                    return base_param + (add_param * StageManager.Instance.WavePlayerLevel);
                 }
             }
         }
@@ -98,7 +99,7 @@ namespace TextScript
         private float ParseFloat(int index)
         {
             float ans = 0;
-            if (float.TryParse(DataSrc[0].SourceStr, out ans) == true) return ans;
+            if (float.TryParse(DataSrc[index].SourceStr, out ans) == true) return ans;
             return 0;
         }
 

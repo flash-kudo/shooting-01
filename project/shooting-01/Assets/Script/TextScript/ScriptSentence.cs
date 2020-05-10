@@ -16,13 +16,14 @@ namespace TextScript
         BRACE_CLOSE,
         BRACKET_OPEN,
         BRACKET_CLOSE,
+        COMMA,
 
         STRING = 10000,
     }
 
     public class ScriptSentence
     {
-        public const string CALCURATE_SIGN = "+-=\"(){}[]";
+        public const string CALCURATE_SIGN = "+-=\"(){}[],";
 
         public string SourceStr;
         public CHAR_TYPE Type;

@@ -47,13 +47,11 @@ namespace BarrageShooting.EnemyScript
         {
 
             line.Attributes.ForEach(atr => {
-                if (atr.Name.CompareTo("time") == 0)
+                switch (atr.Name)
                 {
-                    WaitTime = atr.FloatValue;
-                }
-                else
-                {
-                    Manager.OverrideParam(atr, false);
+                    case "time": WaitTime = atr.FloatValue; break;
+                    case "tough": Manager.Character.ToughPoint = atr.FloatValue; break;
+                    default: Manager.OverrideParam(atr, false);break;
                 }
             });
         }

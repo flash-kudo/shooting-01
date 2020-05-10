@@ -1,5 +1,5 @@
 {spawn}
-<common spd=20 pos_y=5 dir=180>
+<common spd=[20,0.2] tough=[150,0.2] pos_y=5 dir=180>
 <pos1 pos_x=-3>
 <pos2 pos_x=-2>
 <pos3 pos_x=-1>

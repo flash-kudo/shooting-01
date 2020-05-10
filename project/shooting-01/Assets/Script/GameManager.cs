@@ -6,7 +6,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public int MinPlayerLevel = 1;
-    public int MaxPlayerLevel = 100;
 
     public int CurrentPlayerLevel = 1;
 
@@ -15,9 +14,9 @@ public class GameManager : MonoBehaviour
     /// *******************************************************
     /// <summary>プレイヤーレベル割合</summary>
     /// *******************************************************
-    public float PlayerLevelRate()
+    public float PlayerCalcLevel()
     {
-        return Mathf.Clamp01((float)(CurrentPlayerLevel - MinPlayerLevel) / (float)(MaxPlayerLevel - MinPlayerLevel));
+        return Mathf.Max(CurrentPlayerLevel - MinPlayerLevel, 0);
     }
 
     /// *******************************************************

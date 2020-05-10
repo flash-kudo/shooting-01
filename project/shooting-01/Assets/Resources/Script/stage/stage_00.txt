@@ -1,14 +1,14 @@
 {wave_list}
-<wave target="wave_hugeinseki">
-<wave target="wave_inseki">
-<wave target="wave_en22">
-<wave target="wave_en21">
 <wave target="wave_en1_1">
 <wave target="wave_en1_2">
 <wave target="wave_en1_3">
 <wave target="wave_en1_4">
 <wave target="wave_en1_5">
 <wave target="wave_en1_6">
+<wave target="wave_en22">
+<wave target="wave_en21">
+<wave target="wave_hugeinseki">
+<wave target="wave_inseki">
 
 {wave_hugeinseki}
 <spawn source=Enemy_04_big_innseki key=pos2>
