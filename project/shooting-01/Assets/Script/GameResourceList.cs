@@ -14,6 +14,9 @@ public class GameResourceList
         {"Enemy_02_syageki_01".ToLower(), "Enemy_02_syageki_01" },
         {"Enemy_02_syageki_02".ToLower(), "Enemy_02_syageki_02" },
         {"Enemy_04_big_innseki".ToLower(), "Enemy_04_big_innseki" },
+
+        {"ExploadSmall".ToLower(), "ExplosionSmall" },
+        {"HitMark".ToLower(), "HitMark" },
     };
 }
 

@@ -40,7 +40,21 @@ namespace TextScript
                     float base_param = ParseFloat(0);
                     float add_param = ParseFloat(1);
                     if (StageManager.Instance == null) return base_param;
-                    return base_param + (add_param * StageManager.Instance.WavePlayerLevel);
+                    bool invert = (add_param < 0);
+                    add_param = Mathf.Abs(add_param);
+
+                    float rate = (add_param * StageManager.Instance.WavePlayerLevel) + 1.0f;
+
+                    if(invert == false)
+                    {
+                        return base_param * rate;
+                    }
+                    else
+                    {
+                        return base_param / rate;
+                    }
+
+                    //return base_param + (add_param * StageManager.Instance.WavePlayerLevel);
                 }
             }
         }

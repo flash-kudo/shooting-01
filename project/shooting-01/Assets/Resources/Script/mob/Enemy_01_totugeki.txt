@@ -1,5 +1,5 @@
 {spawn}
-<common spd=[30,0.3] tough=[50,0.2]>
+<common spd=[30,0.01] tough=[50,0.004]>
 <pt1_1 pos_x=-3 pos_y=3 dir=90>
 <pt1_2 pos_x=-3 pos_y=3 dir=90>
 <pt1_3 pos_x=-3 pos_y=3 dir=90>
@@ -26,117 +26,117 @@
 
 {move}
 <position key=pt1_1 trg_pos_x=2 trg_pos_y=4 max_rot=[1,0.01]>
-<angle    key=pt1_1 time=[20,-0.1] trg_ang=240 max_rot=[10,0.1]>
-<position key=pt1_1 trg_pos_x=-2 trg_pos_y=3 max_rot=[2,0.02]>
-<position key=pt1_1 trg_pos_x=-1 trg_pos_y=-6 max_rot=[5,0.05] spd=0 time=20>
-<position key=pt1_1 spd=[100,1]>
+<angle    key=pt1_1 time=[20,-0.01] trg_ang=240 max_rot=[10,0.01]>
+<position key=pt1_1 trg_pos_x=-2 trg_pos_y=3 max_rot=[2,0.01]>
+<position key=pt1_1 trg_pos_x=-1 trg_pos_y=-6 max_rot=[5,0.01] spd=0 time=20>
+<position key=pt1_1 spd=[100,0.01]>
 
 <position key=pt1_2 trg_pos_x=2 trg_pos_y=4 max_rot=[1,0.01]>
-<angle    key=pt1_2 time=[20,-0.1] trg_ang=240 max_rot=[10,0.1]>
-<position key=pt1_2 trg_pos_x=-2 trg_pos_y=3 max_rot=[2,0.02]>
-<position key=pt1_2 trg_pos_x=0 trg_pos_y=-6 max_rot=[5,0.05] spd=0 time=20>
-<position key=pt1_2 spd=[100,1]>
+<angle    key=pt1_2 time=[20,-0.01] trg_ang=240 max_rot=[10,0.01]>
+<position key=pt1_2 trg_pos_x=-2 trg_pos_y=3 max_rot=[2,0.01]>
+<position key=pt1_2 trg_pos_x=0 trg_pos_y=-6 max_rot=[5,0.01] spd=0 time=20>
+<position key=pt1_2 spd=[100,0.01]>
 
 <position key=pt1_3 trg_pos_x=2 trg_pos_y=4 max_rot=[1,0.01]>
-<angle    key=pt1_3 time=[20,-0.1] trg_ang=240 max_rot=[10,0.1]>
-<position key=pt1_3 trg_pos_x=-2 trg_pos_y=3 max_rot=[2,0.02]>
-<position key=pt1_3 trg_pos_x=1 trg_pos_y=-6 max_rot=[5,0.05] spd=0 time=20>
-<position key=pt1_3 spd=[100,1]>
+<angle    key=pt1_3 time=[20,-0.01] trg_ang=240 max_rot=[10,0.01]>
+<position key=pt1_3 trg_pos_x=-2 trg_pos_y=3 max_rot=[2,0.01]>
+<position key=pt1_3 trg_pos_x=1 trg_pos_y=-6 max_rot=[5,0.01] spd=0 time=20>
+<position key=pt1_3 spd=[100,0.01]>
 
 <position key=pt3_1 trg_pos_x=-2 trg_pos_y=4 max_rot=[1,0.01]>
-<angle    key=pt3_1 time=[20,-0.1] trg_ang=120 max_rot=[10,0.1]>
-<position key=pt3_1 trg_pos_x=2 trg_pos_y=3 max_rot=[2,0.02]>
-<position key=pt3_1 trg_pos_x=1 trg_pos_y=-6 max_rot=[5,0.05] spd=0 time=20>
-<position key=pt3_1 spd=[100,1]>
+<angle    key=pt3_1 time=[20,-0.01] trg_ang=120 max_rot=[10,0.01]>
+<position key=pt3_1 trg_pos_x=2 trg_pos_y=3 max_rot=[2,0.01]>
+<position key=pt3_1 trg_pos_x=1 trg_pos_y=-6 max_rot=[5,0.01] spd=0 time=20>
+<position key=pt3_1 spd=[100,0.01]>
 
 <position key=pt3_2 trg_pos_x=-2 trg_pos_y=4 max_rot=[1,0.01]>
-<angle    key=pt3_2 time=[20,-0.1] trg_ang=120 max_rot=[10,0.1]>
-<position key=pt3_2 trg_pos_x=2 trg_pos_y=3 max_rot=[2,0.02]>
-<position key=pt3_2 trg_pos_x=0 trg_pos_y=-6 max_rot=[5,0.05] spd=0 time=20>
-<position key=pt3_2 spd=[100,1]>
+<angle    key=pt3_2 time=[20,-0.01] trg_ang=120 max_rot=[10,0.01]>
+<position key=pt3_2 trg_pos_x=2 trg_pos_y=3 max_rot=[2,0.01]>
+<position key=pt3_2 trg_pos_x=0 trg_pos_y=-6 max_rot=[5,0.01] spd=0 time=20>
+<position key=pt3_2 spd=[100,0.01]>
 
 <position key=pt3_3 trg_pos_x=-2 trg_pos_y=4 max_rot=[1,0.01]>
-<angle    key=pt3_3 time=[20,-0.1] trg_ang=120 max_rot=[10,0.1]>
-<position key=pt3_3 trg_pos_x=2 trg_pos_y=3 max_rot=[2,0.02]>
-<position key=pt3_3 trg_pos_x=-1 trg_pos_y=-6 max_rot=[5,0.05] spd=0 time=20>
-<position key=pt3_3 spd=[100,1]>
+<angle    key=pt3_3 time=[20,-0.01] trg_ang=120 max_rot=[10,0.01]>
+<position key=pt3_3 trg_pos_x=2 trg_pos_y=3 max_rot=[2,0.01]>
+<position key=pt3_3 trg_pos_x=-1 trg_pos_y=-6 max_rot=[5,0.01] spd=0 time=20>
+<position key=pt3_3 spd=[100,0.01]>
 
-<angle    key=pt2_1 trg_ang=120 time=[80,-0.4] max_rot=[0.5,0.005]>
-<angle    key=pt2_1 trg_ang=270 time=[80,-0.4] max_rot=[2,0.02]>
-<angle    key=pt2_1 trg_ang=60  time=[80,-0.4] max_rot=[2,0.02]>
-<angle    key=pt2_1 trg_ang=120 time=[100,-0.5] max_rot=[0.5,0.005]>
-<position key=pt2_1 trg_pos_x=1 trg_pos_y=-6 max_rot=[5,0.05] spd=0 time=20>
-<position key=pt2_1 spd=[100,1]>
+<angle    key=pt2_1 trg_ang=120 time=[80,-0.01] max_rot=[0.5,0.01]>
+<angle    key=pt2_1 trg_ang=270 time=[80,-0.01] max_rot=[2,0.01]>
+<angle    key=pt2_1 trg_ang=60  time=[80,-0.01] max_rot=[2,0.01]>
+<angle    key=pt2_1 trg_ang=120 time=[100,-0.01] max_rot=[0.5,0.01]>
+<position key=pt2_1 trg_pos_x=1 trg_pos_y=-6 max_rot=[5,0.01] spd=0 time=20>
+<position key=pt2_1 spd=[100,0.01]>
 
-<angle    key=pt2_2 trg_ang=120 time=[80,-0.4] max_rot=[0.5,0.005]>
-<angle    key=pt2_2 trg_ang=270 time=[80,-0.4] max_rot=[2,0.02]>
-<angle    key=pt2_2 trg_ang=60  time=[80,-0.4] max_rot=[2,0.02]>
-<angle    key=pt2_2 trg_ang=120 time=[100,-0.5] max_rot=[0.5,0.005]>
-<position key=pt2_2 trg_pos_x=0 trg_pos_y=-6 max_rot=[5,0.05] spd=0 time=20>
-<position key=pt2_2 spd=[100,1]>
+<angle    key=pt2_2 trg_ang=120 time=[80,-0.01] max_rot=[0.5,0.01]>
+<angle    key=pt2_2 trg_ang=270 time=[80,-0.01] max_rot=[2,0.01]>
+<angle    key=pt2_2 trg_ang=60  time=[80,-0.01] max_rot=[2,0.01]>
+<angle    key=pt2_2 trg_ang=120 time=[100,-0.01] max_rot=[0.5,0.01]>
+<position key=pt2_2 trg_pos_x=0 trg_pos_y=-6 max_rot=[5,0.01] spd=0 time=20>
+<position key=pt2_2 spd=[100,0.01]>
 
-<angle    key=pt2_3 trg_ang=120 time=[80,-0.4] max_rot=[0.5,0.005]>
-<angle    key=pt2_3 trg_ang=270 time=[80,-0.4] max_rot=[2,0.02]>
-<angle    key=pt2_3 trg_ang=60  time=[80,-0.4] max_rot=[2,0.02]>
-<angle    key=pt2_3 trg_ang=120 time=[100,-0.5] max_rot=[0.5,0.005]>
-<position key=pt2_3 trg_pos_x=-1 trg_pos_y=-6 max_rot=[5,0.05] spd=0 time=20>
-<position key=pt2_3 spd=[100,1]>
+<angle    key=pt2_3 trg_ang=120 time=[80,-0.01] max_rot=[0.5,0.01]>
+<angle    key=pt2_3 trg_ang=270 time=[80,-0.01] max_rot=[2,0.01]>
+<angle    key=pt2_3 trg_ang=60  time=[80,-0.01] max_rot=[2,0.01]>
+<angle    key=pt2_3 trg_ang=120 time=[100,-0.01] max_rot=[0.5,0.01]>
+<position key=pt2_3 trg_pos_x=-1 trg_pos_y=-6 max_rot=[5,0.01] spd=0 time=20>
+<position key=pt2_3 spd=[100,0.01]>
 
-<angle    key=pt4_1 trg_ang=240 time=[80,-0.4] max_rot=[0.5,0.005]>
-<angle    key=pt4_1 trg_ang=90 time=[80,-0.4] max_rot=[2,0.02]>
-<angle    key=pt4_1 trg_ang=300  time=[80,-0.4] max_rot=[2,0.02]>
-<angle    key=pt4_1 trg_ang=240 time=[100,-0.5] max_rot=[0.5,0.005]>
-<position key=pt4_1 trg_pos_x=-1 trg_pos_y=-6 max_rot=[5,0.05] spd=0 time=20>
-<position key=pt4_1 spd=[100,1]>
+<angle    key=pt4_1 trg_ang=240 time=[80,-0.01] max_rot=[0.5,0.01]>
+<angle    key=pt4_1 trg_ang=90 time=[80,-0.01] max_rot=[2,0.01]>
+<angle    key=pt4_1 trg_ang=300  time=[80,-0.01] max_rot=[2,0.01]>
+<angle    key=pt4_1 trg_ang=240 time=[100,-0.01] max_rot=[0.5,0.01]>
+<position key=pt4_1 trg_pos_x=-1 trg_pos_y=-6 max_rot=[5,0.01] spd=0 time=20>
+<position key=pt4_1 spd=[100,0.01]>
 
-<angle    key=pt4_2 trg_ang=240 time=[80,-0.4] max_rot=[0.5,0.005]>
-<angle    key=pt4_2 trg_ang=90 time=[80,-0.4] max_rot=[2,0.02]>
-<angle    key=pt4_2 trg_ang=300  time=[80,-0.4] max_rot=[2,0.02]>
-<angle    key=pt4_2 trg_ang=240 time=[100,-0.5] max_rot=[0.5,0.005]>
-<position key=pt4_2 trg_pos_x=0 trg_pos_y=-6 max_rot=[5,0.05] spd=0 time=20>
-<position key=pt4_2 spd=[100,1]>
+<angle    key=pt4_2 trg_ang=240 time=[80,-0.01] max_rot=[0.5,0.01]>
+<angle    key=pt4_2 trg_ang=90 time=[80,-0.01] max_rot=[2,0.01]>
+<angle    key=pt4_2 trg_ang=300  time=[80,-0.01] max_rot=[2,0.01]>
+<angle    key=pt4_2 trg_ang=240 time=[100,-0.01] max_rot=[0.5,0.01]>
+<position key=pt4_2 trg_pos_x=0 trg_pos_y=-6 max_rot=[5,0.01] spd=0 time=20>
+<position key=pt4_2 spd=[100,0.01]>
 
-<angle    key=pt4_3 trg_ang=240 time=[80,-0.4] max_rot=[0.5,0.005]>
-<angle    key=pt4_3 trg_ang=90 time=[80,-0.4] max_rot=[2,0.02]>
-<angle    key=pt4_3 trg_ang=300  time=[80,-0.4] max_rot=[2,0.02]>
-<angle    key=pt4_3 trg_ang=2420 time=[100,-0.5] max_rot=[0.5,0.005]>
-<position key=pt4_3 trg_pos_x=1 trg_pos_y=-6 max_rot=[5,0.05] spd=0 time=20>
-<position key=pt4_3 spd=[100,1]>
+<angle    key=pt4_3 trg_ang=240 time=[80,-0.01] max_rot=[0.5,0.01]>
+<angle    key=pt4_3 trg_ang=90 time=[80,-0.01] max_rot=[2,0.01]>
+<angle    key=pt4_3 trg_ang=300  time=[80,-0.01] max_rot=[2,0.01]>
+<angle    key=pt4_3 trg_ang=2420 time=[100,-0.01] max_rot=[0.5,0.01]>
+<position key=pt4_3 trg_pos_x=1 trg_pos_y=-6 max_rot=[5,0.01] spd=0 time=20>
+<position key=pt4_3 spd=[100,0.01]>
 
-<angle    key=pt5_1 time=30 max_rot=[2,0.02] trg_ang=180>
-<angle    key=pt5_1 trg_ang=30 time=[100,-0.5] max_rot=[1.7,0.017]>
-<angle    key=pt5_1 trg_ang=180 time=[100,-0.5] max_rot=[1.7,0.017]>
-<position key=pt5_1 trg_pos_x=-1 trg_pos_y=-6 max_rot=[5,0.05] spd=0 time=20>
-<position key=pt5_1 spd=100>
+<angle    key=pt5_1 time=30 max_rot=[2,0.01] trg_ang=180>
+<angle    key=pt5_1 trg_ang=30 time=[100,-0.01] max_rot=[1.7,0.01]>
+<angle    key=pt5_1 trg_ang=180 time=[100,-0.01] max_rot=[1.7,0.01]>
+<position key=pt5_1 trg_pos_x=-1 trg_pos_y=-6 max_rot=[5,0.01] spd=0 time=20>
+<position key=pt5_1 spd=[100,0.01]>
 
-<angle    key=pt5_2 time=30 max_rot=[2,0.02] trg_ang=180>
-<angle    key=pt5_2 trg_ang=30 time=[100,-0.5] max_rot=[1.7,0.017]>
-<angle    key=pt5_2 trg_ang=180 time=[100,-0.5] max_rot=[1.7,0.017]>
-<position key=pt5_2 trg_pos_x=0 trg_pos_y=-6 max_rot=[5,0.05] spd=0 time=20>
-<position key=pt5_2 spd=[100,1]>
+<angle    key=pt5_2 time=30 max_rot=[2,0.01] trg_ang=180>
+<angle    key=pt5_2 trg_ang=30 time=[100,-0.01] max_rot=[1.7,0.01]>
+<angle    key=pt5_2 trg_ang=180 time=[100,-0.01] max_rot=[1.7,0.01]>
+<position key=pt5_2 trg_pos_x=0 trg_pos_y=-6 max_rot=[5,0.01] spd=0 time=20>
+<position key=pt5_2 spd=[100,0.01]>
 
-<angle    key=pt5_3 time=30 max_rot=[2,0.02] trg_ang=180>
-<angle    key=pt5_3 trg_ang=30 time=[100,-0.5] max_rot=[1.7,0.017]>
-<angle    key=pt5_3 trg_ang=180 time=[100,-0.5] max_rot=[1.7,0.017]>
-<position key=pt5_3 trg_pos_x=1 trg_pos_y=-6 max_rot=[5,0.05] spd=0 time=20>
-<position key=pt5_3 spd=[100,1]>
+<angle    key=pt5_3 time=30 max_rot=[2,0.01] trg_ang=180>
+<angle    key=pt5_3 trg_ang=30 time=[100,-0.01] max_rot=[1.7,0.01]>
+<angle    key=pt5_3 trg_ang=180 time=[100,-0.01] max_rot=[1.7,0.01]>
+<position key=pt5_3 trg_pos_x=1 trg_pos_y=-6 max_rot=[5,0.01] spd=0 time=20>
+<position key=pt5_3 spd=[100,0.01]>
 
-<angle    key=pt6_1 time=30 max_rot=[2,0.02] trg_ang=180>
-<angle    key=pt6_1 trg_ang=330 time=[100,-0.5] max_rot=[1.7,0.017]>
-<angle    key=pt6_1 trg_ang=180 time=[100,-0.5] max_rot=[1.7,0.017]>
-<position key=pt6_1 trg_pos_x=1 trg_pos_y=-6 max_rot=[5,0.05] spd=0 time=20>
-<position key=pt6_1 spd=[100,1]>
+<angle    key=pt6_1 time=30 max_rot=[2,0.01] trg_ang=180>
+<angle    key=pt6_1 trg_ang=330 time=[100,-0.01] max_rot=[1.7,0.01]>
+<angle    key=pt6_1 trg_ang=180 time=[100,-0.01] max_rot=[1.7,0.01]>
+<position key=pt6_1 trg_pos_x=1 trg_pos_y=-6 max_rot=[5,0.01] spd=0 time=20>
+<position key=pt6_1 spd=[100,0.01]>
 
-<angle    key=pt6_2 time=30 max_rot=[2,0.02] trg_ang=180>
-<angle    key=pt6_2 trg_ang=330 time=[100,-0.5] max_rot=[1.7,0.017]>
-<angle    key=pt6_2 trg_ang=180 time=[100,-0.5] max_rot=[1.7,0.017]>
-<position key=pt6_2 trg_pos_x=0 trg_pos_y=-6 max_rot=[5,0.05] spd=0 time=20>
-<position key=pt6_2 spd=[100,1]>
+<angle    key=pt6_2 time=30 max_rot=[2,0.01] trg_ang=180>
+<angle    key=pt6_2 trg_ang=330 time=[100,-0.01] max_rot=[1.7,0.01]>
+<angle    key=pt6_2 trg_ang=180 time=[100,-0.01] max_rot=[1.7,0.01]>
+<position key=pt6_2 trg_pos_x=0 trg_pos_y=-6 max_rot=[5,0.01] spd=0 time=20>
+<position key=pt6_2 spd=[100,0.01]>
 
-<angle    key=pt6_3 time=30 max_rot=[2,0.02] trg_ang=180>
-<angle    key=pt6_3 trg_ang=330 time=[100,-0.5] max_rot=[1.7,0.017]>
-<angle    key=pt6_3 trg_ang=180 time=[100,-0.5] max_rot=[1.7,0.017]>
-<position key=pt6_3 trg_pos_x=-1 trg_pos_y=-6 max_rot=[5,0.05] spd=0 time=20>
-<position key=pt6_3 spd=[100,1]>
+<angle    key=pt6_3 time=30 max_rot=[2,0.01] trg_ang=180>
+<angle    key=pt6_3 trg_ang=330 time=[100,-0.01] max_rot=[1.7,0.01]>
+<angle    key=pt6_3 trg_ang=180 time=[100,-0.01] max_rot=[1.7,0.01]>
+<position key=pt6_3 trg_pos_x=-1 trg_pos_y=-6 max_rot=[5,0.01] spd=0 time=20>
+<position key=pt6_3 spd=[100,0.01]>
 
 

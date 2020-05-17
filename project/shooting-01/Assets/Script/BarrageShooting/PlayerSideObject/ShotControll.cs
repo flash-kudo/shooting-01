@@ -76,6 +76,13 @@ namespace BarrageShooting
         /// *******************************************************
         protected override void RemoveField()
         {
+            if (StageManager.Instance != null)
+            {
+                GameObject expload = StageManager.Instance.InstantiateObject("HitMark".ToLower());
+                expload.transform.position = this.transform.position;
+                expload.transform.rotation = this.transform.rotation;
+                expload.SetActive(true);
+            }
             Destroy(gameObject);
         }
 

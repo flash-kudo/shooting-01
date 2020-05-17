@@ -1,12 +1,12 @@
 {spawn}
-<common spd=20 tough=[150,0.2]>
+<common spd=20 tough=[150,0.012]>
 <left pos_x=-2 pos_y=5 dir=180>
 
 <right pos_x=2 pos_y=5 dir=180>
 
 {move}
 <angle    key=left time=100 trg_ang=90 max_rot=1>
-<shot     key=left path=TestBullet shot_time=20 interval=80 st_count=[10,0.1] ed_count=[10,0.1] st_width=80 ed_width=80 angle_base=absolute>
+<shot     key=left path=TestBullet shot_time=20 interval=80 st_count=[10,0.01] ed_count=[10,0.01] st_width=80 ed_width=80 angle_base=absolute>
 <angle    key=left time=100 trg_ang=90 max_rot=1>
 <angle    key=left time=10 trg_ang=180 max_rot=2>
 <angle    key=left time=230 trg_ang=270 max_rot=2>
@@ -14,7 +14,7 @@
 <angle    key=left time=5000 trg_ang=90 max_rot=2>
 
 <angle    key=right time=100 trg_ang=270 max_rot=1>
-<shot     key=right path=TestBullet shot_time=20 interval=80 st_count=[10,0.1] ed_count=[10,0.1] st_width=80 ed_width=80 angle_base=absolute>
+<shot     key=right path=TestBullet shot_time=20 interval=80 st_count=[10,0.01] ed_count=[10,0.01] st_width=80 ed_width=80 angle_base=absolute>
 <angle    key=right time=100 trg_ang=270 max_rot=1>
 <angle    key=right time=10 trg_ang=180 max_rot=2>
 <angle    key=right time=230 trg_ang=90 max_rot=2>

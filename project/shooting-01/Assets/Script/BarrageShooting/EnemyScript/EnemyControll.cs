@@ -177,7 +177,14 @@ namespace BarrageShooting
         /// *******************************************************
         protected override void RemoveField()
         {
-            if (StageManager.Instance != null) StageManager.Instance.RemoveEnemyList(this);
+            if (StageManager.Instance != null)
+            {
+                StageManager.Instance.RemoveEnemyList(this);
+
+                GameObject expload = StageManager.Instance.InstantiateObject("ExploadSmall".ToLower());
+                expload.transform.position = this.transform.position;
+                expload.SetActive(true);
+            }
             base.RemoveField();
         }
 
