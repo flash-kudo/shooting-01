@@ -15,7 +15,7 @@ namespace BarrageShooting
             if (Director == null) RemoveAction();
             Director.stopped += RemoveAction;
         }
-/*
+//*
         // Update is called once per frame
         void Update()
         {
@@ -24,7 +24,7 @@ namespace BarrageShooting
                 if (Director.state == PlayState.Paused) RemoveAction(Director);
             }
         }
-*/
+//*/
         private void RemoveAction(PlayableDirector obj = null)
         {
             if(Director != null)

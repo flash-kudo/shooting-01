@@ -5,15 +5,16 @@ public class GameResourceList
 {
     public static Dictionary<string, string> PathList = new Dictionary<string, string>()
     {
-        {"TestBullet".ToLower(), "Test/TestBullet"},
-        {"TestBullet2".ToLower(), "Test/TestBullet2"},
+        {"bullet1".ToLower(), "EnemyBullet"},
+        {"bullet2".ToLower(), "EnemyBullet2"},
+        {"muzzle".ToLower(), "BulletMuzzle"},
 
-        {"Enemy_00_innseki_01".ToLower(), "Enemy_00_innseki_01"},
-        {"Enemy_00_innseki_02".ToLower(), "Enemy_00_innseki_02"},
-        {"Enemy_01_totugeki".ToLower(), "Enemy_01_totugeki"},
-        {"Enemy_02_syageki_01".ToLower(), "Enemy_02_syageki_01" },
-        {"Enemy_02_syageki_02".ToLower(), "Enemy_02_syageki_02" },
-        {"Enemy_04_big_innseki".ToLower(), "Enemy_04_big_innseki" },
+        {"meteor01".ToLower(), "Enemy_00_innseki_01"},
+        {"meteor02".ToLower(), "Enemy_00_innseki_02"},
+        {"charge01".ToLower(), "Enemy_01_totugeki"},
+        {"shooter01".ToLower(), "Enemy_02_syageki_01" },
+        {"shooter02".ToLower(), "Enemy_02_syageki_02" },
+        {"mega_meteor".ToLower(), "Enemy_04_big_innseki" },
 
         {"ExploadSmall".ToLower(), "ExplosionSmall" },
         {"HitMark".ToLower(), "HitMark" },

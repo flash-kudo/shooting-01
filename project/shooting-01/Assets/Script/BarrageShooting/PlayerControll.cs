@@ -8,6 +8,7 @@ namespace BarrageShooting
     {
 
         public GameObject ShotPrefab;
+        public GameObject ShotMuzzle;
         [Range(0.017f, 1f)]
         public float ShotInterval = 0.1f;
         [Range(1, 10)]
@@ -18,6 +19,7 @@ namespace BarrageShooting
         private float ShotPast = 0;
 
         public GameObject GranadePrefab;
+        public GameObject GranadeMuzzle;
         [Range(0.017f, 2f)]
         public float GranadeInterval = 0.5f;
 
@@ -85,6 +87,8 @@ namespace BarrageShooting
             self_ctrl.Direction = direction;
             self_ctrl.Player = this;
             self_go.SetActive(true);
+
+            Instantiate(ShotMuzzle, transform.position, Quaternion.Euler(0,0,-direction));
         }
 
         /// *******************************************************
@@ -111,6 +115,9 @@ namespace BarrageShooting
             self_ctrl.Direction = Direction;
             self_ctrl.TargetDistance = Distance;
             self_go.SetActive(true);
+
+            Instantiate(GranadeMuzzle, transform.position, Quaternion.Euler(0, 0, -Direction));
+
         }
 
         /// *******************************************************

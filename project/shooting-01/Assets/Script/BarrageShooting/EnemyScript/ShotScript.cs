@@ -132,19 +132,25 @@ namespace BarrageShooting.EnemyScript
         {
             GameObject blt_go = StageManager.Instance.InstantiateObject(Source);
             EnemyControll blt_ctrl = blt_go.GetComponent<EnemyControll>();
-            blt_ctrl.Position = character.Position;
+            if(blt_ctrl != null){
+                blt_ctrl.Position = character.Position;
 
-            InitialData initial = new InitialData();
+                InitialData initial = new InitialData();
 
-            float angle = (AngleBase == AngleType.ABSOLUTE) ? 180f : character.Direction;
+                float angle = (AngleBase == AngleType.ABSOLUTE) ? 180f : character.Direction;
 
-            initial.Direction = angle + direction;
-            initial.ShiftAngle = angle + shift_direction;
-            initial.ShiftSpeed = ShiftSpeed;
-            initial.ShiftDamp = ShiftDamp;
-            initial.WateTime = Delay;
+                initial.Direction = angle + direction;
+                initial.ShiftAngle = angle + shift_direction;
+                initial.ShiftSpeed = ShiftSpeed;
+                initial.ShiftDamp = ShiftDamp;
+                initial.WateTime = Delay;
 
-            blt_ctrl.Initial = initial;
+                blt_ctrl.Initial = initial;
+            }
+            else
+            {
+                blt_go.transform.position = character.transform.position;
+            }
             blt_go.SetActive(true);
         }
 

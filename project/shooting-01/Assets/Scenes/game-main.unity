@@ -518,12 +518,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 920157cd57b0843418771d8c53e3b401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShotPrefab: {fileID: 3039799013243103316, guid: 0471858c35e32024fbe8a278b7bb32dc,
+  ShotPrefab: {fileID: 94994318487347332, guid: aa83755b735c6e64597a74ca8ff24342,
+    type: 3}
+  ShotMuzzle: {fileID: 8707894831586479879, guid: 5c0833951e3a6254e9d8b6300f368585,
     type: 3}
   ShotInterval: 0.05
   ShotCount: 3
   ShotWidth: 10
-  GranadePrefab: {fileID: 717710731752171610, guid: cf17c739b1b692b45a0c02893369cd29,
+  GranadePrefab: {fileID: 4960878060261784235, guid: cd5a5460b94ba5949bd79c7201046cc7,
+    type: 3}
+  GranadeMuzzle: {fileID: 3760904932486486554, guid: fee31bbaecda039499e23de486be6262,
     type: 3}
   GranadeInterval: 0.3
   MirrorEdge: {fileID: 1492495622312474543, guid: 2f0970c34e96a37488bab9e5a824d2ea,
@@ -587,7 +591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MinPlayerLevel: 1
-  CurrentPlayerLevel: 101
+  CurrentPlayerLevel: 1
 --- !u!114 &888761387
 MonoBehaviour:
   m_ObjectHideFlags: 0
