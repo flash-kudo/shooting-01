@@ -44,8 +44,8 @@ namespace BarrageShooting
         [SerializeField]
         public float TargetDistance = 0;
 
-        [Range(0.01f, 2)]
-        public float MoveDulation = 0.5f;
+        [Range(10f, 100f)]
+        public float MoveDulation = 50f;
         [Range(0.01f, 2)]
         public float BlastDuration = 1f;
 
@@ -59,7 +59,7 @@ namespace BarrageShooting
         {
             CharType = CharacterTyep.SELF;
 
-            MoveSpeed = TargetDistance / (MoveDulation * FRAME_RATE);
+            MoveSpeed = TargetDistance / ((MoveDulation / 100f) * FRAME_RATE);
 
             Step = 0;
             base.OnStart();
@@ -78,7 +78,7 @@ namespace BarrageShooting
             {
                 case 0:
                     ProcMove();
-                    if (StepPast > MoveDulation)
+                    if (StepPast > (MoveDulation / 100f))
                     {
                         StepPast = 0;
                         Step++;

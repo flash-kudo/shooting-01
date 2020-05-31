@@ -6,8 +6,6 @@ namespace BarrageShooting
 {
     public class ShotControll : CharacterControll
     {
-        public const float SHOT_SPEED = 0.15f;
-
         // [SerializeField]
         // public Vector2 Position;
 
@@ -40,6 +38,7 @@ namespace BarrageShooting
         // [SerializeField]
         // public float AttackPoint = 10;
 
+        public float ShotSpeed = 15f;
         public float MirrorPower = 2.0f;
 
         public PlayerControll Player;
@@ -51,7 +50,7 @@ namespace BarrageShooting
         {
             CharType = CharacterTyep.SELF;
 
-            MoveSpeed = SHOT_SPEED;
+            MoveSpeed = ShotSpeed / 100f;
 
             base.OnStart();
         }

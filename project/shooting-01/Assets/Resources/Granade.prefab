@@ -59,7 +59,7 @@ MonoBehaviour:
   AttackPoint: 0.5
   CharType: 0
   TargetDistance: 0
-  MoveDulation: 0.5
+  MoveDulation: 50
   BlastDuration: 1
   ColliderSpeed: 0.03
   ColliderMax: 0.5

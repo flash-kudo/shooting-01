@@ -6,6 +6,7 @@ namespace BarrageShooting
 {
     public class PlayerControll : MonoBehaviour
     {
+        public GameObject PlayerImage;
 
         public GameObject ShotPrefab;
         public GameObject ShotMuzzle;
@@ -15,6 +16,8 @@ namespace BarrageShooting
         public int ShotCount = 1;
         [Range(0f, 180f)]
         public float ShotWidth = 0f;
+        [Range(1f, 100f)]
+        public float ShotSpeed = 15f;
 
         private float ShotPast = 0;
 
@@ -22,6 +25,10 @@ namespace BarrageShooting
         public GameObject GranadeMuzzle;
         [Range(0.017f, 2f)]
         public float GranadeInterval = 0.5f;
+        [Range(10f, 100f)]
+        public float GranadeDuration = 50f;
+        [Range(0.01f, 2)]
+        public float GranadeBlast = 1f;
 
         private float GranadePast = 0;
 
@@ -51,7 +58,8 @@ namespace BarrageShooting
                 Distance = Vector3.Distance(new Vector3(0, 0, Target.z), Target);
                 Direction = Mathf.Atan2(Target.x, Target.y) * Mathf.Rad2Deg + 180;
             }
-            if(UseShot) ProcShot();
+            PlayerImage.transform.rotation = Quaternion.Euler(0, 0, -Direction);
+            if (UseShot) ProcShot();
             if(UseGranade) ProcGranade();
             UpdateMirrorEdges();
         }
@@ -86,6 +94,7 @@ namespace BarrageShooting
             self_ctrl.Position = Position;
             self_ctrl.Direction = direction;
             self_ctrl.Player = this;
+            self_ctrl.ShotSpeed = ShotSpeed;
             self_go.SetActive(true);
 
             Instantiate(ShotMuzzle, transform.position, Quaternion.Euler(0,0,-direction));
@@ -114,6 +123,8 @@ namespace BarrageShooting
             self_ctrl.Position = Position;
             self_ctrl.Direction = Direction;
             self_ctrl.TargetDistance = Distance;
+            self_ctrl.MoveDulation = GranadeDuration;
+            self_ctrl.BlastDuration = GranadeBlast;
             self_go.SetActive(true);
 
             Instantiate(GranadeMuzzle, transform.position, Quaternion.Euler(0, 0, -Direction));
