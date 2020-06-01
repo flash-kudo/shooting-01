@@ -83,6 +83,8 @@ PlayableDirector:
     value: {fileID: 3629041487089761117}
   - key: {fileID: -6562174904860716144, guid: 01e1404ecf5c21241a9fa5596f51d074, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 5171388855884869553, guid: 01e1404ecf5c21241a9fa5596f51d074, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - f65f3ccd03a09614d8f45544dea08ca3: {fileID: 3629041487089761117}
@@ -174,6 +176,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 200e650fba6c8492b87e96e4bc273510, type: 3}
+      propertyPath: autoRandomSeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 200e650fba6c8492b87e96e4bc273510, type: 3}
+      propertyPath: randomSeed
+      value: 3325
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 200e650fba6c8492b87e96e4bc273510, type: 3}
+      propertyPath: SizeModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19800002, guid: 200e650fba6c8492b87e96e4bc273510, type: 3}
       propertyPath: InitialModule.startSizeY.minMaxState
       value: 3
@@ -189,6 +203,14 @@ PrefabInstance:
     - target: {fileID: 19800002, guid: 200e650fba6c8492b87e96e4bc273510, type: 3}
       propertyPath: InitialModule.startRotationY.minMaxState
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 200e650fba6c8492b87e96e4bc273510, type: 3}
+      propertyPath: autoRandomSeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: 200e650fba6c8492b87e96e4bc273510, type: 3}
+      propertyPath: randomSeed
+      value: 3326
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 200e650fba6c8492b87e96e4bc273510, type: 3}
