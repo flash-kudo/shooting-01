@@ -16,4 +16,4 @@
 <position trg_pos_x=1  trg_pos_y=-7 max_rot=100 key=pos5>
 <position trg_pos_x=2  trg_pos_y=-7 max_rot=100 key=pos6>
 <position trg_pos_x=3  trg_pos_y=-7 max_rot=100 key=pos7>
-<shot path=Enemy_00_innseki_01 shot_time=1 st_count=3 ed_count=3 st_width=60 ed_width=60 angle_base=absolute>
+<shot path=meteor01 shot_time=1 st_count=3 ed_count=3 st_width=60 ed_width=60 angle_base=absolute>

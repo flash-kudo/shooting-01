@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 namespace BarrageShooting
 {
@@ -34,7 +35,6 @@ namespace BarrageShooting
 
         public GameObject MirrorEdge;
 
-
         public bool UseShot;
         public bool UseGranade;
         [Range(0,8)]
@@ -45,6 +45,16 @@ namespace BarrageShooting
         private float Direction = 0;
         public List<GameObject> MirrirEdgeList;
 
+        public PlayableDirector AnimationIdle;
+        public PlayableDirector ChargeArm;
+        public PlayableDirector ChargeCannon;
+        public PlayableDirector ShotArm;
+        public PlayableDirector ShotCannon;
+        public PlayableDirector WaitArm;
+        public PlayableDirector WaitCannon;
+
+        private PlayerTimelineManage PlayerTimeline;
+
         private Vector3 Position { get { return transform.position; } }
 
         /// *******************************************************
@@ -52,6 +62,17 @@ namespace BarrageShooting
         /// *******************************************************
         void Update()
         {
+            if(PlayerTimeline == null)
+            {
+                PlayerTimeline = new PlayerTimelineManage();
+                PlayerTimeline.SetIdle(AnimationIdle);
+                PlayerTimeline.SetArm(ChargeArm, ShotArm, WaitArm);
+                PlayerTimeline.SetCannon(ChargeCannon, ShotCannon, WaitCannon);
+
+                PlayerTimeline.PlayTimeline(PlayerTimelineManage.TimelineType.ChargeArm);
+            }
+            PlayerTimeline.OnUpdate();
+
             if (Input.GetMouseButton(0))
             {
                 Target = Position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
