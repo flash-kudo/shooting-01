@@ -36,7 +36,7 @@ namespace BarrageShooting
         public GameObject MirrorEdge;
 
         public bool UseShot;
-        public bool UseGranade;
+
         [Range(0,8)]
         public int MirrorCount = 0;
 
@@ -44,6 +44,10 @@ namespace BarrageShooting
         private float Distance = 0;
         private float Direction = 0;
         public List<GameObject> MirrirEdgeList;
+
+        public Transform ArmLeftPos;
+        public Transform ArmRightPos;
+        public Transform CannonPos;
 
         public PlayableDirector AnimationIdle;
         public PlayableDirector ChargeArm;
@@ -57,20 +61,46 @@ namespace BarrageShooting
 
         private Vector3 Position { get { return transform.position; } }
 
+        private static PlayerControll _Instance;
         /// *******************************************************
-        /// <summary>更新処理</summary>
+        /// <summary>Singleton参照</summary>
         /// *******************************************************
-        void Update()
+        public static PlayerControll Instance
         {
-            if(PlayerTimeline == null)
+            get
+            {
+                if (_Instance == null) _Instance = (PlayerControll)FindObjectOfType(typeof(PlayerControll));
+                return _Instance;
+            }
+        }
+
+        /// *******************************************************
+        /// <summary>初期処理</summary>
+        /// *******************************************************
+        void Awake()
+        {
+            _Instance = this;
+        }
+
+        /// *******************************************************
+        /// <summary>初期処理</summary>
+        /// *******************************************************
+        private void Start()
+        {
+            if (PlayerTimeline == null)
             {
                 PlayerTimeline = new PlayerTimelineManage();
                 PlayerTimeline.SetIdle(AnimationIdle);
                 PlayerTimeline.SetArm(ChargeArm, ShotArm, WaitArm);
                 PlayerTimeline.SetCannon(ChargeCannon, ShotCannon, WaitCannon);
-
-                PlayerTimeline.PlayTimeline(PlayerTimelineManage.TimelineType.ChargeArm);
             }
+        }
+
+        /// *******************************************************
+        /// <summary>更新処理</summary>
+        /// *******************************************************
+        void Update()
+        {
             PlayerTimeline.OnUpdate();
 
             if (Input.GetMouseButton(0))
@@ -80,9 +110,10 @@ namespace BarrageShooting
                 Direction = Mathf.Atan2(Target.x, Target.y) * Mathf.Rad2Deg + 180;
             }
             PlayerImage.transform.rotation = Quaternion.Euler(0, 0, -Direction);
+
             if (UseShot) ProcShot();
-            if(UseGranade) ProcGranade();
-            UpdateMirrorEdges();
+            else ProcGranade();
+            // UpdateMirrorEdges();
         }
 
         /// *******************************************************
@@ -98,9 +129,14 @@ namespace BarrageShooting
                 float dist = (ShotCount == 1) ? 0 : ShotWidth / (float)(ShotCount - 1);
                 for (int i = 0; i < ShotCount; i++)
                 {
-                    CreateShot(dir);
+                    CreateShot(dir, i < (ShotCount / 2) ? ArmLeftPos : ArmRightPos);
                     dir += dist;
                 }
+                Instantiate(ShotMuzzle, ArmLeftPos.position, Quaternion.Euler(0,0,-Direction));
+                Instantiate(ShotMuzzle, ArmRightPos.position, Quaternion.Euler(0,0,-Direction));
+
+                if(UseShot) PlayerTimeline.PlayTimeline(PlayerTimelineManage.TimelineType.ShotArm);
+
                 ShotPast -= ShotInterval;
             }
         }
@@ -108,17 +144,16 @@ namespace BarrageShooting
         /// *******************************************************
         /// <summary>主砲発射処理</summary>
         /// *******************************************************
-        private void CreateShot(float direction)
+        private void CreateShot(float direction, Transform pos)
         {
             GameObject self_go = Instantiate(ShotPrefab);
             ShotControll self_ctrl = self_go.GetComponent<ShotControll>();
-            self_ctrl.Position = Position;
+            self_ctrl.Position = pos.position;
             self_ctrl.Direction = direction;
             self_ctrl.Player = this;
             self_ctrl.ShotSpeed = ShotSpeed;
             self_go.SetActive(true);
 
-            Instantiate(ShotMuzzle, transform.position, Quaternion.Euler(0,0,-direction));
         }
 
         /// *******************************************************
@@ -130,6 +165,7 @@ namespace BarrageShooting
             if (GranadePast > GranadeInterval)
             {
                 CreateGranade();
+                if (!UseShot) PlayerTimeline.PlayTimeline(PlayerTimelineManage.TimelineType.ShotCannon);
                 GranadePast -= GranadeInterval;
             }
         }
@@ -141,17 +177,18 @@ namespace BarrageShooting
         {
             GameObject self_go = Instantiate(GranadePrefab);
             GranadeControll self_ctrl = self_go.GetComponent<GranadeControll>();
-            self_ctrl.Position = Position;
+            self_ctrl.Position = CannonPos.position;
             self_ctrl.Direction = Direction;
             self_ctrl.TargetDistance = Distance;
             self_ctrl.MoveDulation = GranadeDuration;
             self_ctrl.BlastDuration = GranadeBlast;
             self_go.SetActive(true);
 
-            Instantiate(GranadeMuzzle, transform.position, Quaternion.Euler(0, 0, -Direction));
+            Instantiate(GranadeMuzzle, CannonPos.position, Quaternion.Euler(0, 0, -Direction));
 
         }
 
+#if false
         /// *******************************************************
         /// <summary>ミラー増減処理</summary>
         /// *******************************************************
@@ -191,6 +228,7 @@ namespace BarrageShooting
                 }
             }
         }
+#endif
 
     }
 }

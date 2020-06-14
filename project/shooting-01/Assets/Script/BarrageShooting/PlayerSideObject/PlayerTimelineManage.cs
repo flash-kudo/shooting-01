@@ -62,6 +62,7 @@ namespace BarrageShooting
                 {
                     TimelineType last_timeline = PlayingTimeline;
                     PlayingTimeline = TimelineType.None;
+                    OnStopTimeline(last_timeline);
                 }
             }
         }
@@ -102,11 +103,11 @@ namespace BarrageShooting
         }
         private void OnstopChargeArm()
         {
-            PlayTimeline(TimelineType.ShotArm);
+            
         }
         private void OnstopChargeCannon()
         {
-            PlayTimeline(TimelineType.ShotCannon);
+            
         }
         private void OnstopShotArm()
         {
@@ -118,11 +119,11 @@ namespace BarrageShooting
         }
         private void OnstopWaitArm()
         {
-            PlayTimeline(TimelineType.ChargeArm);
+            PlayTimeline(TimelineType.WaitArm);
         }
         private void OnstopWaitCannon()
         {
-            PlayTimeline(TimelineType.ChargeCannon);
+            PlayTimeline(TimelineType.WaitCannon);
         }
 
         public void PlayTimeline(TimelineType type)
