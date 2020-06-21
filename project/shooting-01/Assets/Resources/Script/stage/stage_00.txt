@@ -1,8 +1,12 @@
 {wave_list}
 <wave target="wave_en22">
+<build>
+<wave target="fortress01">
 <wave target="wave_en21">
+<build>
 <wave target="wave_en1_1">
 <wave target="wave_en1_2">
+<build>
 <wave target="wave_en1_3">
 <wave target="wave_en1_4">
 <wave target="wave_en1_5">
@@ -129,3 +133,5 @@
 <spawn source=shooter02 key=left>
 <spawn source=shooter02 key=right>
 
+{fortress01}
+<spawn source=fortress spd=1 dir=0>

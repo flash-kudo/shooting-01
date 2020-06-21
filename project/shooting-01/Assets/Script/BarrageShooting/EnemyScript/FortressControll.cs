@@ -40,10 +40,48 @@ namespace BarrageShooting
         // public float AttackPoint = 10;
 
 
+        [SerializeField]
         public StaticDirection DirectionSetter;
+        [SerializeField]
         public float FortressDirection = 0;
-        public float FortressScale = 1.7f;
-        public float TunnelScale = 0.28f;
+        [SerializeField]
+        public float EarthAttack = 10;
+        [SerializeField]
+        public float BaseToughPoint = 150;
+        [SerializeField]
+        public float LevelToughPoint = 1.5f;
+
+        private float FortressScale = 1.7f;
+        private float TunnelScale = 0.28f;
+
+        private static FortressControll _Instance;
+        /// *******************************************************
+        /// <summary>Singleton参照</summary>
+        /// *******************************************************
+        public static FortressControll Instance
+        {
+            get
+            {
+                if (_Instance == null) _Instance = (FortressControll)FindObjectOfType(typeof(FortressControll));
+                return _Instance;
+            }
+        }
+
+        /// *******************************************************
+        /// <summary>初期処理</summary>
+        /// *******************************************************
+        void Awake()
+        {
+            _Instance = this;
+        }
+
+        /// *******************************************************
+        /// <summary>破棄処理</summary>
+        /// *******************************************************
+        private void OnDestroy()
+        {
+            _Instance = null;
+        }
 
         /// *******************************************************
         /// <summary>初期処理</summary>
@@ -53,6 +91,9 @@ namespace BarrageShooting
             CharType = CharacterTyep.ENEMY;
 
             Position.x = 0;
+            Position.y = 7.5f;
+
+            ToughPoint = BaseToughPoint + StageManager.Instance.WavePlayerLevel * LevelToughPoint;
 
             base.OnStart();
         }
@@ -160,12 +201,23 @@ namespace BarrageShooting
 
             UpdatePosition();
 
-            // if (Position.x < -4) RemoveField();
-            // if (Position.x > 4) RemoveField();
-            // if (Position.y < -6) RemoveField();
-            // if (Position.y > 6) RemoveField();
+            if(Position.y <= -1.8f)
+            {
+                Position.y = -1.8f;
+                MoveSpeed = 0;
+                if(EarthControll.Instance != null)
+                {
+                    EarthControll.Instance.AddDamage(EarthAttack);
+                }
+            }
         }
 
+#if false
+        protected override void RemoveField()
+        {
+            Debug.Log("OnRemove");
+        }
+#endif
 
     }
 

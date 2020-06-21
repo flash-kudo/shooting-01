@@ -14,6 +14,7 @@ public class GameResourceList
         {"charge01".ToLower(), "Enemy_01_totugeki"},
         {"shooter01".ToLower(), "Enemy_02_syageki_01" },
         {"shooter02".ToLower(), "Enemy_02_syageki_02" },
+        {"fortress".ToLower(), "Enemy_03_yousai"},
         {"mega_meteor".ToLower(), "Enemy_04_big_innseki" },
 
         {"ExploadSmall".ToLower(), "ExplosionSmall" },

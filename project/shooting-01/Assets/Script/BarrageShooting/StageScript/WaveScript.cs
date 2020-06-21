@@ -85,6 +85,8 @@ namespace BarrageShooting.StageScript
         {
             string source = null;
             string key = null;
+            float spd = 0;
+            float dir = 0;
 
             line.Attributes.ForEach(atr =>
             {
@@ -92,6 +94,8 @@ namespace BarrageShooting.StageScript
                 {
                     case "source": source = atr.StringValue; break;
                     case "key": key = atr.StringValue; break;
+                    case "spd": spd = atr.FloatValue; break;
+                    case "dir": dir = atr.FloatValue; break;
                 }
             });
             if (string.IsNullOrEmpty(source) == false)
@@ -100,7 +104,15 @@ namespace BarrageShooting.StageScript
 
                 GameObject spawner = StageManager.Instance.InstantiateObject(source);
                 EnemyControll self_ctrl = spawner.GetComponent<EnemyControll>();
-                self_ctrl.SpawnKey = key;
+                FortressControll fortress_ctrl = spawner.GetComponent<FortressControll>();
+
+                if (self_ctrl != null) self_ctrl.SpawnKey = key;
+                if(fortress_ctrl != null)
+                {
+                    fortress_ctrl.MoveSpeed = spd / 100f;
+                    fortress_ctrl.FortressDirection = dir;
+                }
+
                 spawner.SetActive(true);
             }
         }

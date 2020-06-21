@@ -42,6 +42,35 @@ namespace BarrageShooting
         public int HitmarkTime = 0;
         public SpriteRenderer EarthRenderer;
 
+        private static EarthControll _Instance;
+        /// *******************************************************
+        /// <summary>Singleton参照</summary>
+        /// *******************************************************
+        public static EarthControll Instance
+        {
+            get
+            {
+                if (_Instance == null) _Instance = (EarthControll)FindObjectOfType(typeof(EarthControll));
+                return _Instance;
+            }
+        }
+
+        /// *******************************************************
+        /// <summary>初期処理</summary>
+        /// *******************************************************
+        void Awake()
+        {
+            _Instance = this;
+        }
+
+        /// *******************************************************
+        /// <summary>破棄処理</summary>
+        /// *******************************************************
+        private void OnDestroy()
+        {
+            _Instance = null;
+        }
+
         // Start is called before the first frame update
         void Start()
         {
@@ -80,12 +109,31 @@ namespace BarrageShooting
             });
             if (ToughPoint < 0)
             {
-                // gameover
                 return true;
             }
             HitTarget.Clear();
             return false;
         }
+
+        public void AddDamage(float damage)
+        {
+            ToughPoint -= damage;
+            if (ToughPoint < 0)
+            {
+                RemoveField();
+            }
+        }
+
+        /// *******************************************************
+        /// <summary>破棄処理</summary>
+        /// *******************************************************
+        protected override void RemoveField()
+        {
+            // gameover
+
+            Destroy(gameObject);
+        }
+
 
     }
 }

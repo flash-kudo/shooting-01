@@ -59,24 +59,31 @@ namespace BarrageShooting.StageScript
 
             WaveList = new List<string>();
             group.ScriptLine.ForEach(line => {
-                line.Attributes.ForEach(atr => { 
-                    if(atr.Name.CompareTo("target") == 0)
-                    {
-                        string trg = atr.StringValue;
-
-                        if(string.IsNullOrEmpty(trg) == false)
+                if(line.CommandName.CompareTo("wave") == 0)
+                {
+                    line.Attributes.ForEach(atr => {
+                        if (atr.Name.CompareTo("target") == 0)
                         {
-                            WaveScript wave;
-                            if (WaveWarehouse.TryGetValue(trg, out wave) == false)
-                            {
-                                wave = new WaveScript(this, Group.Find(grp => grp.GroupName == trg));
-                                if (wave != null) WaveWarehouse.Add(trg, wave);
-                            }
+                            string trg = atr.StringValue;
 
-                            if (wave != null) WaveList.Add(trg);
+                            if (string.IsNullOrEmpty(trg) == false)
+                            {
+                                WaveScript wave;
+                                if (WaveWarehouse.TryGetValue(trg, out wave) == false)
+                                {
+                                    wave = new WaveScript(this, Group.Find(grp => grp.GroupName == trg));
+                                    if (wave != null) WaveWarehouse.Add(trg, wave);
+                                }
+
+                                if (wave != null) WaveList.Add(trg);
+                            }
                         }
-                    }
-                });
+                    });
+                }
+                else if (line.CommandName.CompareTo("build") == 0)
+                {
+                    WaveList.Add("build");
+                }
             });
         }
 
@@ -107,8 +114,17 @@ namespace BarrageShooting.StageScript
                 PastTime++;
                 if(PastTime > WaitTime)
                 {
-                    CurrentWave = WaveWarehouse[WaveList[Manager.GetWaveNumber()]];
-                    CurrentWave.StartWave();
+                    string wave_name = WaveList[Manager.GetWaveNumber()];
+
+                    if(wave_name.CompareTo("build") == 0)
+                    {
+                        if (StageManager.Instance != null) StageManager.Instance.OpenBuildScreen();
+                    }
+                    else
+                    {
+                        CurrentWave = WaveWarehouse[wave_name];
+                        CurrentWave.StartWave();
+                    }
 
                     StepIndex++;
                     WaitTime = WAVE_INTERVAL;
@@ -123,7 +139,10 @@ namespace BarrageShooting.StageScript
             else if ((StepIndex % STEP_LNG) == 2)
             {
                 if (StageManager.Instance == null) return;
-                if (StageManager.Instance.EnemyCount <= 0) StepIndex++;
+                if (StageManager.Instance.IsBuildScreen == true) return;
+                if (StageManager.Instance.EnemyCount != 0) return;
+                if (FortressControll.Instance != null) return;
+                StepIndex++;
             }
         }
 

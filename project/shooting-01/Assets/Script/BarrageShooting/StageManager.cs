@@ -19,6 +19,9 @@ namespace BarrageShooting
         public StageScriptMain StageProc;
         private List<EnemyControll> EnemyList;
 
+        public BuildScreenManager BuildScreen;
+        public bool IsBuildScreen = false;
+
         private static StageManager _Instance;
         /// *******************************************************
         /// <summary>Singleton参照</summary>
@@ -71,6 +74,13 @@ namespace BarrageShooting
 
         // ########################################################
 
+            public bool IsShootable { get
+            {
+                if (IsBuildScreen == true) return false;
+
+                return true;
+            } }
+
         /// *******************************************************
         /// <summary>リソース取得</summary>
         /// *******************************************************
@@ -117,8 +127,14 @@ namespace BarrageShooting
             get
             {
                 if (EnemyList == null) return 0;
+                if (EnemyList.Count > 0) return EnemyList.Count;
                 return EnemyList.Count;
             }
+        }
+
+        public void OpenBuildScreen()
+        {
+            BuildScreen.OpenScreen();
         }
     }
 }

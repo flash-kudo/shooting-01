@@ -111,9 +111,12 @@ namespace BarrageShooting
             }
             PlayerImage.transform.rotation = Quaternion.Euler(0, 0, -Direction);
 
-            if (UseShot) ProcShot();
-            else ProcGranade();
-            // UpdateMirrorEdges();
+            if(StageManager.Instance.IsShootable == true)
+            {
+                if (UseShot) ProcShot();
+                else ProcGranade();
+            }
+
         }
 
         /// *******************************************************
@@ -188,47 +191,6 @@ namespace BarrageShooting
 
         }
 
-#if false
-        /// *******************************************************
-        /// <summary>ミラー増減処理</summary>
-        /// *******************************************************
-        private void UpdateMirrorEdges()
-        {
-            if (MirrirEdgeList == null) MirrirEdgeList = new List<GameObject>();
-
-            int distance = (MirrorCount * 2) - MirrirEdgeList.Count;
-            if (distance > 0)
-            {
-                GameObject last_edge = null;
-                for(int i = 0; i < distance; i++)
-                {
-                    GameObject mirror_go = Instantiate(MirrorEdge);
-                    mirror_go.transform.parent = this.transform;
-                    mirror_go.SetActive(true);
-                    MirrirEdgeList.Add(mirror_go);
-
-                    if((i % 2) != 0)
-                    {
-                        MirrorGraphics graph = mirror_go.GetComponent<MirrorGraphics>();
-                        graph.AnotherEdge = last_edge;
-                    }
-
-                    last_edge = mirror_go;
-
-                }
-            }
-            if (distance < 0)
-            {
-                for (int i = 0; i > distance; i--)
-                {
-                    int index = MirrirEdgeList.Count - 1;
-                    GameObject trsh = MirrirEdgeList[index];
-                    MirrirEdgeList.RemoveAt(index);
-                    Destroy(trsh);
-                }
-            }
-        }
-#endif
 
     }
 }

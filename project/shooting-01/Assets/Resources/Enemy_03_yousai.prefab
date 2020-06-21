@@ -74,7 +74,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6020360992174720107
 Transform:
   m_ObjectHideFlags: 0
@@ -102,9 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cc1a0fb907c65143a5e7cbb471076f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: {x: 0, y: 0}
+  Position: {x: 0, y: 7.5}
   Direction: 180
-  MoveSpeed: 0
+  MoveSpeed: 0.01
   MaxSpeed: 1
   RotateSpeed: 0
   Accelerate: 0
@@ -118,8 +118,7 @@ MonoBehaviour:
   CharType: 2
   DirectionSetter: {fileID: 5904968875430841829}
   FortressDirection: 0
-  FortressScale: 1.7
-  TunnelScale: 0.28
+  EarthAttack: 10
 --- !u!1001 &5039550310329869043
 PrefabInstance:
   m_ObjectHideFlags: 0
