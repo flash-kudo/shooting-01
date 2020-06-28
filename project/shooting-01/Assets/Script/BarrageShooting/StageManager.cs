@@ -21,6 +21,9 @@ namespace BarrageShooting
 
         public BuildScreenManager BuildScreen;
         public bool IsBuildScreen = false;
+        public bool IsMovableWall = false;
+        public bool IsMovableMirror = false;
+
 
         private static StageManager _Instance;
         /// *******************************************************

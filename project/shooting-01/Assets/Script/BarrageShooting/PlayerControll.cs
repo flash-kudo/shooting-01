@@ -40,7 +40,8 @@ namespace BarrageShooting
         [Range(0,8)]
         public int MirrorCount = 0;
 
-        private Vector3 Target = new Vector3();
+        [HideInInspector]
+        public Vector3 Target = new Vector3();
         private float Distance = 0;
         private float Direction = 0;
         public List<GameObject> MirrirEdgeList;
