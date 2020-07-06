@@ -77,12 +77,15 @@ namespace BarrageShooting
 
         // ########################################################
 
-            public bool IsShootable { get
-            {
-                if (IsBuildScreen == true) return false;
+        /// *******************************************************
+        /// <summary>射撃可能な状態か</summary>
+        /// *******************************************************
+        public bool IsShootable { get
+        {
+            if (IsBuildScreen == true) return false;
 
-                return true;
-            } }
+            return true;
+        } }
 
         /// *******************************************************
         /// <summary>リソース取得</summary>

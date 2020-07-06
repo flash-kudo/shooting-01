@@ -12,6 +12,11 @@ namespace BarrageShooting
         public GameObject MainScreen2;
         public GameObject MainScreen3;
         public GameObject MainScreenDebug;
+        public GameObject WallScreen;
+        public GameObject MirrorScreen;
+
+        public GameObject WallSource;
+        public GameObject MirrorSource;
 
         // Start is called before the first frame update
         void Start()
@@ -21,22 +26,28 @@ namespace BarrageShooting
 
         public void OnBuildHissatsu()
         {
-            Debug.Log("必殺");
             CloseScreen();
         }
         public void OnBuildHansha()
         {
-            Debug.Log("反射");
-            CloseScreen();
+            CloseScreen(true);
+
+            Object.Instantiate(MirrorSource);
+
+            StageManager.Instance.IsMovableMirror = true;
+            MirrorScreen.SetActive(true);
         }
         public void OnBuildKabe()
         {
-            Debug.Log("壁");
-            CloseScreen();
+            CloseScreen(true);
+
+            Object.Instantiate(WallSource);
+
+            StageManager.Instance.IsMovableWall = true;
+            WallScreen.SetActive(true);
         }
         public void OnTimeup()
         {
-            Debug.Log("Timeup");
             CloseScreen();
         }
 
@@ -59,14 +70,18 @@ namespace BarrageShooting
 
         }
 
-        public void CloseScreen()
+        public void CloseScreen(bool stay_build = false)
         {
             MainScreen1.SetActive(false);
             MainScreen2.SetActive(false);
             MainScreen3.SetActive(false);
             MainScreenDebug.SetActive(false);
+            WallScreen.SetActive(false);
+            MirrorScreen.SetActive(false);
 
-            StageManager.Instance.IsBuildScreen = false;
+            StageManager.Instance.IsBuildScreen = stay_build;
+            StageManager.Instance.IsMovableWall = false;
+            StageManager.Instance.IsMovableMirror = false;
         }
     }
 }
