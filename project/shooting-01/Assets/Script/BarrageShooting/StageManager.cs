@@ -15,6 +15,7 @@ namespace BarrageShooting
 
         public int WaveNumber;
         public int WavePlayerLevel;
+        public int BombCount;
 
         public StageScriptMain StageProc;
         private List<EnemyControll> EnemyList;
@@ -55,6 +56,7 @@ namespace BarrageShooting
             if(StageScript != null)
             {
                 StageProc.ReadScriptText(StageScript.text);
+                BombCount = 0;
                 StageProc.StartStage();
             }
         }

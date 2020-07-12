@@ -6,7 +6,7 @@ namespace BarrageShooting
 {
     public class BuildScreenManager : MonoBehaviour
     {
-        private const bool IS_DEBUG = true;
+        private const bool IS_DEBUG = false;
 
         public GameObject MainScreen1;
         public GameObject MainScreen2;
@@ -26,6 +26,8 @@ namespace BarrageShooting
 
         public void OnBuildHissatsu()
         {
+            StageManager.Instance.BombCount++;
+
             CloseScreen();
         }
         public void OnBuildHansha()
