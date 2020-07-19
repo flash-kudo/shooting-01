@@ -15,6 +15,7 @@ namespace BarrageShooting
 
         public int WaveNumber;
         public int WavePlayerLevel;
+        public int InitBombCount;
         public int BombCount;
 
         public StageScriptMain StageProc;
@@ -25,6 +26,8 @@ namespace BarrageShooting
         public bool IsMovableWall = false;
         public bool IsMovableMirror = false;
 
+        public IngameScreenManager IngameScreen;
+        public StaticScreenManager StaticScreen;
 
         private static StageManager _Instance;
         /// *******************************************************
@@ -56,7 +59,7 @@ namespace BarrageShooting
             if(StageScript != null)
             {
                 StageProc.ReadScriptText(StageScript.text);
-                BombCount = 0;
+                BombCount = InitBombCount;
                 StageProc.StartStage();
             }
         }
@@ -75,6 +78,33 @@ namespace BarrageShooting
         public int GetWaveNumber()
         {
             return WaveNumber;
+        }
+
+        // ########################################################
+
+        /// *******************************************************
+        /// <summary>Bombの更新</summary>
+        /// *******************************************************
+        public void SetBombCount(int num)
+        {
+            BombCount = num;
+            IngameScreen.UpdateIngameScreen();
+        }
+
+        /// *******************************************************
+        /// <summary>Waveメッセージの表示</summary>
+        /// *******************************************************
+        public void ShowMessage(string msg)
+        {
+            StaticScreen.ShowMessage(msg);
+        }
+
+        /// *******************************************************
+        /// <summary>Waveメッセージの消去</summary>
+        /// *******************************************************
+        public void HideMessage()
+        {
+            StaticScreen.HideMessage();
         }
 
         // ########################################################
@@ -140,6 +170,24 @@ namespace BarrageShooting
             }
         }
 
+        /// *******************************************************
+        /// <summary>Bomb使う</summary>
+        /// *******************************************************
+        public void UseBomb()
+        {
+            if (BombCount <= 0) return;
+            if (EnemyList == null) return;
+
+            EnemyList.ForEach(enemy => { enemy.Bomb(); });
+            EnemyList.Clear();
+
+            BombCount--;
+            IngameScreen.UpdateIngameScreen();
+        }
+
+        /// *******************************************************
+        /// <summary>ビルドスクリーンを開く</summary>
+        /// *******************************************************
         public void OpenBuildScreen()
         {
             BuildScreen.OpenScreen();

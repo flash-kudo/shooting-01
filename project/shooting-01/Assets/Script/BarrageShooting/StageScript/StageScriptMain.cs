@@ -12,7 +12,8 @@ namespace BarrageShooting.StageScript
         private const string LIST_SCRIPT = "wave_list";
         private const int START_INTERVAL = 120;
         private const int WAVE_INTERVAL = 30;
-        private const int STEP_LNG = 3;
+        private const int MESSAGE_INTERVAL = 60;
+        private const int STEP_LNG = 5;
 
         private bool IsProcStage;
         private int StepIndex;
@@ -21,6 +22,7 @@ namespace BarrageShooting.StageScript
         private int WaitTime;
 
         private List<string> WaveList;
+        private List<string> WaveMessage;
         private Dictionary<string, WaveScript> WaveWarehouse;
         private WaveScript CurrentWave;
 
@@ -58,6 +60,7 @@ namespace BarrageShooting.StageScript
             ScriptGroup group = Group.Find(grp => grp.GroupName == LIST_SCRIPT);
 
             WaveList = new List<string>();
+            WaveMessage = new List<string>();
             group.ScriptLine.ForEach(line => {
                 if(line.CommandName.CompareTo("wave") == 0)
                 {
@@ -84,6 +87,11 @@ namespace BarrageShooting.StageScript
                 {
                     WaveList.Add("build");
                 }
+                string msg = "";
+                line.Attributes.ForEach(atr => {
+                    if (atr.Name.CompareTo("msg") == 0) msg = atr.StringValue;
+                });
+                WaveMessage.Add(msg);
             });
         }
 
@@ -111,12 +119,29 @@ namespace BarrageShooting.StageScript
 
             if ((StepIndex % STEP_LNG) == 0)
             {
+                string wave_msg = WaveMessage[Manager.GetWaveNumber()];
+                if (StageManager.Instance != null) StageManager.Instance.ShowMessage(wave_msg);
+                StepIndex++;
+            }
+            else if ((StepIndex % STEP_LNG) == 1)
+            {
                 PastTime++;
-                if(PastTime > WaitTime)
+                if (PastTime > MESSAGE_INTERVAL)
                 {
+                    StepIndex++;
+                    PastTime = 0;
+                }
+            }
+            else if ((StepIndex % STEP_LNG) == 2)
+            {
+                PastTime++;
+                if (PastTime > WaitTime)
+                {
+                    if (StageManager.Instance != null) StageManager.Instance.HideMessage();
+
                     string wave_name = WaveList[Manager.GetWaveNumber()];
 
-                    if(wave_name.CompareTo("build") == 0)
+                    if (wave_name.CompareTo("build") == 0)
                     {
                         if (StageManager.Instance != null) StageManager.Instance.OpenBuildScreen();
                     }
@@ -131,12 +156,12 @@ namespace BarrageShooting.StageScript
                     PastTime = 0;
                 }
             }
-            else if ((StepIndex % STEP_LNG) == 1)
+            else if ((StepIndex % STEP_LNG) == 3)
             {
-                if (CurrentWave.OnUpdate() == false) StepIndex++;
+                if ((CurrentWave != null) && (CurrentWave.OnUpdate() == false)) StepIndex++;
                 if (Manager.GetWaveNumber() >= WaveList.Count) OnFInishStage();
             }
-            else if ((StepIndex % STEP_LNG) == 2)
+            else if ((StepIndex % STEP_LNG) == 4)
             {
                 if (StageManager.Instance == null) return;
                 if (StageManager.Instance.IsBuildScreen == true) return;
@@ -144,6 +169,7 @@ namespace BarrageShooting.StageScript
                 if (FortressControll.Instance != null) return;
                 StepIndex++;
             }
+
         }
 
         /// *******************************************************

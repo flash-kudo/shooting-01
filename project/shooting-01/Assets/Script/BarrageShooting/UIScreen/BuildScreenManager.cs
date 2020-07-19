@@ -26,7 +26,7 @@ namespace BarrageShooting
 
         public void OnBuildHissatsu()
         {
-            StageManager.Instance.BombCount++;
+            StageManager.Instance.SetBombCount(StageManager.Instance.BombCount + 1);
 
             CloseScreen();
         }

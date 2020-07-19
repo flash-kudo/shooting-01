@@ -188,5 +188,13 @@ namespace BarrageShooting
             base.RemoveField();
         }
 
+        public void Bomb()
+        {
+            GameObject expload = StageManager.Instance.InstantiateObject("ExploadSmall".ToLower());
+            expload.transform.position = this.transform.position;
+            expload.SetActive(true);
+            base.RemoveField();
+        }
+
     }
 }

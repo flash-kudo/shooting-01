@@ -1,22 +1,22 @@
 {wave_list}
-<wave target="wave_en22">
-<build>
-<build>
-<build>
-<build>
-<build>
-<wave target="fortress01">
-<wave target="wave_en21">
-<build>
-<wave target="wave_en1_1">
-<wave target="wave_en1_2">
-<build>
-<wave target="wave_en1_3">
-<wave target="wave_en1_4">
-<wave target="wave_en1_5">
-<wave target="wave_en1_6">
-<wave target="wave_hugeinseki">
-<wave target="wave_inseki">
+<wave target="wave_en22" msg="wave;01">
+<build msg="build;01">
+<build msg="build;2">
+<build msg="build;3">
+<build msg="build;4/5">
+<build msg="build;Go">
+<wave target="fortress01" msg="wave;02">
+<wave target="wave_en21" msg="wave;03">
+<build msg="build;06">
+<wave target="wave_en1_1" msg="wave;04">
+<wave target="wave_en1_2" msg="wave;05">
+<build msg="build;007">
+<wave target="wave_en1_3" msg="wave;06">
+<wave target="wave_en1_4" msg="wave;07">
+<wave target="wave_en1_5" msg="wave;08">
+<wave target="wave_en1_6" msg="wave;09">
+<wave target="wave_hugeinseki" msg="wave;10">
+<wave target="wave_inseki" msg="wave;last">
 
 {wave_hugeinseki}
 <spawn source=mega_meteor key=pos2>
