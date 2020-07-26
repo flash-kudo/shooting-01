@@ -119,6 +119,9 @@ MonoBehaviour:
   DirectionSetter: {fileID: 5904968875430841829}
   FortressDirection: 0
   EarthAttack: 10
+  BaseToughPoint: 150
+  LevelToughPoint: 1.5
+  BaseScore: 1000
 --- !u!1001 &5039550310329869043
 PrefabInstance:
   m_ObjectHideFlags: 0

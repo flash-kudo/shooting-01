@@ -66,6 +66,7 @@ MonoBehaviour:
   Script: {fileID: 4900000, guid: c9c80d92d4b0da04bb20356cdc1b73bc, type: 3}
   SpawnKey: 
   SpawnSide: 0
+  BaseScore: 200
 --- !u!1 &4881588683808386330
 GameObject:
   m_ObjectHideFlags: 0

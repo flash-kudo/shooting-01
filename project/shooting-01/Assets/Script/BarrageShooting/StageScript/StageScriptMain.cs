@@ -15,7 +15,7 @@ namespace BarrageShooting.StageScript
         private const int MESSAGE_INTERVAL = 60;
         private const int STEP_LNG = 5;
 
-        private bool IsProcStage;
+        public bool IsProcStage;
         private int StepIndex;
 
         private int PastTime;
@@ -115,8 +115,11 @@ namespace BarrageShooting.StageScript
 
             Manager.SetWaveNumber(StepIndex / STEP_LNG);
 
-            if (Manager.GetWaveNumber() >= WaveList.Count) return;
-
+            if (Manager.GetWaveNumber() >= WaveList.Count)
+            {
+                OnFInishStage();
+                return;
+            }
             if ((StepIndex % STEP_LNG) == 0)
             {
                 string wave_msg = WaveMessage[Manager.GetWaveNumber()];
@@ -159,7 +162,6 @@ namespace BarrageShooting.StageScript
             else if ((StepIndex % STEP_LNG) == 3)
             {
                 if ((CurrentWave != null) && (CurrentWave.OnUpdate() == false)) StepIndex++;
-                if (Manager.GetWaveNumber() >= WaveList.Count) OnFInishStage();
             }
             else if ((StepIndex % STEP_LNG) == 4)
             {
@@ -177,8 +179,7 @@ namespace BarrageShooting.StageScript
         /// *******************************************************
         public void OnFInishStage()
         {
-            IsProcStage = false;
-            Debug.Log("EndStage");
+            Manager.OnEndGame();
         }
     }
 }

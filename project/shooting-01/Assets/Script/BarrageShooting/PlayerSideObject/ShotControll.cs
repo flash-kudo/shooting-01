@@ -41,6 +41,9 @@ namespace BarrageShooting
         public float ShotSpeed = 15f;
         public float MirrorPower = 2.0f;
 
+        public float ReflectPower = 2.0f;
+        public float ReflectScorePower = 1.0f;
+
         public PlayerControll Player;
 
         /// *******************************************************
@@ -105,6 +108,7 @@ namespace BarrageShooting
                     move = Vector2.zero;
                     Position = intersection;
                     AttackPoint *= MirrorPower;
+                    ReflectScorePower *= ReflectPower;
                     break;
                 }
             }

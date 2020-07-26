@@ -110,6 +110,7 @@ MonoBehaviour:
   Script: {fileID: 4900000, guid: 5cfe7b73c4de97047aa2ae1abcbd7f98, type: 3}
   SpawnKey: 
   SpawnSide: 0
+  BaseScore: 100
 --- !u!1001 &7648705079679759279
 PrefabInstance:
   m_ObjectHideFlags: 0

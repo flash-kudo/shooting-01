@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class StaticScreenManager : MonoBehaviour
 {
+    public Text PlayerScore;
+    public Text HighScore;
+
     public Text WaveMessage1;
     public Text WaveMessage2;
 
@@ -12,6 +15,12 @@ public class StaticScreenManager : MonoBehaviour
     void Start()
     {
         HideMessage();
+    }
+
+    private void Update()
+    {
+        PlayerScore.text = GameManager.Instance.ScoreString();
+        HighScore.text = GameManager.Instance.RankScoreString();
     }
 
     public void ShowMessage(string msg)

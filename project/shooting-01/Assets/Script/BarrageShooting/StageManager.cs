@@ -29,6 +29,10 @@ namespace BarrageShooting
         public IngameScreenManager IngameScreen;
         public StaticScreenManager StaticScreen;
 
+        private const float ENDGAME_WAIT = 3.0f;
+        private bool IsEndGame;
+        private float EndGamePast;
+
         private static StageManager _Instance;
         /// *******************************************************
         /// <summary>Singleton参照</summary>
@@ -55,6 +59,7 @@ namespace BarrageShooting
         /// *******************************************************
         void Start()
         {
+            IsEndGame = false;
             StageProc = new StageScriptMain(this);
             if(StageScript != null)
             {
@@ -67,6 +72,15 @@ namespace BarrageShooting
         private void Update()
         {
             if(StageProc != null) StageProc.OnUpdate();
+
+            if(IsEndGame == true)
+            {
+                EndGamePast += Time.deltaTime;
+                if(EndGamePast > ENDGAME_WAIT)
+                {
+                    GameManager.Instance.OnEndGame();
+                }
+            }
         }
         
         public void SetWaveNumber(int num)
@@ -78,6 +92,18 @@ namespace BarrageShooting
         public int GetWaveNumber()
         {
             return WaveNumber;
+        }
+
+        // ########################################################
+
+        /// *******************************************************
+        /// <summary>ゲーム終了</summary>
+        /// *******************************************************
+        public void OnEndGame()
+        {
+            StageProc.IsProcStage = false;
+            IsEndGame = true;
+            EndGamePast = 0;
         }
 
         // ########################################################
@@ -115,6 +141,7 @@ namespace BarrageShooting
         public bool IsShootable { get
         {
             if (IsBuildScreen == true) return false;
+                if (IsEndGame == true) return false;
 
             return true;
         } }

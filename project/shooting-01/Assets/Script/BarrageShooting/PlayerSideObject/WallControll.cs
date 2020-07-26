@@ -6,6 +6,8 @@ namespace BarrageShooting
 {
     public class WallControll : CharacterControll
     {
+        public float ScoreAdd = 1000f;
+
         /// *******************************************************
         /// <summary>更新処理</summary>
         /// *******************************************************

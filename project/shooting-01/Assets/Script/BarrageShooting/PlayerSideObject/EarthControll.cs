@@ -109,6 +109,7 @@ namespace BarrageShooting
             });
             if (ToughPoint < 0)
             {
+                RemoveField();
                 return true;
             }
             HitTarget.Clear();
@@ -130,7 +131,7 @@ namespace BarrageShooting
         protected override void RemoveField()
         {
             // gameover
-
+            StageManager.Instance.OnEndGame();
             Destroy(gameObject);
         }
 

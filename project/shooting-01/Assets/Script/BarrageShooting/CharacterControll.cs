@@ -287,16 +287,36 @@ namespace BarrageShooting
             if (HitTarget == null) return false;
             if (HitTarget.Count == 0) return false;
 
+            float score_add = 0.0f;
+            float score_pow = 1.0f;
+            ShotControll shot;
+            WallControll wall;
+
             HitTarget.ForEach(trg => {
+
+                shot = trg as ShotControll;
+                wall = trg as WallControll;
+                if ((shot != null) && (score_pow < shot.ReflectScorePower)) score_pow = shot.ReflectScorePower;
+                if ((wall != null) && (score_add < wall.ScoreAdd)) score_add = wall.ScoreAdd;
+
                 ToughPoint -= trg.AttackPoint;
             });
             if (ToughPoint < 0)
             {
+                AddScore(score_add, score_pow);
                 RemoveField();
                 return true;
             }
             HitTarget.Clear();
             return false;
+        }
+
+        /// *******************************************************
+        /// <summary>スコア追加</summary>
+        /// *******************************************************
+        protected virtual void AddScore(float add, float power)
+        {
+
         }
 
     }

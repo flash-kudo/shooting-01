@@ -82,6 +82,9 @@ namespace BarrageShooting
         public SpawnPosition SpawnSide;
         protected EnemyScriptMain ScriptMain;
 
+        [SerializeField]
+        public float BaseScore;
+
         /// *******************************************************
         /// <summary>初期処理</summary>
         /// *******************************************************
@@ -188,13 +191,27 @@ namespace BarrageShooting
             base.RemoveField();
         }
 
+        /// *******************************************************
+        /// <summary>ボム処理</summary>
+        /// *******************************************************
         public void Bomb()
         {
             GameObject expload = StageManager.Instance.InstantiateObject("ExploadSmall".ToLower());
             expload.transform.position = this.transform.position;
             expload.SetActive(true);
+
+            AddScore(5000f, 1.0f);
             base.RemoveField();
         }
+
+        /// *******************************************************
+        /// <summary>スコア追加</summary>
+        /// *******************************************************
+        protected override void AddScore(float add, float power)
+        {
+            GameManager.Instance.AddScore(BaseScore, add, power);
+        }
+
 
     }
 }

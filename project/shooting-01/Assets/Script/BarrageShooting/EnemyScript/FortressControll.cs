@@ -51,6 +51,12 @@ namespace BarrageShooting
         [SerializeField]
         public float LevelToughPoint = 1.5f;
 
+        [SerializeField]
+        public float BaseScore;
+
+        [HideInInspector]
+        public bool IsHitEarth;
+
         private float FortressScale = 1.7f;
         private float TunnelScale = 0.28f;
 
@@ -94,6 +100,8 @@ namespace BarrageShooting
             Position.y = 7.5f;
 
             ToughPoint = BaseToughPoint + StageManager.Instance.WavePlayerLevel * LevelToughPoint;
+
+            IsHitEarth = false;
 
             base.OnStart();
         }
@@ -207,6 +215,12 @@ namespace BarrageShooting
                 MoveSpeed = 0;
                 if(EarthControll.Instance != null)
                 {
+                    if(IsHitEarth == false)
+                    {
+                        IsHitEarth = true;
+                        GameManager.Instance.SubScore(10000f);
+                    }
+
                     EarthControll.Instance.AddDamage(EarthAttack);
                 }
             }
@@ -219,6 +233,13 @@ namespace BarrageShooting
         }
 #endif
 
+        /// *******************************************************
+        /// <summary>スコア追加</summary>
+        /// *******************************************************
+        protected override void AddScore(float add, float power)
+        {
+            GameManager.Instance.AddScore(BaseScore, add, power);
+        }
     }
 
 }

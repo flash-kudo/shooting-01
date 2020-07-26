@@ -4998,11 +4998,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 754080007}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 409079bdb4fdefe4ea744b295012bc94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerScore: {fileID: 2096675571}
+  HighScore: {fileID: 786040568}
   WaveMessage1: {fileID: 784444360}
   WaveMessage2: {fileID: 1925032738}
 --- !u!1 &758236476
@@ -5319,7 +5321,7 @@ GameObject:
   - component: {fileID: 786040569}
   - component: {fileID: 786040568}
   m_Layer: 5
-  m_Name: score (1)
+  m_Name: high_score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5863,6 +5865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MinPlayerLevel: 1
   CurrentPlayerLevel: 1
+  CurrentScore: 0
 --- !u!114 &888761387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11795,7 +11798,7 @@ GameObject:
   - component: {fileID: 2096675572}
   - component: {fileID: 2096675571}
   m_Layer: 5
-  m_Name: score
+  m_Name: player_score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
