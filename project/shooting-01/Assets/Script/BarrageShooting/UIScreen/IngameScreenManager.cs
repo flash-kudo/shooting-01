@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using GodTouches;
 
 namespace BarrageShooting
 {
     public class IngameScreenManager : MonoBehaviour
     {
         private PlayerControll PlayerCtrl;
+
+        public GameObject ShotCenter;
+        public GameObject ShotDirection;
+        public float ButtonWidth = 0.5f;
+        public float MoveWidth = 0.5f;
 
         public Button ShotButton;
         public Button GranadeButton;
@@ -18,6 +24,15 @@ namespace BarrageShooting
         public Button BombButton2;
         public Button BombButton1;
 
+        private Vector3 StartPos;
+        private bool EnableButton;
+
+        private Vector3 Center { get { return ShotCenter.transform.position; } }
+        private Vector3 Position 
+        {
+            get { return ShotDirection.transform.position; }
+            set { ShotDirection.transform.position = value; }
+        }
 
         // Start is called before the first frame update
         void Start()
@@ -27,6 +42,48 @@ namespace BarrageShooting
             UpdateShotButton();
             HideBombButton();
             UpdateBombButton();
+        }
+
+        /// *******************************************************
+        /// <summary>更新処理</summary>
+        /// *******************************************************
+        void Update()
+        {
+            
+            GodPhase phase = GodTouch.GetPhase();
+            Vector3 pos = Camera.main.ScreenToWorldPoint(GodTouch.GetPosition());
+            pos.z = 0;
+
+            switch (phase)
+            {
+                case GodPhase.Began:
+                    EnableButton = false;
+                    Vector3 press = pos - Center;
+                    float distance = (press.x * press.x) + (press.y * press.y);
+                    if (distance < (ButtonWidth * ButtonWidth))
+                    {
+                        StartPos = pos;
+                        Position = Center;
+                        EnableButton = true;
+                    }
+                    break;
+                case GodPhase.Moved:
+                    if (EnableButton)
+                    {
+                        Vector3 move = pos - StartPos;
+                        float movepos = (move.x * move.x) + (move.y * move.y);
+                        if (movepos > (MoveWidth * MoveWidth))
+                        {
+                            move = Vector3.Normalize(move) * MoveWidth;
+                        }
+                        Position = Center + move;
+                    }
+                    break;
+                case GodPhase.Ended:
+                    EnableButton = false;
+                    Position = Center;
+                    break;
+            }
         }
 
         public void UpdateIngameScreen()

@@ -8,6 +8,7 @@ namespace BarrageShooting
     public class PlayerControll : MonoBehaviour
     {
         public GameObject PlayerImage;
+        public GameObject ShotTarget;
 
         public GameObject ShotPrefab;
         public GameObject ShotMuzzle;
@@ -106,7 +107,12 @@ namespace BarrageShooting
 
             if (Input.GetMouseButton(0))
             {
-                Target = Position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                pos.z = 1;
+                ShotTarget.transform.position = pos;
+            }
+            {
+                Target = Position - ShotTarget.transform.position;
                 Distance = Vector3.Distance(new Vector3(0, 0, Target.z), Target);
                 Direction = Mathf.Atan2(Target.x, Target.y) * Mathf.Rad2Deg + 180;
             }
