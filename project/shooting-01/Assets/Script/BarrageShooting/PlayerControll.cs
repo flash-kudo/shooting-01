@@ -104,7 +104,7 @@ namespace BarrageShooting
         void Update()
         {
             PlayerTimeline.OnUpdate();
-
+#if false
             if (Input.GetMouseButton(0))
             {
                 Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -123,8 +123,44 @@ namespace BarrageShooting
                 if (UseShot) ProcShot();
                 else ProcGranade();
             }
-
+#endif
         }
+
+        public void OnShot(float direction_rad, float distance)
+        {
+            if (StageManager.Instance.IsShootable == false) return;
+
+            if (UseShot)
+            {
+                Direction = direction_rad * Mathf.Rad2Deg;
+                Distance = 2f;
+
+                Vector3 add = new Vector3(Mathf.Sin(direction_rad) * Distance, Mathf.Cos(direction_rad) * Distance, 0);
+                Target = Position + add;
+
+                ProcShot();
+            }
+            else
+            {
+                float dist = distance * 0.2f;
+                Vector3 add = new Vector3(Mathf.Sin(direction_rad) * dist, Mathf.Cos(direction_rad) * dist, 0);
+                Target = Target + add;
+                if (Target.x < -3.8f) Target.x = -3.8f;
+                if (Target.x > 3.8f) Target.x = 3.8f;
+                if (Target.y < -5f) Target.y = -5f;
+                if (Target.y > 5f) Target.y = 5f;
+
+                Vector3 trg = Target - Position;
+                Distance = Vector3.Distance(new Vector3(0, 0, trg.z), trg);
+                Direction = Mathf.Atan2(trg.x, trg.y) * Mathf.Rad2Deg;
+
+                ProcGranade();
+            }
+
+            ShotTarget.transform.position = Target;
+            PlayerImage.transform.rotation = Quaternion.Euler(0, 0, -Direction);
+        }
+
 
         /// *******************************************************
         /// <summary>主砲間隔処理</summary>

@@ -77,6 +77,11 @@ namespace BarrageShooting
                             move = Vector3.Normalize(move) * MoveWidth;
                         }
                         Position = Center + move;
+
+                        float dst = move.magnitude / MoveWidth;
+                        float rad = Mathf.Atan2(move.x, move.y);
+
+                        PlayerControll.Instance.OnShot(rad, dst);
                     }
                     break;
                 case GodPhase.Ended:

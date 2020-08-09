@@ -3425,11 +3425,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 398077641}
     m_Modifications:
-    - target: {fileID: 574810907122234297, guid: 2bfc3581620502b45807aef47d8e9431,
-        type: 3}
-      propertyPath: m_Name
-      value: button_hansya
-      objectReference: {fileID: 0}
     - target: {fileID: 4421107721169072620, guid: 2bfc3581620502b45807aef47d8e9431,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3549,6 +3544,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 574810907122234297, guid: 2bfc3581620502b45807aef47d8e9431,
+        type: 3}
+      propertyPath: m_Name
+      value: button_hansya
       objectReference: {fileID: 0}
     - target: {fileID: 1987357504374346472, guid: 2bfc3581620502b45807aef47d8e9431,
         type: 3}
@@ -5432,7 +5432,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 1, b: 0.79941463, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6299,11 +6299,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1371630464}
     m_Modifications:
-    - target: {fileID: 574810907122234297, guid: 2bfc3581620502b45807aef47d8e9431,
-        type: 3}
-      propertyPath: m_Name
-      value: button_hansya
-      objectReference: {fileID: 0}
     - target: {fileID: 4421107721169072620, guid: 2bfc3581620502b45807aef47d8e9431,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6423,6 +6418,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 574810907122234297, guid: 2bfc3581620502b45807aef47d8e9431,
+        type: 3}
+      propertyPath: m_Name
+      value: button_hansya
       objectReference: {fileID: 0}
     - target: {fileID: 1987357504374346472, guid: 2bfc3581620502b45807aef47d8e9431,
         type: 3}
@@ -7266,7 +7266,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1109046330
 Transform:
   m_ObjectHideFlags: 0
@@ -7918,7 +7918,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1206097030
 Transform:
   m_ObjectHideFlags: 0
@@ -11415,7 +11415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 1, b: 0.79941463, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11448,11 +11448,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 361758397}
     m_Modifications:
-    - target: {fileID: 574810907122234297, guid: 2bfc3581620502b45807aef47d8e9431,
-        type: 3}
-      propertyPath: m_Name
-      value: button_hansya
-      objectReference: {fileID: 0}
     - target: {fileID: 4421107721169072620, guid: 2bfc3581620502b45807aef47d8e9431,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11572,6 +11567,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 574810907122234297, guid: 2bfc3581620502b45807aef47d8e9431,
+        type: 3}
+      propertyPath: m_Name
+      value: button_hansya
       objectReference: {fileID: 0}
     - target: {fileID: 1987357504374346472, guid: 2bfc3581620502b45807aef47d8e9431,
         type: 3}
