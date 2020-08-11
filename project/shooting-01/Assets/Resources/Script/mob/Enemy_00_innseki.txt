@@ -35,3 +35,7 @@
 <pos73 pos_x=3 pos_y=5 dir=190>
 <pos74 pos_x=3 pos_y=5 dir=185>
 <pos75 pos_x=3 pos_y=5 dir=180>
+
+
+
+//@pos00‚Ì”‚¾‚¯@‹O“¹‚Ì”//

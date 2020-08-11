@@ -1,18 +1,22 @@
 {spawn}
-<common spd=20 tough=[150,0.012]>
-<left pos_x=-2 pos_y=5 dir=180>
+<common spd=20 tough=[150,0.012]>			//　基本スピード？　//
+<left pos_x=-2 pos_y=5 dir=180>				//　左リスポン位置？　//
 
-<right pos_x=2 pos_y=5 dir=180>
+<right pos_x=2 pos_y=5 dir=180>				
 
-{move}
-<angle    key=left time=100 trg_ang=90 max_rot=1>
+
+
+{move}			//　行単為と時間で起動とショットタイミング制御している？　//
+<angle    key=left time=10 trg_ang=135 max_rot=0.1>
+		//　rotは旋回の速度　小数点も含む　timeの間にかかる様子 ang*rot=見た目の旋回の鋭さ timeが来ると終了？　//
+		//　timeは継続Ｆか angは360での進行方向　//
 <shot     key=left path=muzzle shot_time=4 interval=180>
 <shot     key=left path=bullet2 shot_time=4 interval=180 st_count=[1,0.05] ed_count=[1,0.05] st_width=60 ed_width=60 angle_base=absolute damp=1 delay=25 speed=50 st_sftang=45 ed_sftang=-45>
-<angle    key=left time=100 trg_ang=90 max_rot=1>
-<angle    key=left time=10 trg_ang=180 max_rot=2>
-<angle    key=left time=230 trg_ang=270 max_rot=2>
-<angle    key=left time=10 trg_ang=0 max_rot=2>
-<angle    key=left time=5000 trg_ang=90 max_rot=2>
+<angle    key=left time=10 trg_ang=90 max_rot=0.1>
+<angle    key=left time=10 trg_ang=180 max_rot=0.2>
+<angle    key=left time=23 trg_ang=270 max_rot=0.2>
+<angle    key=left time=1 trg_ang=0 max_rot=0.2>
+<angle    key=left time=5000 trg_ang=90 max_rot=0.2>
 
 <angle    key=right time=100 trg_ang=270 max_rot=1>
 <shot     key=right path=muzzle shot_time=4 interval=180>
@@ -22,3 +26,11 @@
 <angle    key=right time=230 trg_ang=90 max_rot=2>
 <angle    key=right time=10 trg_ang=0 max_rot=2>
 <angle    key=right time=5000 trg_ang=270 max_rot=2>
+
+
+//　てっぺんで　命名した　敵を　key=right　で識別と後の指示かみ合わせている？　//
+//　ということは　下にセンターとかつければ　新しい　軌道とリスポン地点も指定できる？　//
+//　増えなかった　//
+
+//　trg_angは　90は→　180は↓　270は←　0が↑ということ　//
+
