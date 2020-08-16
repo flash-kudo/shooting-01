@@ -25,6 +25,7 @@ namespace BarrageShooting
 
         public GameObject GranadePrefab;
         public GameObject GranadeMuzzle;
+        public GameObject GranadeSight;
         [Range(0.017f, 2f)]
         public float GranadeInterval = 0.5f;
         [Range(10f, 100f)]
@@ -89,6 +90,9 @@ namespace BarrageShooting
         /// *******************************************************
         private void Start()
         {
+            UseShot = true;
+            GranadeSight.SetActive(!UseShot);
+
             if (PlayerTimeline == null)
             {
                 PlayerTimeline = new PlayerTimelineManage();
@@ -104,26 +108,6 @@ namespace BarrageShooting
         void Update()
         {
             PlayerTimeline.OnUpdate();
-#if false
-            if (Input.GetMouseButton(0))
-            {
-                Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                pos.z = 1;
-                ShotTarget.transform.position = pos;
-            }
-            {
-                Target = Position - ShotTarget.transform.position;
-                Distance = Vector3.Distance(new Vector3(0, 0, Target.z), Target);
-                Direction = Mathf.Atan2(Target.x, Target.y) * Mathf.Rad2Deg + 180;
-            }
-            PlayerImage.transform.rotation = Quaternion.Euler(0, 0, -Direction);
-
-            if(StageManager.Instance.IsShootable == true)
-            {
-                if (UseShot) ProcShot();
-                else ProcGranade();
-            }
-#endif
         }
 
         public void OnShot(float direction_rad, float distance)
@@ -161,6 +145,14 @@ namespace BarrageShooting
             PlayerImage.transform.rotation = Quaternion.Euler(0, 0, -Direction);
         }
 
+        /// *******************************************************
+        /// <summary>射撃切り替え</summary>
+        /// *******************************************************
+        public void SwitchShot()
+        {
+            UseShot = !UseShot;
+            GranadeSight.SetActive(!UseShot);
+        }
 
         /// *******************************************************
         /// <summary>主砲間隔処理</summary>

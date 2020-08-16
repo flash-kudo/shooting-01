@@ -98,7 +98,7 @@ namespace BarrageShooting
 
         public void SwitchShot()
         {
-            PlayerCtrl.UseShot = !PlayerCtrl.UseShot;
+            PlayerCtrl.SwitchShot();
             UpdateShotButton();
         }
 

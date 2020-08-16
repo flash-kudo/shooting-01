@@ -1,0 +1,310 @@
+{wave_list}
+			// 下にあるwave_en22 が　wave;01　である　と　上で示しているのか //
+			// wave;01　は画面に出るメッセ　上から順に読まれている様子 //
+<wave target="wave_inseki" msg="wave;01">
+<wave target="wave_charge_lv01" msg="wave;02">
+<wave target="wave_shooter02_LV01" msg="wave;03">
+<wave target="wave_shooter01_LV01" msg="wave;04">
+<wave target="fortress01" msg="wave;05">
+
+
+<wave target="wave_en1_2" msg="wave;06">
+<wave target="wave_en1_3" msg="wave;07">
+<wave target="wave_en1_4" msg="wave;08">
+<wave target="wave_en1_5" msg="wave;09">
+<wave target="wave_en1_6" msg="wave;10">
+
+
+<wave target="wave_hugeinseki" msg="wave;last">
+
+
+<build msg="build;01">
+<build msg="build;2">
+<build msg="build;3">
+<build msg="build;4/5">
+<build msg="build;Go">
+<build msg="build;06">
+
+<build msg="build;007">
+
+
+
+//　ウェーブリスト　//
+
+
+
+
+
+{wave_hugeinseki}
+<spawn source=mega_meteor key=pos2>
+<interval delay=180>
+<spawn source=mega_meteor key=pos3>
+<interval delay=180>
+<spawn source=mega_meteor key=pos4>
+<interval delay=180>
+<spawn source=mega_meteor key=pos5>
+<interval delay=180>
+<spawn source=mega_meteor key=pos6>
+
+{wave_inseki}
+<random>
+<group target=wave_inseki_random_01 rate=40>
+<group target=wave_inseki_random_02 rate=30>
+<group target=wave_inseki_random_03 rate=20>
+<group target=wave_inseki_random_04 rate=10>
+</random>
+<interval delay=60>
+<spawn source=meteor02 key=pos32>
+<spawn source=meteor01 key=pos61>
+<interval delay=20>
+<spawn source=meteor02 key=pos25>
+<spawn source=meteor02 key=pos52>
+<interval delay=20>
+<spawn source=meteor01 key=pos42>
+<spawn source=meteor02 key=pos71>
+<interval delay=20>
+<spawn source=meteor01 key=pos24>
+<spawn source=meteor01 key=pos51>
+
+{wave_inseki_random_01}
+<spawn source=meteor01 key=pos11>
+<spawn source=meteor01 key=pos22>
+<spawn source=meteor01 key=pos33>
+<spawn source=meteor01 key=pos43>
+<spawn source=meteor01 key=pos53>
+<spawn source=meteor01 key=pos64>
+<spawn source=meteor01 key=pos75>
+
+{wave_inseki_random_02}
+<spawn source=shooter02 key=left>
+<spawn source=shooter02 key=right>
+
+{wave_inseki_random_03}
+<spawn source=shooter01 key=left>
+<spawn source=shooter01 key=right>
+
+{wave_inseki_random_04}
+<spawn source=charge01 key=pt1_1>
+<spawn source=charge01 key=pt3_1>
+
+
+{wave_charge_lv01}
+<spawn source=charge01 key=pt1_1>
+<interval delay=60>
+<spawn source=charge01 key=pt1_2>
+<interval delay=60>
+<spawn source=charge01 key=pt1_3>
+<interval delay=120>
+<spawn source=charge01 key=pt2_3>
+<interval delay=30>
+<spawn source=charge01 key=pt1_3>
+<interval delay=30>
+<spawn source=charge01 key=pt3_1>
+<interval delay=30>
+<spawn source=charge01 key=pt4_2>
+<interval delay=30>
+<spawn source=charge01 key=pt5_3>
+<interval delay=120>
+<spawn source=charge01 key=pt2_1>
+<interval delay=15>
+<spawn source=charge01 key=pt1_2>
+<interval delay=15>
+<spawn source=charge01 key=pt3_3>
+<interval delay=15>
+<spawn source=charge01 key=pt1_1>
+<interval delay=15>
+<spawn source=charge01 key=pt1_2>
+<interval delay=15>
+<spawn source=charge01 key=pt1_3>
+<interval delay=15>
+<spawn source=charge01 key=pt2_1>
+<interval delay=15>
+<spawn source=charge01 key=pt2_2>
+<interval delay=15>
+<spawn source=charge01 key=pt6_3sp>
+
+
+{wave_shooter02_LV01}							//　上で呼び出されている行　この区切りが　１ウェーブ　で出てくる敵の総量　//
+<spawn source=shooter02 key=left>
+<spawn source=shooter02 key=right>
+<interval delay=60>					//　60fpsで　リスポンタイミング指定されている　//
+<spawn source=shooter02 key=left>
+<spawn source=shooter02 key=right>
+<interval delay=60>
+<spawn source=shooter02 key=left>
+<spawn source=shooter02 key=right>
+<interval delay=60>					//　60fpsで　リスポンタイミング指定されている　//
+<spawn source=shooter02 key=left>
+<spawn source=shooter02 key=right>
+<interval delay=60>
+<spawn source=shooter02 key=left>
+<spawn source=shooter02 key=right>
+<interval delay=30>					//　60fpsで　リスポンタイミング指定されている　//
+<spawn source=shooter02 key=left>
+<spawn source=shooter02 key=right>
+<interval delay=30>
+<spawn source=shooter02 key=left>
+<spawn source=shooter02 key=right>
+<interval delay=30>					//　60fpsで　リスポンタイミング指定されている　//
+<spawn source=shooter02 key=left>
+<spawn source=shooter02 key=right>
+<interval delay=30>
+<spawn source=shooter02 key=left>
+<spawn source=shooter02 key=right>
+<interval delay=120>					//　60fpsで　リスポンタイミング指定されている　//
+<spawn source=shooter02 key=left>
+<spawn source=shooter02 key=right>
+<interval delay=15>
+<spawn source=shooter02 key=left>
+<spawn source=shooter02 key=right>
+<interval delay=15>					//　60fpsで　リスポンタイミング指定されている　//
+<spawn source=shooter02 key=left>
+<spawn source=shooter02 key=right>
+<interval delay=15>
+<spawn source=shooter02 key=left>
+<spawn source=shooter02 key=right>
+<interval delay=15>					//　60fpsで　リスポンタイミング指定されている　//
+<spawn source=shooter02 key=left>
+<spawn source=shooter02 key=right>
+<interval delay=15>
+<spawn source=shooter02 key=left>
+<spawn source=shooter02 key=right>
+
+
+
+{wave_shooter01_LV01}
+<spawn source=shooter01 key=left>
+<spawn source=shooter01 key=right>
+<interval delay=80>
+<spawn source=shooter01 key=left>
+<spawn source=shooter01 key=right>
+<interval delay=80>
+<spawn source=shooter01 key=left>
+<spawn source=shooter01 key=right>
+<interval delay=80>
+<spawn source=shooter01 key=left>
+<spawn source=shooter01 key=right>
+<interval delay=80>
+<spawn source=shooter01 key=left>
+<spawn source=shooter01 key=right>
+<interval delay=40>
+<spawn source=shooter01 key=left>
+<spawn source=shooter01 key=right>
+<interval delay=40>
+<spawn source=shooter01 key=left>
+<spawn source=shooter01 key=right>
+<interval delay=40>
+<spawn source=shooter01 key=left>
+<spawn source=shooter01 key=right>
+<interval delay=40>
+<spawn source=shooter01 key=left>
+<spawn source=shooter01 key=right>
+<interval delay=20>
+<spawn source=shooter01 key=left>
+<spawn source=shooter01 key=right>
+<interval delay=20>
+<spawn source=shooter01 key=left>
+<spawn source=shooter01 key=right>
+<interval delay=20>
+<spawn source=shooter01 key=left>
+<spawn source=shooter01 key=right>
+<interval delay=20>
+<spawn source=shooter01 key=left>
+<spawn source=shooter01 key=right>
+
+
+
+{wave_en1_1}
+<spawn source=charge01 key=pt1_1>
+<interval delay=20>
+<spawn source=charge01 key=pt1_2>
+<interval delay=20>
+<spawn source=charge01 key=pt1_3>
+
+{wave_en1_3}
+<spawn source=charge01 key=pt3_1>
+<interval delay=20>
+<spawn source=charge01 key=pt3_2>
+<interval delay=20>
+<spawn source=charge01 key=pt3_3>
+
+{wave_en1_13}
+<spawn source=charge01 key=pt1_1>
+<spawn source=charge01 key=pt3_1>
+<interval delay=20>
+<spawn source=charge01 key=pt1_2>
+<spawn source=charge01 key=pt3_2>
+<interval delay=20>
+<spawn source=charge01 key=pt1_3>
+<spawn source=charge01 key=pt3_3>
+
+{wave_en1_2}
+<spawn source=charge01 key=pt2_1>
+<interval delay=20>
+<spawn source=charge01 key=pt2_2>
+<interval delay=20>
+<spawn source=charge01 key=pt2_3>
+
+{wave_en1_4}
+<spawn source=charge01 key=pt4_1>
+<interval delay=20>
+<spawn source=charge01 key=pt4_2>
+<interval delay=20>
+<spawn source=charge01 key=pt4_3>
+
+{wave_en1_24}
+<spawn source=charge01 key=pt2_1>
+<spawn source=charge01 key=pt4_1>
+<interval delay=20>
+<spawn source=charge01 key=pt2_2>
+<spawn source=charge01 key=pt4_2>
+<interval delay=20>
+<spawn source=charge01 key=pt2_3>
+<spawn source=charge01 key=pt4_3>
+
+{wave_en1_5}
+<spawn source=charge01 key=pt5_1>
+<interval delay=20>
+<spawn source=charge01 key=pt5_2>
+<interval delay=20>
+<spawn source=charge01 key=pt5_3>
+
+{wave_en1_6}
+<spawn source=charge01 key=pt6_1>
+<interval delay=20>
+<spawn source=charge01 key=pt6_2>
+<interval delay=20>
+<spawn source=charge01 key=pt6_3>
+
+{wave_en1_56}
+<spawn source=charge01 key=pt5_1>
+<spawn source=charge01 key=pt6_1>
+<interval delay=20>
+<spawn source=charge01 key=pt5_2>
+<spawn source=charge01 key=pt6_2>
+<interval delay=20>
+<spawn source=charge01 key=pt5_3>
+<spawn source=charge01 key=pt6_3>
+
+{wave_en21}
+<spawn source=shooter01 key=left>
+<spawn source=shooter01 key=right>
+<interval delay=80>
+<spawn source=shooter01 key=left>
+<spawn source=shooter01 key=right>
+<interval delay=80>
+<spawn source=shooter01 key=left>
+<spawn source=shooter01 key=right>
+
+{wave_en22}							//　上で呼び出されている行　この区切りが　１ウェーブ　で出てくる敵の総量　//
+<spawn source=shooter02 key=left>
+<spawn source=shooter02 key=right>
+<interval delay=60>					//　60fpsで　リスポンタイミング指定されている　//
+<spawn source=shooter02 key=left>
+<spawn source=shooter02 key=right>
+<interval delay=60>
+<spawn source=shooter02 key=left>
+<spawn source=shooter02 key=right>
+
+{fortress01}
+<spawn source=fortress spd=1 dir=0>

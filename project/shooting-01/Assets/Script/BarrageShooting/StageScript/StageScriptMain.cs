@@ -74,7 +74,7 @@ namespace BarrageShooting.StageScript
                                 WaveScript wave;
                                 if (WaveWarehouse.TryGetValue(trg, out wave) == false)
                                 {
-                                    wave = new WaveScript(this, Group.Find(grp => grp.GroupName == trg));
+                                    wave = new WaveScript(this, null, Group.Find(grp => grp.GroupName == trg));
                                     if (wave != null) WaveWarehouse.Add(trg, wave);
                                 }
 

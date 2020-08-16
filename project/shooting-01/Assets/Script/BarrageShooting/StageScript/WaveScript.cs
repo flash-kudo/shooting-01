@@ -8,7 +8,10 @@ namespace BarrageShooting.StageScript
     public class WaveScript
     {
         private StageScriptMain Manager;
+        private WaveScript Parent;
         private ScriptGroup Scripts;
+
+        private WaveScript ChildScript;
 
         private int LineIndex;
 
@@ -18,10 +21,13 @@ namespace BarrageShooting.StageScript
         /// *******************************************************
         /// <summary>コンストラクタ</summary>
         /// *******************************************************
-        public WaveScript(StageScriptMain mng, ScriptGroup group)
+        public WaveScript(StageScriptMain mng, WaveScript prnt, ScriptGroup group)
         {
             Manager = mng;
+            Parent = prnt;
             Scripts = group;
+
+            ChildScript = null;
         }
 
         /// *******************************************************
@@ -39,9 +45,22 @@ namespace BarrageShooting.StageScript
         /// *******************************************************
         public bool OnUpdate()
         {
+            if(ChildScript != null)
+            {
+                if(ChildScript.OnUpdate() == false)
+                {
+                    ChildScript = null;
+                }
+                return true;
+            }
+
+
             PastTime++;
             if(PastTime > WaitTime)
             {
+                bool isOpenRandom = false;
+                List<ScriptLine> GroupLines = new List<ScriptLine>();
+
                 while (true)
                 {
                     if (LineIndex >= Scripts.ScriptLine.Count) return false;
@@ -49,15 +68,60 @@ namespace BarrageShooting.StageScript
                     ScriptLine line = Scripts.ScriptLine[LineIndex];
                     LineIndex++;
 
-                    if (line.CommandName.CompareTo("interval") == 0){
-                        IntervalLine(line);
-                        PastTime = 0;
-                        break;
+                    string CommandName = line.CommandName;
+
+                    if(isOpenRandom == true)
+                    {
+                        if (CommandName.CompareTo("/random") == 0)
+                        {
+                            isOpenRandom = false;
+
+                            if((GroupLines != null) && (GroupLines.Count > 0))
+                            {
+                                float rndtotal = 0;
+                                GroupLines.ForEach(grp => rndtotal += grp.GetAttribute("rate").FloatValue);
+                                float rndans = Random.value * rndtotal;
+                                int selectindex = 0;
+                                for (int i = 0; i < GroupLines.Count; i++)
+                                {
+                                    rndans = rndans - GroupLines[i].GetAttribute("rate").FloatValue;
+                                    if(rndans <= 0)
+                                    {
+                                        selectindex = i;
+                                        break;
+                                    }
+                                }
+                                string childname = GroupLines[selectindex].GetAttribute("target").StringValue;
+                                ScriptGroup group = Manager.Group.Find(grp => grp.GroupName == childname);
+                                ChildScript = new WaveScript(Manager, this, group);
+                                ChildScript.StartWave();
+                            }
+
+                        }
+                        else if (CommandName.CompareTo("group") == 0)
+                        {
+                            GroupLines.Add(line);
+                        }
                     }
                     else
                     {
-                        SpawnLine(line);
+                        if (CommandName.CompareTo("interval") == 0)
+                        {
+                            IntervalLine(line);
+                            PastTime = 0;
+                            break;
+                        }
+                        else if (CommandName.CompareTo("random") == 0)
+                        {
+                            isOpenRandom = true;
+                            GroupLines = new List<ScriptLine>();
+                        }
+                        else
+                        {
+                            SpawnLine(line);
+                        }
                     }
+
                 }
             }
 
