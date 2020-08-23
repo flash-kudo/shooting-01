@@ -62,7 +62,7 @@ MonoBehaviour:
   MoveDulation: 50
   BlastDuration: 1
   ColliderSpeed: 0.03
-  ColliderMax: 0.5
+  ColliderMax: 0.9
 --- !u!1001 &6766809252974261833
 PrefabInstance:
   m_ObjectHideFlags: 0

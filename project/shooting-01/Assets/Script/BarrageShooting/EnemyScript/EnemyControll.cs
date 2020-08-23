@@ -210,6 +210,10 @@ namespace BarrageShooting
         protected override void AddScore(float add, float power)
         {
             GameManager.Instance.AddScore(BaseScore, add, power);
+
+            GameManager.Instance.AddExp(10);
+            if(IsUseReflect) GameManager.Instance.AddExp(10);
+            if(IsHitWall) GameManager.Instance.AddExp(10);
         }
 
 

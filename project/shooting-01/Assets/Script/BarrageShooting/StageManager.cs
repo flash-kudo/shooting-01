@@ -14,7 +14,6 @@ namespace BarrageShooting
         public TextAsset StageScript;
 
         public int WaveNumber;
-        public int WavePlayerLevel;
         public int InitBombCount;
         public int BombCount;
 
@@ -86,8 +85,6 @@ namespace BarrageShooting
         public void SetWaveNumber(int num)
         {
             WaveNumber = num;
-            if (GameManager.Instance != null)
-                WavePlayerLevel = Mathf.FloorToInt(GameManager.Instance.PlayerCalcLevel());
         }
         public int GetWaveNumber()
         {

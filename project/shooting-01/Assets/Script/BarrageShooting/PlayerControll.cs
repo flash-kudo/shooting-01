@@ -126,7 +126,8 @@ namespace BarrageShooting
             }
             else
             {
-                float dist = distance * 0.2f;
+                //float dist = distance * 0.2f;
+                float dist = 0.07f;
                 Vector3 add = new Vector3(Mathf.Sin(direction_rad) * dist, Mathf.Cos(direction_rad) * dist, 0);
                 Target = Target + add;
                 if (Target.x < -3.8f) Target.x = -3.8f;

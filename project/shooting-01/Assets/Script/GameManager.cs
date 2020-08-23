@@ -6,21 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    private const int EXP2RANK_COUNT = 100;
+
     public int MinPlayerLevel = 1;
 
-    public int CurrentPlayerLevel = 1;
+    public int CurrentExpPoints = 0;
 
     public float CurrentScore = 0;
 
     public Func<Vector2, float, bool> FortressHitCheck;
-
-    /// *******************************************************
-    /// <summary>プレイヤーレベル割合</summary>
-    /// *******************************************************
-    public float PlayerCalcLevel()
-    {
-        return Mathf.Max(CurrentPlayerLevel - MinPlayerLevel, 0);
-    }
 
     /// *******************************************************
     /// <summary>要塞ヒットチェック</summary>
@@ -31,13 +25,39 @@ public class GameManager : MonoBehaviour
         return FortressHitCheck(position, scale);
     }
 
+    public void AddExp(int addexp)
+    {
+        CurrentExpPoints = CurrentExpPoints + addexp;
+        if (CurrentExpPoints < 0) CurrentExpPoints = 0;
+    }
+
+    public int LevelNumber()
+    {
+        return (CurrentExpPoints / EXP2RANK_COUNT) + MinPlayerLevel;
+    }
+
+    public string LevelString()
+    {
+        return RankingManager.GetLevelString(LevelNumber());
+    }
+
+    public int ExpNumber()
+    {
+        return (CurrentExpPoints % EXP2RANK_COUNT);
+    }
+
+    public float ExpRate()
+    {
+        return ((float)ExpNumber() / (float)EXP2RANK_COUNT) * 100.0f;
+    }
+
     /// *******************************************************
     /// <summary>スコア追加</summary>
     /// *******************************************************
     public void AddScore(float base_score, float add_score, float power_score)
     {
         float add = base_score * power_score + add_score;
-        CurrentScore = CurrentScore + Mathf.Floor(add);
+        CurrentScore = CurrentScore + Mathf.Floor(add) * LevelNumber();
     }
 
     /// *******************************************************
@@ -53,7 +73,7 @@ public class GameManager : MonoBehaviour
     /// *******************************************************
     public string ScoreString()
     {
-        return RankingManager.GetScoreScring(CurrentScore);
+        return RankingManager.GetScoreString(CurrentScore);
     }
 
     /// *******************************************************
@@ -62,7 +82,7 @@ public class GameManager : MonoBehaviour
     public string RankScoreString()
     {
         float score = Mathf.Max(CurrentScore, RankingManager.GetRankScore(0));
-        return RankingManager.GetScoreScring(score);
+        return RankingManager.GetScoreString(score);
     }
 
     /// *******************************************************
@@ -71,6 +91,7 @@ public class GameManager : MonoBehaviour
     public void OnEndGame()
     {
         GameResult.Score = CurrentScore;
+        GameResult.Level = LevelNumber();
         SceneManager.LoadScene("ResultScene");
     }
 

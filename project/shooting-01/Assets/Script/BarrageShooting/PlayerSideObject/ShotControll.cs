@@ -38,6 +38,9 @@ namespace BarrageShooting
         // [SerializeField]
         // public float AttackPoint = 10;
 
+
+        public static int NohitCount = 0;
+
         public float ShotSpeed = 15f;
         public float MirrorPower = 2.0f;
 
@@ -73,6 +76,7 @@ namespace BarrageShooting
             UpodatePosition(move);
         }
 
+
         /// *******************************************************
         /// <summary>破棄処理</summary>
         /// *******************************************************
@@ -85,6 +89,21 @@ namespace BarrageShooting
                 expload.transform.rotation = this.transform.rotation;
                 expload.SetActive(true);
             }
+
+            if(IsAttacked == false)
+            {
+                NohitCount++;
+                if(NohitCount >= 10)
+                {
+                    GameManager.Instance.AddExp(-10);
+                    NohitCount = 0;
+                }
+            }
+            else
+            {
+                NohitCount = 0;
+            }
+
             Destroy(gameObject);
         }
 

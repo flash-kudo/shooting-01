@@ -8,6 +8,9 @@ public class StaticScreenManager : MonoBehaviour
     public Text PlayerScore;
     public Text HighScore;
 
+    public Text LevelNumber;
+    public Slider ExpNumber;
+
     public Text WaveMessage1;
     public Text WaveMessage2;
 
@@ -21,6 +24,9 @@ public class StaticScreenManager : MonoBehaviour
     {
         PlayerScore.text = GameManager.Instance.ScoreString();
         HighScore.text = GameManager.Instance.RankScoreString();
+
+        LevelNumber.text = GameManager.Instance.LevelString();
+        ExpNumber.value = GameManager.Instance.ExpRate();
     }
 
     public void ShowMessage(string msg)

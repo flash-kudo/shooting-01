@@ -43,7 +43,7 @@ namespace TextScript
                     bool invert = (add_param < 0);
                     add_param = Mathf.Abs(add_param);
 
-                    float rate = (add_param * StageManager.Instance.WavePlayerLevel) + 1.0f;
+                    float rate = (add_param * GameManager.Instance.LevelNumber()) + 1.0f;
 
                     if(invert == false)
                     {

@@ -12,7 +12,8 @@ public class ResultScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ScoreText.text = RankingManager.GetScoreScring(GameResult.Score);
+        ScoreText.text = RankingManager.GetScoreString(GameResult.Score);
+        string rank = GameResult.Level.ToString();
         RankingManager.SetNewScore(GameResult.Score);
     }
 

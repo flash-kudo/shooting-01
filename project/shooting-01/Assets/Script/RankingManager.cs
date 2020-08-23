@@ -52,7 +52,7 @@ public class RankingManager
         SaveRankScore();
     }
 
-    public static string GetScoreScring(float score)
+    public static string GetScoreString(float score)
     {
         string score_num = Mathf.Floor(score).ToString();
         string add_string = "00000000";
@@ -60,6 +60,16 @@ public class RankingManager
         int lng = Mathf.Max(score_num.Length, add_string.Length);
         return str.Substring(str.Length - lng);
     }
+
+    public static string GetLevelString(float level)
+    {
+        string Level_num = Mathf.Floor(level).ToString();
+        string add_string = "000";
+        string str = add_string + Level_num;
+        int lng = Mathf.Max(Level_num.Length, add_string.Length);
+        return str.Substring(str.Length - lng);
+    }
+
 
     public static float GetRankScore(int rank)
     {
@@ -69,7 +79,7 @@ public class RankingManager
 
     public static string GetRankScoreString(int rank)
     {
-        return GetScoreScring(GetRankScore(rank));
+        return GetScoreString(GetRankScore(rank));
     }
 
     public static int SetNewScore(float score)

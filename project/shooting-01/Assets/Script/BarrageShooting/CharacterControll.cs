@@ -51,6 +51,9 @@ namespace BarrageShooting
 
         private Vector3 BaseAngle;
 
+        protected bool IsUseReflect;
+        protected bool IsHitWall;
+        protected bool IsAttacked;
 
         protected List<CharacterControll> HitTarget;
 
@@ -85,6 +88,11 @@ namespace BarrageShooting
         protected virtual void OnStart()
         {
             if(Position == null) Position = new Vector2();
+
+            IsUseReflect = false;
+            IsHitWall = false;
+            IsAttacked = false;
+
             InitMove();
             InitHitCheck();
         }
@@ -292,12 +300,22 @@ namespace BarrageShooting
             ShotControll shot;
             WallControll wall;
 
+            IsAttacked = true;
+
             HitTarget.ForEach(trg => {
 
                 shot = trg as ShotControll;
                 wall = trg as WallControll;
-                if ((shot != null) && (score_pow < shot.ReflectScorePower)) score_pow = shot.ReflectScorePower;
-                if ((wall != null) && (score_add < wall.ScoreAdd)) score_add = wall.ScoreAdd;
+                if ((shot != null) && (score_pow < shot.ReflectScorePower))
+                {
+                    score_pow = shot.ReflectScorePower;
+                    if (score_pow > 1) IsUseReflect = true;
+                }
+                if ((wall != null) && (score_add < wall.ScoreAdd))
+                {
+                    score_add = wall.ScoreAdd;
+                    IsHitWall = true;
+                }
 
                 ToughPoint -= trg.AttackPoint;
             });

@@ -99,7 +99,7 @@ namespace BarrageShooting
             Position.x = 0;
             Position.y = 7.5f;
 
-            ToughPoint = BaseToughPoint + StageManager.Instance.WavePlayerLevel * LevelToughPoint;
+            ToughPoint = BaseToughPoint + GameManager.Instance.LevelNumber() * LevelToughPoint;
 
             IsHitEarth = false;
 
