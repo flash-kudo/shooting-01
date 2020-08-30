@@ -47,6 +47,19 @@
 <spawn source=mega_meteor key=pos6>
 
 {wave_inseki}
+	<spawn source=shooter01 key=left>
+	<interval delay=1200>
+	<spawn source=shooter01 key=left>
+	<interval delay=1200>
+	<spawn source=shooter01 key=left>
+	<interval delay=1200>
+	<spawn source=shooter01 key=left>
+	<interval delay=1200>
+	<spawn source=shooter01 key=left>
+	<interval delay=1200>
+	<spawn source=shooter01 key=left>
+	<interval delay=6000>
+
 <random>
 <group target=wave_inseki_random_01 rate=40>
 <group target=wave_inseki_random_02 rate=30>

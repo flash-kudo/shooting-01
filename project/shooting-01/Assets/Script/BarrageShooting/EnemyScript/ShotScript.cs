@@ -30,7 +30,7 @@ namespace BarrageShooting.EnemyScript
         private float ShiftSpeed;
         private float ShiftDamp;
 
-        private int CurrentShotTimes;
+        private int CurrentShotCounts;
         private float PastInterval;
 
         /// *******************************************************
@@ -40,7 +40,7 @@ namespace BarrageShooting.EnemyScript
         {
             Manager = mng;
 
-            CurrentShotTimes = 0;
+            CurrentShotCounts = 0;
 
             Source = null;
             ShotTime = 0;
@@ -87,9 +87,9 @@ namespace BarrageShooting.EnemyScript
             if (PastInterval >= Interval)
             {
                 ShotSame(character);
-                CurrentShotTimes++;
+                CurrentShotCounts++;
                 PastInterval = 0;
-                if(CurrentShotTimes > ShotTime)
+                if(CurrentShotCounts > ShotTime)
                 {
                     Manager.RemoveShot(this);
                 }
@@ -160,7 +160,7 @@ namespace BarrageShooting.EnemyScript
         private float CurrentRate()
         {
             if (ShotTime <= 0) return 1;
-            return (float)CurrentShotTimes / (float)ShotTime;
+            return (float)CurrentShotCounts / (float)ShotTime;
         }
 
         /// *******************************************************

@@ -5,6 +5,12 @@
 <right pos_x=2 pos_y=5 dir=180>
 
 {move}
+
+<angle    key=left time=60 dir=180 >
+<angle    key=left time=0 dir=90>
+<shot     key=left path=bullet1 shot_time=4 interval=60 st_count=[3,0.05] ed_count=[3,0.05]  angle_base=relative damp=1 delay=25 speed=50 st_sftang=-90 ed_sftang=90>
+<angle    key=left time=0 dir=180>
+
 <angle    key=left time=100 trg_ang=90 max_rot=1>
 <shot     key=left path=bullet1 shot_time=20 interval=80 st_count=[10,0.01] ed_count=[10,0.01] st_width=80 ed_width=80 angle_base=absolute>
 <angle    key=left time=100 trg_ang=90 max_rot=1>

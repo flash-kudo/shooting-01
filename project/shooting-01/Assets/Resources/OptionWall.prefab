@@ -58,6 +58,7 @@ MonoBehaviour:
   ToughPoint: 100
   AttackPoint: 100000
   CharType: 1
+  ScoreAdd: 1000
 --- !u!1001 &8540745827099430472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69,6 +70,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: option_kabe
+      objectReference: {fileID: 0}
+    - target: {fileID: 3345725842702723402, guid: 4c3d3b42c7df75c43bcb2df5035e7597,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8075863420680783591, guid: 4c3d3b42c7df75c43bcb2df5035e7597,
         type: 3}
