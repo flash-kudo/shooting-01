@@ -105,7 +105,7 @@ namespace BarrageShooting
             HitmarkTime = HIT_SETTIME;
 
             HitTarget.ForEach(trg => {
-                GameManager.Instance.AddExp(-300);
+                GameManager.Instance.AddExp(ExperienceData.ExpType.EARTH_DMG);
 
                 ToughPoint -= trg.AttackPoint;
             });

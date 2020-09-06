@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     public float CurrentScore = 0;
 
+    public ExperienceData ExpData;
+
     public Func<Vector2, float, bool> FortressHitCheck;
 
     /// *******************************************************
@@ -25,9 +27,10 @@ public class GameManager : MonoBehaviour
         return FortressHitCheck(position, scale);
     }
 
-    public void AddExp(int addexp)
+    //public void AddExp(int addexp)
+    public void AddExp(ExperienceData.ExpType type)
     {
-        CurrentExpPoints = CurrentExpPoints + addexp;
+        CurrentExpPoints = CurrentExpPoints + ExpData.GetExpPoint(type);
         if (CurrentExpPoints < 0) CurrentExpPoints = 0;
     }
 

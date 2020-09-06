@@ -211,9 +211,9 @@ namespace BarrageShooting
         {
             GameManager.Instance.AddScore(BaseScore, add, power);
 
-            GameManager.Instance.AddExp(10);
-            if(IsUseReflect) GameManager.Instance.AddExp(10);
-            if(IsHitWall) GameManager.Instance.AddExp(10);
+            GameManager.Instance.AddExp(ExperienceData.ExpType.HIT);
+            if(IsUseReflect) GameManager.Instance.AddExp(ExperienceData.ExpType.REFLECT);
+            if(IsHitWall) GameManager.Instance.AddExp(ExperienceData.ExpType.WALL);
         }
 
 

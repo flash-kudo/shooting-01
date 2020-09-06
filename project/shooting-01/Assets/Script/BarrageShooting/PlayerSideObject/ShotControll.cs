@@ -95,7 +95,7 @@ namespace BarrageShooting
                 NohitCount++;
                 if(NohitCount >= 10)
                 {
-                    GameManager.Instance.AddExp(-10);
+                    GameManager.Instance.AddExp(ExperienceData.ExpType.MISS_SHOT);
                     NohitCount = 0;
                 }
             }
