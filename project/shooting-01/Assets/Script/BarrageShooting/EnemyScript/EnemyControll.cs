@@ -85,6 +85,9 @@ namespace BarrageShooting
         [SerializeField]
         public float BaseScore;
 
+        [SerializeField]
+        public bool IsBullet = false;
+
         /// *******************************************************
         /// <summary>初期処理</summary>
         /// *******************************************************
@@ -183,9 +186,19 @@ namespace BarrageShooting
             if (StageManager.Instance != null)
             {
                 StageManager.Instance.RemoveEnemyList(this);
+                GameObject expload;
 
-                GameObject expload = StageManager.Instance.InstantiateObject("ExploadSmall".ToLower());
+                if (IsBullet == true)
+                {
+                    expload = StageManager.Instance.InstantiateObject("ExploadBullet".ToLower());
+                }
+                else
+                {
+                    expload = StageManager.Instance.InstantiateObject("ExploadSmall".ToLower());
+                }
+
                 expload.transform.position = this.transform.position;
+                expload.transform.rotation = Quaternion.Euler(0,0,Random.Range(-45f,45f));
                 expload.SetActive(true);
             }
             base.RemoveField();

@@ -18,6 +18,7 @@ public class GameResourceList
         {"mega_meteor".ToLower(), "Enemy_04_big_innseki" },
 
         {"ExploadSmall".ToLower(), "ExplosionSmall" },
+        {"ExploadBullet".ToLower(), "BulletOffset" },
         {"HitMark".ToLower(), "HitMark" },
     };
 }

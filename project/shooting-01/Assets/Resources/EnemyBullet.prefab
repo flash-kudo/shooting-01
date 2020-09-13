@@ -67,6 +67,7 @@ MonoBehaviour:
   SpawnKey: 
   SpawnSide: 0
   BaseScore: 100
+  IsBullet: 1
 --- !u!1001 &1891493984677463425
 PrefabInstance:
   m_ObjectHideFlags: 0

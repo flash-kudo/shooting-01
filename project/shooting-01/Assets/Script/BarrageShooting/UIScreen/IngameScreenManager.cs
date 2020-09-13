@@ -23,6 +23,7 @@ namespace BarrageShooting
         public Button BombButton3;
         public Button BombButton2;
         public Button BombButton1;
+        public GameObject BombControll;
 
         private Vector3 StartPos;
         private bool EnableButton;
@@ -111,16 +112,9 @@ namespace BarrageShooting
 
         private void UpdateBombButton()
         {
-            if (StageManager.Instance.BombCount > 0)
+            if (IsActiveBombButton() == false)
             {
-                if (IsActiveBombButton() == false)
-                {
-                    BombButton5.gameObject.SetActive(true);
-                }
-            }
-            else
-            {
-                HideBombButton();
+                BombButton5.gameObject.SetActive(true);
             }
         }
 
@@ -144,8 +138,11 @@ namespace BarrageShooting
 
         public void OnBombButton5()
         {
-            HideBombButton();
-            BombButton4.gameObject.SetActive(true);
+            if (StageManager.Instance.BombCount > 0)
+            {
+                HideBombButton();
+                BombButton4.gameObject.SetActive(true);
+            }
         }
         public void OnBombButton4()
         {
@@ -165,6 +162,11 @@ namespace BarrageShooting
         public void OnBombButton1()
         {
             HideBombButton();
+            BombControll.SetActive(true);
+        }
+
+        public void OnBombButton0()
+        {
             StageManager.Instance.UseBomb();
         }
     }
