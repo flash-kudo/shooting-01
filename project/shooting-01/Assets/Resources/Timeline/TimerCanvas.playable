@@ -88,15 +88,15 @@ AnimationClip:
         time: 0
         value: 1
         inSlope: 0
-        outSlope: -0.06666667
+        outSlope: -0.125
         tangentMode: 65
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 15
+        time: 8
         value: 0
-        inSlope: -0.06666667
+        inSlope: -0.125
         outSlope: 0
         tangentMode: 5
         weightedMode: 0
@@ -130,7 +130,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 15
+    m_StopTime: 8
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -153,15 +153,15 @@ AnimationClip:
         time: 0
         value: 1
         inSlope: 0
-        outSlope: -0.06666667
+        outSlope: -0.125
         tangentMode: 65
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 15
+        time: 8
         value: 0
-        inSlope: -0.06666667
+        inSlope: -0.125
         outSlope: 0
         tangentMode: 5
         weightedMode: 0
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 15
+  m_Time: 8
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: 400d3f473aefbe44f8849dee8bb4b01e, type: 2}

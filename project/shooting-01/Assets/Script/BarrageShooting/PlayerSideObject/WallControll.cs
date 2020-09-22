@@ -7,6 +7,8 @@ namespace BarrageShooting
     public class WallControll : CharacterControll
     {
         public float ScoreAdd = 1000f;
+        public AudioSource ReflectAudio;
+
 
         /// *******************************************************
         /// <summary>更新処理</summary>
@@ -91,5 +93,21 @@ namespace BarrageShooting
             return new Vector2(campos.x, campos.y);
         }
 
+        /// *******************************************************
+        /// <summary>当たり対象があるか</summary>
+        /// <returns>true:ある/false:無い</returns>
+        /// *******************************************************
+        protected override bool HitCheck()
+        {
+            bool Hitcheck = base.HitCheck();
+
+            if(Hitcheck == true)
+            {
+                ReflectAudio.time = 0;
+                ReflectAudio.Play();
+            }
+
+            return Hitcheck;
+        }
     }
 }

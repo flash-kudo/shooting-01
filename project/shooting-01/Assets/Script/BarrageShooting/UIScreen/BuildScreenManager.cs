@@ -18,6 +18,10 @@ namespace BarrageShooting
         public GameObject WallSource;
         public GameObject MirrorSource;
 
+        public List<MirrorDirectionImage> MirrorButtons;
+
+        private int MirrorRotNumber = 0;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -34,7 +38,7 @@ namespace BarrageShooting
         {
             CloseScreen(true);
 
-            Object.Instantiate(MirrorSource);
+            Object.Instantiate(MirrorSource, new Vector3(), Quaternion.Euler(0, 0, MirrorRotNumber * 45f));
 
             StageManager.Instance.IsMovableMirror = true;
             MirrorScreen.SetActive(true);
@@ -57,6 +61,11 @@ namespace BarrageShooting
         public void OpenScreen()
         {
             StageManager.Instance.IsBuildScreen = true;
+
+            MirrorRotNumber = Mathf.FloorToInt((Random.value * 0.9999f) * 8.0f);
+            Debug.Log("MirrorRotNumber:" + MirrorRotNumber);
+
+            MirrorButtons.ForEach(mrr => mrr.SetRotation(MirrorRotNumber));
 
             if (IS_DEBUG)
             {

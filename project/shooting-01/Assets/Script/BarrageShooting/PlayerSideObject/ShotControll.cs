@@ -120,10 +120,18 @@ namespace BarrageShooting
                 Vector2 edge2 = Player.MirrirEdgeList[i + 1].transform.position;
 
                 Vector2 intersection;
-                bool is_hit = IsHitWall(move, edge1, edge2, out intersection);
+                bool is_hit = IsReflectWall(move, edge1, edge2, out intersection);
                 if (is_hit == true)
                 {
-                    Direction = HitDirection(Mathf.Atan2(edge1.x - edge2.x, edge1.y - edge2.y) * Mathf.Rad2Deg);
+                    float wall_dir = Mathf.Atan2(edge1.x - edge2.x, edge1.y - edge2.y) * Mathf.Rad2Deg;
+
+                    Direction = HitDirection(wall_dir);
+
+                    GameObject reflecteff = StageManager.Instance.InstantiateObject("Reflect".ToLower());
+                    reflecteff.transform.position = this.transform.position;
+                    reflecteff.transform.rotation = Quaternion.Euler(0, 0, wall_dir);
+                    reflecteff.SetActive(true);
+
                     move = Vector2.zero;
                     Position = intersection;
                     AttackPoint *= MirrorPower;
@@ -138,7 +146,7 @@ namespace BarrageShooting
         /// *******************************************************
         /// <summary>ミラー接触チェック</summary>
         /// *******************************************************
-        private bool IsHitWall(Vector2 move, Vector2 edge1, Vector2 edge2, out Vector2 intersection)
+        private bool IsReflectWall(Vector2 move, Vector2 edge1, Vector2 edge2, out Vector2 intersection)
         {
             intersection = Vector2.zero;
             Vector2 next = Position + move;

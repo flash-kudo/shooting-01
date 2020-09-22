@@ -226,12 +226,13 @@ namespace BarrageShooting
             }
         }
 
-#if false
         protected override void RemoveField()
         {
-            Debug.Log("OnRemove");
+            base.RemoveField();
+            GameObject expload = StageManager.Instance.InstantiateObject("ExploadBig".ToLower());
+            expload.transform.position = this.transform.position;
+            expload.SetActive(true);
         }
-#endif
 
         /// *******************************************************
         /// <summary>スコア追加</summary>

@@ -42,6 +42,10 @@ namespace BarrageShooting
         public int HitmarkTime = 0;
         public SpriteRenderer EarthRenderer;
 
+        public GameObject HitEffect;
+        public AudioSource snd_Damage1;
+        public AudioSource snd_Damage2;
+
         private static EarthControll _Instance;
         /// *******************************************************
         /// <summary>Singleton参照</summary>
@@ -99,10 +103,18 @@ namespace BarrageShooting
         /// *******************************************************
         protected override bool HitCheck()
         {
+            HitEffect.SetActive(false);
+
             if (HitTarget == null) return false;
             if (HitTarget.Count == 0) return false;
 
             HitmarkTime = HIT_SETTIME;
+
+            HitEffect.SetActive(true);
+            snd_Damage1.time = 0;
+            snd_Damage1.Play();
+            snd_Damage2.time = 0;
+            snd_Damage2.Play();
 
             HitTarget.ForEach(trg => {
                 GameManager.Instance.AddExp(ExperienceData.ExpType.EARTH_DMG);

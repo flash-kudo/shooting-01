@@ -8,6 +8,7 @@ public class GameResourceList
         {"bullet1".ToLower(), "EnemyBullet"},
         {"bullet2".ToLower(), "EnemyBullet2"},
         {"muzzle".ToLower(), "BulletMuzzle"},
+        {"muzzle2".ToLower(), "BulletMuzzle2"},
 
         {"meteor01".ToLower(), "Enemy_00_innseki_01"},
         {"meteor02".ToLower(), "Enemy_00_innseki_02"},
@@ -18,8 +19,11 @@ public class GameResourceList
         {"mega_meteor".ToLower(), "Enemy_04_big_innseki" },
 
         {"ExploadSmall".ToLower(), "ExplosionSmall" },
+        {"ExploadBig".ToLower(), "ExplosionBig" },
         {"ExploadBullet".ToLower(), "BulletOffset" },
         {"HitMark".ToLower(), "HitMark" },
+        {"Reflect".ToLower(), "ShotRefrect" },
+        
     };
 }
 

@@ -27,28 +27,42 @@ public class GameManager : MonoBehaviour
         return FortressHitCheck(position, scale);
     }
 
-    //public void AddExp(int addexp)
+    /// *******************************************************
+    /// <summary>経験値追加</summary>
+    /// *******************************************************
     public void AddExp(ExperienceData.ExpType type)
     {
         CurrentExpPoints = CurrentExpPoints + ExpData.GetExpPoint(type);
         if (CurrentExpPoints < 0) CurrentExpPoints = 0;
     }
 
+    /// *******************************************************
+    /// <summary>レベル取得</summary>
+    /// *******************************************************
     public int LevelNumber()
     {
         return (CurrentExpPoints / EXP2RANK_COUNT) + MinPlayerLevel;
     }
 
+    /// *******************************************************
+    /// <summary>レベル文字列取得</summary>
+    /// *******************************************************
     public string LevelString()
     {
         return RankingManager.GetLevelString(LevelNumber());
     }
+    /// *******************************************************
+    /// <summary>経験値取得</summary>
+    /// *******************************************************
 
     public int ExpNumber()
     {
         return (CurrentExpPoints % EXP2RANK_COUNT);
     }
 
+    /// *******************************************************
+    /// <summary>残り経験値割合</summary>
+    /// *******************************************************
     public float ExpRate()
     {
         return ((float)ExpNumber() / (float)EXP2RANK_COUNT) * 100.0f;

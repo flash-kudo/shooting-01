@@ -9,6 +9,20 @@ namespace BarrageShooting
         public GameObject MirrorEdge1;
         public GameObject MirrorEdge2;
 
+        public float ColliderScale = 0.5f;
+
+        protected Vector2 Position
+        {
+            get
+            {
+                return transform.localPosition;
+            }
+            set
+            {
+                transform.localPosition = value;
+            }
+        }
+
         // Start is called before the first frame update
         void Start()
         {
@@ -36,33 +50,32 @@ namespace BarrageShooting
             if (StageManager.Instance.IsMovableMirror == true)
             {
                 MOUSE_STATE state = GetMouseState();
+                Vector2 position;
 
                 switch (state)
                 {
                     case MOUSE_STATE.DOWN:
                         if (Draggable == null)
                         {
-                            float angle = GetMouseAngle();
-                            float dst = angle - SelfAngle;
-
-                            if ((dst > -22.5f) && (dst < 22.5f))
+                            position = GetMousePosition();
+                            if ((ColliderScale - Vector2.Distance(position, Position)) > 0f)
                             {
                                 Draggable = this;
-                                SelfAngle = angle;
+                                Position = position;
                             }
                         }
                         break;
                     case MOUSE_STATE.UP:
                         if (Draggable == this)
                         {
-                            SelfAngle = GetMouseAngle();
+                            Position = GetMousePosition();
                             Draggable = null;
                         }
                         break;
                     case MOUSE_STATE.DRAG:
                         if (Draggable == this)
                         {
-                            SelfAngle = GetMouseAngle();
+                            Position = GetMousePosition();
                         }
                         break;
                 }
@@ -72,6 +85,7 @@ namespace BarrageShooting
                 LastMouseDown = false;
                 Draggable = null;
             }
+
         }
 
         private enum MOUSE_STATE
@@ -104,28 +118,10 @@ namespace BarrageShooting
             return state;
         }
 
-        private float GetMouseAngle()
+        private Vector2 GetMousePosition()
         {
             Vector3 campos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 direction = new Vector2(transform.position.x - campos.x, campos.y - transform.position.y);
-
-            float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg + 180;
-            if (angle < 0) angle -= 360;
-
-            return angle;
-        }
-        private float SelfAngle
-        {
-            get
-            {
-                float angle = transform.rotation.eulerAngles.z;
-                if (angle < 0) angle -= 360;
-                return angle;
-            }
-            set
-            {
-                transform.rotation = Quaternion.Euler(0, 0, value);
-            }
+            return new Vector2(campos.x, campos.y);
         }
 
     }

@@ -14,10 +14,15 @@ public class StaticScreenManager : MonoBehaviour
     public Text WaveMessage1;
     public Text WaveMessage2;
 
+    public OneshotEffect LvupEffect;
+    private int LastLevel;
+
     // Start is called before the first frame update
     void Start()
     {
         HideMessage();
+
+        LastLevel = GameManager.Instance.LevelNumber();
     }
 
     private void Update()
@@ -27,6 +32,13 @@ public class StaticScreenManager : MonoBehaviour
 
         LevelNumber.text = GameManager.Instance.LevelString();
         ExpNumber.value = GameManager.Instance.ExpRate();
+
+        int level = GameManager.Instance.LevelNumber();
+        if (LastLevel < level)
+        {
+            LvupEffect.ShowEffect();
+        }
+        LastLevel = level;
     }
 
     public void ShowMessage(string msg)

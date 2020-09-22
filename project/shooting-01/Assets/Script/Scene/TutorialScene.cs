@@ -34,6 +34,11 @@ public class TutorialScene : MonoBehaviour
         SceneManager.LoadScene("TitleScene");
     }
 
+    public void OnStartButton()
+    {
+        SceneManager.LoadScene("game-main");
+    }
+
     private int Page
     {
         get

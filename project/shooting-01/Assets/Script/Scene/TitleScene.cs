@@ -13,7 +13,8 @@ public class TitleScene : MonoBehaviour
 
     public void OnStartButton()
     {
-        SceneManager.LoadScene("game-main");
+        //SceneManager.LoadScene("game-main");
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void OnTutorialButton()
