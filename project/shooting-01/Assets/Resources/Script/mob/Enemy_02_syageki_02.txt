@@ -4,6 +4,21 @@
 
 <right pos_x=2 pos_y=5 dir=180>				
 
+<right stop pos_x=2 pos_y=3.8 >				
+<left stop pos_x=-2 pos_y=3.8 >	
+
+
+
+<angle    key=right stop time=1000 trg_ang=0 max_rot=0>
+<shot     key=right stop path=muzzle shot_time=4 interval=180>
+<shot     key=right stop path=bullet2 shot_time=4 interval=180>
+
+<angle    key=left stop time=1000 trg_ang=0 max_rot=0>
+<shot     key=left stop path=muzzle shot_time=4 interval=180>
+<shot     key=left stop path=bullet2 shot_time=4 interval=180>
+
+
+
 
 
 {move}			//　行単為と時間で起動とショットタイミング制御している？　//
@@ -33,4 +48,11 @@
 //　増えなかった　//
 
 //　trg_angは　90は→　180は↓　270は←　0が↑ということ　//
+
+
+
+
+
+
+
 

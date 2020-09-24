@@ -1,11 +1,18 @@
 {wave_list}
 			// 下にあるwave_en22 が　wave;01　である　と　上で示しているのか //
 			// wave;01　は画面に出るメッセ　上から順に読まれている様子 //
-<wave target="wave_inseki" msg="wave;01">
-<wave target="wave_charge_lv01" msg="wave;02">
-<wave target="wave_shooter02_LV01" msg="wave;03">
-<wave target="wave_shooter01_LV01" msg="wave;04">
-<wave target="fortress01" msg="wave;05">
+			
+			
+			
+
+
+
+
+<wave target="wave_inseki_sf" msg="wave;01">
+<wave target="wave_charge_sf" msg="wave;02">
+<wave target="wave_shooter01_sf" msg="wave;03">
+<wave target="wave_shooter02_sf" msg="wave;04">
+<wave target="wave_fortress_sf" msg="wave;05">
 
 
 <wave target="wave_en1_2" msg="wave;06">
@@ -32,8 +39,86 @@
 //　ウェーブリスト　//
 
 
+{wave_inseki_sf}
+<spawn source=meteor01 key=pos43>
+<interval delay=60>
+<spawn source=meteor01 key=pos54>
+<interval delay=60>
+<spawn source=meteor01 key=pos32>
+<interval delay=60>
+<spawn source=meteor01 key=pos23>
+<interval delay=60>
+<spawn source=meteor01 key=pos63>
 
 
+
+
+
+{wave_charge_sf}
+
+<spawn source=charge01 key=pt1_1>
+<interval delay=20>
+<spawn source=charge01 key=pt1_1>
+<interval delay=20>
+<spawn source=charge01 key=pt1_1>
+
+<interval delay=80>
+<spawn source=charge01 key=pt5_1>
+<interval delay=20>
+<spawn source=charge01 key=pt5_1>
+<interval delay=20>
+<spawn source=charge01 key=pt5_1>
+
+<interval delay=60>
+<spawn source=charge01 key=pt3_2>
+<interval delay=20>
+<spawn source=charge01 key=pt3_2>
+<interval delay=20>
+<spawn source=charge01 key=pt3_2>
+
+<interval delay=60>
+<spawn source=charge01 key=pt6_3>
+<interval delay=20>
+<spawn source=charge01 key=pt6_3>
+<interval delay=20>
+<spawn source=charge01 key=pt6_3>
+
+
+
+
+
+{wave_shooter01_sf}
+
+
+
+
+
+{wave_shooter02_sf}
+
+
+
+
+
+
+
+
+{wave_fortress_sf}
+<spawn source=fortress spd=1 dir=0>
+<interval delay=120>
+<spawn source=shooter02 key=right stop>
+<spawn source=shooter02 key=left stop>
+
+
+
+
+
+
+
+
+
+
+
+////////////////////
 
 {wave_hugeinseki}
 <spawn source=mega_meteor key=pos2>
