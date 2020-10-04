@@ -4,18 +4,9 @@
 
 <right pos_x=2 pos_y=5 dir=180>				
 
-<right stop pos_x=2 pos_y=3.8 >				
-<left stop pos_x=-2 pos_y=3.8 >	
+<right_stop pos_x=2 pos_y=3.8 spd=0>				
+<left_stop pos_x=-2 pos_y=3.8 spd=0>	
 
-
-
-<angle    key=right stop time=1000 trg_ang=0 max_rot=0>
-<shot     key=right stop path=muzzle shot_time=4 interval=180>
-<shot     key=right stop path=bullet2 shot_time=4 interval=180>
-
-<angle    key=left stop time=1000 trg_ang=0 max_rot=0>
-<shot     key=left stop path=muzzle shot_time=4 interval=180>
-<shot     key=left stop path=bullet2 shot_time=4 interval=180>
 
 
 
@@ -49,6 +40,17 @@
 
 //　trg_angは　90は→　180は↓　270は←　0が↑ということ　//
 
+
+
+<angle    key=right_stop time=60 trg_ang=0 max_rot=0>
+<shot     key=right_stop path=muzzle shot_time=4 interval=180>
+<shot     key=right_stop path=bullet2 shot_time=4 interval=180>
+<angle    key=right_stop time=660>
+
+<angle    key=left_stop spd=0 time=60 trg_ang=0 max_rot=0>
+<shot     key=left_stop path=muzzle shot_time=4 interval=180>
+<shot     key=left_stop path=bullet2 shot_time=4 interval=180>
+<angle    key=left_stop time=660>
 
 
 

@@ -63,7 +63,7 @@ namespace BarrageShooting
             StageManager.Instance.IsBuildScreen = true;
 
             MirrorRotNumber = Mathf.FloorToInt((Random.value * 0.9999f) * 8.0f);
-            Debug.Log("MirrorRotNumber:" + MirrorRotNumber);
+            //Debug.Log("MirrorRotNumber:" + MirrorRotNumber);
 
             MirrorButtons.ForEach(mrr => mrr.SetRotation(MirrorRotNumber));
 

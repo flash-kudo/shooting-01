@@ -63,6 +63,8 @@ namespace BarrageShooting.StageScript
 
                 while (true)
                 {
+                    if (Scripts == null) return false;
+                    if (Scripts.ScriptLine == null) return false;
                     if (LineIndex >= Scripts.ScriptLine.Count) return false;
 
                     ScriptLine line = Scripts.ScriptLine[LineIndex];

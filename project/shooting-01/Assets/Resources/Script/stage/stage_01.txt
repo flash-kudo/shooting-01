@@ -105,8 +105,10 @@
 {wave_fortress_sf}
 <spawn source=fortress spd=1 dir=0>
 <interval delay=120>
-<spawn source=shooter02 key=right stop>
-<spawn source=shooter02 key=left stop>
+<spawn source=shooter01 key=left_horizontal>
+<spawn source=shooter01 key=right_horizontal>
+<spawn source=shooter02 key=right_stop>
+<spawn source=shooter02 key=left_stop>
 
 
 

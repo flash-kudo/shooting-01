@@ -4,6 +4,9 @@
 
 <right pos_x=2 pos_y=5 dir=180>
 
+<left_horizontal pos_x=-4 pos_y=3 dir=90>
+<right_horizontal pos_x=4 pos_y=3 dir=270>
+
 {move}
 
 <angle    key=left time=60 dir=180 >
@@ -26,3 +29,14 @@
 <angle    key=right time=230 trg_ang=90 max_rot=2>
 <angle    key=right time=10 trg_ang=0 max_rot=2>
 <angle    key=right time=5000 trg_ang=270 max_rot=2>
+
+
+<shot     key=left_horizontal path=bullet1 shot_time=30 interval=40 st_count=[5,0.01] ed_count=[5,0.01] st_width=80 ed_width=80 angle_base=absolute>
+<position key=left_horizontal trg_pos_x=3 trg_pos_y=3 max_rot=[180,0.01]>
+<shot     key=left_horizontal path=bullet1 shot_time=30 interval=40 st_count=[5,0.01] ed_count=[5,0.01] st_width=80 ed_width=80 angle_base=absolute>
+<position key=left_horizontal trg_pos_x=-3 trg_pos_y=3 max_rot=[180,0.01]>
+
+<shot     key=right_horizontal path=bullet1 shot_time=30 interval=40 st_count=[5,0.01] ed_count=[5,0.01] st_width=80 ed_width=80 angle_base=absolute>
+<position key=right_horizontal trg_pos_x=-3 trg_pos_y=3 max_rot=[180,0.01]>
+<shot     key=right_horizontal path=bullet1 shot_time=30 interval=40 st_count=[5,0.01] ed_count=[5,0.01] st_width=80 ed_width=80 angle_base=absolute>
+<position key=right_horizontal trg_pos_x=3 trg_pos_y=3 max_rot=[180,0.01]>
