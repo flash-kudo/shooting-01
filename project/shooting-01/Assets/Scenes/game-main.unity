@@ -3644,7 +3644,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 421355749}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.5, z: 0}
+  m_LocalPosition: {x: 0, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1118019843}
@@ -7045,6 +7045,7 @@ MonoBehaviour:
   CurrentExpPoints: 0
   CurrentScore: 0
   ExpData: {fileID: 11400000, guid: ac6c4aa19bf66654781be93f4628fb65, type: 2}
+  IsBombRunning: 0
 --- !u!114 &888761387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7071,7 +7072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StageScript: {fileID: 4900000, guid: 1313f31882d932941a36c6da1c0f085d, type: 3}
   WaveNumber: 0
-  InitBombCount: 5
+  InitBombCount: 0
   BombCount: 0
   BuildScreen: {fileID: 1451252566}
   IsBuildScreen: 0

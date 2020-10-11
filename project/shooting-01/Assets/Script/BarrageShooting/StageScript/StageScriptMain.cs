@@ -112,6 +112,7 @@ namespace BarrageShooting.StageScript
         public void OnUpdate()
         {
             if (IsProcStage == false) return;
+            if (Manager.OnBombRunning == true) return;
 
             Manager.SetWaveNumber(StepIndex / STEP_LNG);
 

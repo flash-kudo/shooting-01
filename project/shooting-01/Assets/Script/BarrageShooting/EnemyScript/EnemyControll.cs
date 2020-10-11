@@ -112,9 +112,12 @@ namespace BarrageShooting
         /// *******************************************************
         protected override void OnUpdate()
         {
+            if (StageManager.Instance.OnBombRunning == true) return;
+
             SetNextAngle();
             base.OnUpdate();
             if(ScriptMain != null) ScriptMain.OnUpdate();
+
         }
 
         /// *******************************************************

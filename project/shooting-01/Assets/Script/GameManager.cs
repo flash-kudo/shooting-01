@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     public Func<Vector2, float, bool> FortressHitCheck;
 
+    public bool IsBombRunning = false;
+
     /// *******************************************************
     /// <summary>要塞ヒットチェック</summary>
     /// *******************************************************

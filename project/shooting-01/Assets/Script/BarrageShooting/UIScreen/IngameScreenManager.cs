@@ -163,6 +163,7 @@ namespace BarrageShooting
         {
             HideBombButton();
             BombControll.SetActive(true);
+            StageManager.Instance.StartBomb();
         }
 
         public void OnBombButton0()

@@ -47,8 +47,8 @@ namespace BarrageShooting
         /// *******************************************************
         protected void Update()
         {
-            if (StageManager.Instance.IsMovableMirror == true)
-            {
+            //if (StageManager.Instance.IsMovableMirror == true)
+            //{
                 MOUSE_STATE state = GetMouseState();
                 Vector2 position;
 
@@ -79,12 +79,12 @@ namespace BarrageShooting
                         }
                         break;
                 }
-            }
-            else
-            {
-                LastMouseDown = false;
-                Draggable = null;
-            }
+            //}
+            //else
+            //{
+            //    LastMouseDown = false;
+            //    Draggable = null;
+            //}
 
         }
 

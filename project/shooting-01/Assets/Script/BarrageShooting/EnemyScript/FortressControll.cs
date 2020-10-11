@@ -203,6 +203,8 @@ namespace BarrageShooting
         /// *******************************************************
         protected override void UpodatePosition(Vector2 move)
         {
+            if (StageManager.Instance.OnBombRunning == true) return;
+
             Position = Position + move;
 
             DirectionSetter.Rotation = FortressDirection;
@@ -224,6 +226,19 @@ namespace BarrageShooting
                     EarthControll.Instance.AddDamage(EarthAttack);
                 }
             }
+        }
+
+        /// *******************************************************
+        /// <summary>ボム処理</summary>
+        /// *******************************************************
+        public void Bomb()
+        {
+            base.RemoveField();
+            GameObject expload = StageManager.Instance.InstantiateObject("ExploadBig".ToLower());
+            expload.transform.position = this.transform.position;
+            expload.SetActive(true);
+
+            AddScore(5000f, 1.0f);
         }
 
         protected override void RemoveField()

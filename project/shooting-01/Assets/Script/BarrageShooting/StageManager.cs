@@ -16,6 +16,7 @@ namespace BarrageShooting
         public int WaveNumber;
         public int InitBombCount;
         public int BombCount;
+        public bool OnBombRunning { get; private set; }
 
         public StageScriptMain StageProc;
         private List<EnemyControll> EnemyList;
@@ -60,7 +61,8 @@ namespace BarrageShooting
         {
             IsEndGame = false;
             StageProc = new StageScriptMain(this);
-            if(StageScript != null)
+            OnBombRunning = false;
+            if (StageScript != null)
             {
                 StageProc.ReadScriptText(StageScript.text);
                 BombCount = InitBombCount;
@@ -193,6 +195,13 @@ namespace BarrageShooting
                 return EnemyList.Count;
             }
         }
+        /// *******************************************************
+        /// <summary>Bomb使用アニメーション中</summary>
+        /// *******************************************************
+        public void StartBomb()
+        {
+            OnBombRunning = true;
+        }
 
         /// *******************************************************
         /// <summary>Bomb使う</summary>
@@ -205,8 +214,11 @@ namespace BarrageShooting
             EnemyList.ForEach(enemy => { enemy.Bomb(); });
             EnemyList.Clear();
 
+            if (FortressControll.Instance != null) FortressControll.Instance.Bomb();
+
             BombCount--;
             IngameScreen.UpdateIngameScreen();
+            OnBombRunning = false; ;
         }
 
         /// *******************************************************
