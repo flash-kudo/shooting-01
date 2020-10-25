@@ -47,6 +47,8 @@ namespace BarrageShooting
         public float ReflectPower = 2.0f;
         public float ReflectScorePower = 1.0f;
 
+        public bool IsMirrorShot = false;
+
         public PlayerControll Player;
 
         /// *******************************************************
@@ -114,6 +116,8 @@ namespace BarrageShooting
         /// *******************************************************
         private Vector2 WallCheck(Vector2 move)
         {
+            if (IsMirrorShot == true) return move;
+
             for (int i = 0; i < Player.MirrirEdgeList.Count; i += 2)
             {
                 Vector2 edge1 = Player.MirrirEdgeList[i + 0].transform.position;
@@ -127,10 +131,10 @@ namespace BarrageShooting
 
                     Direction = HitDirection(wall_dir);
 
-                    GameObject reflecteff = StageManager.Instance.InstantiateObject("Reflect".ToLower());
-                    reflecteff.transform.position = this.transform.position;
-                    reflecteff.transform.rotation = Quaternion.Euler(0, 0, wall_dir);
-                    reflecteff.SetActive(true);
+                    //GameObject reflecteff = StageManager.Instance.InstantiateObject("Reflect".ToLower());
+                    //reflecteff.transform.position = this.transform.position;
+                    //reflecteff.transform.rotation = Quaternion.Euler(0, 0, wall_dir);
+                    //reflecteff.SetActive(true);
 
                     move = Vector2.zero;
                     Position = intersection;

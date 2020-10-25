@@ -28,6 +28,7 @@ namespace BarrageShooting
         {
             if (PlayerControll.Instance != null)
             {
+                PlayerControll.Instance.MirrirList.Add(this);
                 PlayerControll.Instance.MirrirEdgeList.Add(MirrorEdge1);
                 PlayerControll.Instance.MirrirEdgeList.Add(MirrorEdge2);
             }
@@ -37,6 +38,7 @@ namespace BarrageShooting
         {
             if (PlayerControll.Instance != null)
             {
+                PlayerControll.Instance.MirrirList.Remove(this);
                 PlayerControll.Instance.MirrirEdgeList.Remove(MirrorEdge1);
                 PlayerControll.Instance.MirrirEdgeList.Remove(MirrorEdge2);
             }
@@ -122,6 +124,18 @@ namespace BarrageShooting
         {
             Vector3 campos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             return new Vector2(campos.x, campos.y);
+        }
+
+        public void MirrorShot()
+        {
+            GameObject reflecteff = StageManager.Instance.InstantiateObject("Reflect".ToLower());
+            ShotControll self_ctrl = reflecteff.GetComponent<ShotControll>();
+            self_ctrl.Position = this.transform.position;
+            self_ctrl.Direction = -this.transform.eulerAngles.z;
+            self_ctrl.Player = PlayerControll.Instance;
+            self_ctrl.ShotSpeed = PlayerControll.Instance.ShotSpeed;
+            reflecteff.SetActive(true);
+
         }
 
     }

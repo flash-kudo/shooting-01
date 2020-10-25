@@ -148,6 +148,7 @@ namespace BarrageShooting.StageScript
                     if (wave_name.CompareTo("build") == 0)
                     {
                         if (StageManager.Instance != null) StageManager.Instance.OpenBuildScreen();
+                        StepIndex++;
                     }
                     else
                     {

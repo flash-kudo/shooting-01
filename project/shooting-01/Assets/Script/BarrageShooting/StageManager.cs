@@ -7,6 +7,7 @@ namespace BarrageShooting
 {
     public class StageManager : MonoBehaviour
     {
+        public const int BOMB_USE_COUNT = 3;
 
         private Dictionary<string, GameObject> ResourceList;
 
@@ -29,7 +30,7 @@ namespace BarrageShooting
         public IngameScreenManager IngameScreen;
         public StaticScreenManager StaticScreen;
 
-        private const float ENDGAME_WAIT = 3.0f;
+        private const float ENDGAME_WAIT = 5.0f;
         private bool IsEndGame;
         private float EndGamePast;
 
@@ -208,7 +209,7 @@ namespace BarrageShooting
         /// *******************************************************
         public void UseBomb()
         {
-            if (BombCount <= 0) return;
+            if (BombCount < BOMB_USE_COUNT) return;
             if (EnemyList == null) return;
 
             EnemyList.ForEach(enemy => { enemy.Bomb(); });
@@ -216,7 +217,7 @@ namespace BarrageShooting
 
             if (FortressControll.Instance != null) FortressControll.Instance.Bomb();
 
-            BombCount--;
+            BombCount -= BOMB_USE_COUNT;
             IngameScreen.UpdateIngameScreen();
             OnBombRunning = false; ;
         }

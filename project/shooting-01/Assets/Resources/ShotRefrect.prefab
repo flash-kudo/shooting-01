@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3712405680059933136}
-  - component: {fileID: 6635560703438696460}
+  - component: {fileID: -2627210817946630762}
   m_Layer: 0
   m_Name: ShotRefrect
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6635560703438696460
+--- !u!114 &-2627210817946630762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,10 +41,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 3712405680059933139}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 288a276e46cbe9c4591fc1a449627188, type: 3}
+  m_Script: {fileID: 11500000, guid: 493ba105bef43984c9255816748cb68b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Director: {fileID: 310690849778325506}
+  Position: {x: 0, y: 0}
+  Direction: 0
+  MoveSpeed: 0.15
+  MaxSpeed: 1
+  RotateSpeed: 0
+  Accelerate: 0
+  ShiftSpeed: 0
+  ShiftAngle: 0
+  ShiftDamp: 0
+  ColliderScale: 0.1
+  ColliderPosition: {x: 0, y: 0}
+  ToughPoint: 1
+  AttackPoint: 150
+  CharType: 1
+  ShotSpeed: 15
+  MirrorPower: 2
+  ReflectPower: 2
+  ReflectScorePower: 1
+  IsMirrorShot: 1
+  Player: {fileID: 0}
 --- !u!1001 &3712405678370812967
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -132,12 +151,6 @@ PrefabInstance:
 --- !u!4 &4870123708969169600 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8075863420680783591, guid: eb30170156f50c24aa689415d0d7864e,
-    type: 3}
-  m_PrefabInstance: {fileID: 3712405678370812967}
-  m_PrefabAsset: {fileID: 0}
---- !u!320 &310690849778325506 stripped
-PlayableDirector:
-  m_CorrespondingSourceObject: {fileID: 4020261896709942309, guid: eb30170156f50c24aa689415d0d7864e,
     type: 3}
   m_PrefabInstance: {fileID: 3712405678370812967}
   m_PrefabAsset: {fileID: 0}

@@ -94,6 +94,7 @@ namespace BarrageShooting
                     }
                     break;
                 case 2:
+                    CheckMirrorHit();
                     RemoveField();
                     break;
             }
@@ -109,6 +110,21 @@ namespace BarrageShooting
             if (HitTarget == null) return false;
             HitTarget.Clear();
             return false;
+        }
+
+        private void CheckMirrorHit()
+        {
+            if (PlayerControll.Instance == null) return;
+            if (PlayerControll.Instance.MirrirList == null) return;
+            foreach(MirrorControll mirror in PlayerControll.Instance.MirrirList)
+            {
+                float distance = Vector3.Distance(mirror.transform.position, Position);
+                if(distance < (ColliderMax + mirror.ColliderScale))
+                {
+                    mirror.MirrorShot();
+                }
+            }
+            
         }
     }
 }

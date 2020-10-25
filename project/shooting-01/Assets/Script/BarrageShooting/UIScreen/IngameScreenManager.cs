@@ -19,10 +19,15 @@ namespace BarrageShooting
         public Button GranadeButton;
 
         public Button BombButton5;
+        public Slider BombButton5Slider;
         public Button BombButton4;
+        public Slider BombButton4Slider;
         public Button BombButton3;
+        public Slider BombButton3Slider;
         public Button BombButton2;
+        public Slider BombButton2Slider;
         public Button BombButton1;
+        public Slider BombButton1Slider;
         public GameObject BombControll;
 
         private Vector3 StartPos;
@@ -50,7 +55,6 @@ namespace BarrageShooting
         /// *******************************************************
         void Update()
         {
-            
             GodPhase phase = GodTouch.GetPhase();
             Vector3 pos = Camera.main.ScreenToWorldPoint(GodTouch.GetPosition());
             pos.z = 0;
@@ -90,6 +94,8 @@ namespace BarrageShooting
                     Position = Center;
                     break;
             }
+
+            UpdateBombCount();
         }
 
         public void UpdateIngameScreen()
@@ -125,6 +131,18 @@ namespace BarrageShooting
             BombButton3.gameObject.SetActive(false);
             BombButton2.gameObject.SetActive(false);
             BombButton1.gameObject.SetActive(false);
+
+            BombButton5Slider.minValue = 0;
+            BombButton4Slider.minValue = 0;
+            BombButton3Slider.minValue = 0;
+            BombButton2Slider.minValue = 0;
+            BombButton1Slider.minValue = 0;
+
+            BombButton5Slider.maxValue = StageManager.BOMB_USE_COUNT;
+            BombButton4Slider.maxValue = StageManager.BOMB_USE_COUNT;
+            BombButton3Slider.maxValue = StageManager.BOMB_USE_COUNT;
+            BombButton2Slider.maxValue = StageManager.BOMB_USE_COUNT;
+            BombButton1Slider.maxValue = StageManager.BOMB_USE_COUNT;
         }
         private bool IsActiveBombButton()
         {
@@ -135,10 +153,22 @@ namespace BarrageShooting
             if (BombButton1.gameObject.activeSelf == true) return true;
             return false;
         }
+        private void UpdateBombCount()
+        {
+            Slider current = null;
+            if (BombButton5.gameObject.activeSelf == true) current = BombButton5Slider;
+            if (BombButton4.gameObject.activeSelf == true) current = BombButton4Slider;
+            if (BombButton3.gameObject.activeSelf == true) current = BombButton3Slider;
+            if (BombButton2.gameObject.activeSelf == true) current = BombButton2Slider;
+            if (BombButton1.gameObject.activeSelf == true) current = BombButton1Slider;
+            if (current == null) return;
+            int count = Mathf.Min(StageManager.Instance.BombCount, StageManager.BOMB_USE_COUNT);
+            current.value = count;
+        }
 
         public void OnBombButton5()
         {
-            if (StageManager.Instance.BombCount > 0)
+            if (StageManager.Instance.BombCount >= StageManager.BOMB_USE_COUNT)
             {
                 HideBombButton();
                 BombButton4.gameObject.SetActive(true);

@@ -43,8 +43,17 @@ namespace BarrageShooting
         public SpriteRenderer EarthRenderer;
 
         public GameObject HitEffect;
+        public Renderer HitRenderer;
+        public Material HitMaterial;
+
+        private int _BaseColor;
+
         public AudioSource snd_Damage1;
         public AudioSource snd_Damage2;
+
+        private const float DESTROYANIM_WAIT = 2.0f;
+        private bool IsDestroyed = false;
+        private float DestroyDuration = 0;
 
         private static EarthControll _Instance;
         /// *******************************************************
@@ -65,6 +74,10 @@ namespace BarrageShooting
         void Awake()
         {
             _Instance = this;
+            IsDestroyed = false;
+
+            HitMaterial = HitRenderer.sharedMaterial;
+            _BaseColor = Shader.PropertyToID("_BaseColor");
         }
 
         /// *******************************************************
@@ -95,6 +108,17 @@ namespace BarrageShooting
                 EarthRenderer.color = Color.white;
             }
             base.OnUpdate();
+
+            if(IsDestroyed == true)
+            {
+                DestroyDuration += Time.deltaTime;
+                if(DestroyDuration > DESTROYANIM_WAIT)
+                {
+                    DestroyDuration = DESTROYANIM_WAIT;
+                    Destroy(gameObject);
+                }
+                HitMaterial.SetColor(_BaseColor, new Color(1, 1, 1, DestroyDuration / DESTROYANIM_WAIT));
+            }
         }
 
         /// *******************************************************
@@ -103,6 +127,7 @@ namespace BarrageShooting
         /// *******************************************************
         protected override bool HitCheck()
         {
+            if (IsDestroyed == true) return false;
             HitEffect.SetActive(false);
 
             if (HitTarget == null) return false;
@@ -111,6 +136,7 @@ namespace BarrageShooting
             HitmarkTime = HIT_SETTIME;
 
             HitEffect.SetActive(true);
+            HitMaterial.SetColor(_BaseColor, Color.white);
             snd_Damage1.time = 0;
             snd_Damage1.Play();
             snd_Damage2.time = 0;
@@ -146,7 +172,9 @@ namespace BarrageShooting
         {
             // gameover
             StageManager.Instance.OnEndGame();
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            IsDestroyed = true;
+            DestroyDuration = 0;
         }
 
 

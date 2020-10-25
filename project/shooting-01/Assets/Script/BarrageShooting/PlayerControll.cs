@@ -47,6 +47,7 @@ namespace BarrageShooting
         private float Distance = 0;
         private float Direction = 0;
         public List<GameObject> MirrirEdgeList;
+        public List<MirrorControll> MirrirList;
 
         public Transform ArmLeftPos;
         public Transform ArmRightPos;
