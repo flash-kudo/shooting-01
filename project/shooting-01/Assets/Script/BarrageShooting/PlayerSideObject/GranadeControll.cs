@@ -49,7 +49,7 @@ namespace BarrageShooting
         [Range(0.01f, 2)]
         public float BlastDuration = 1f;
 
-        public float ColliderSpeed = 0.01f;
+        public float ColliderSpeed = 0.2f;
         public float ColliderMax = 0.5f;
 
         /// *******************************************************
@@ -85,6 +85,12 @@ namespace BarrageShooting
                     }
                     break;
                 case 1:
+                    CheckMirrorHit();
+                    Step++;
+                    ColliderScale = Mathf.Min(ColliderScale + ColliderSpeed, ColliderMax);
+                    EntryHitCheck();
+                    break;
+                case 2:
                     ColliderScale = Mathf.Min(ColliderScale + ColliderSpeed, ColliderMax);
                     EntryHitCheck();
                     if (StepPast > BlastDuration)
@@ -93,8 +99,7 @@ namespace BarrageShooting
                         Step++;
                     }
                     break;
-                case 2:
-                    CheckMirrorHit();
+                case 3:
                     RemoveField();
                     break;
             }
