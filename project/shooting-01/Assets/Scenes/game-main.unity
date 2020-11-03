@@ -3688,6 +3688,7 @@ MonoBehaviour:
   MirrorCount: 0
   Target: {x: 0, y: 0, z: 0}
   MirrirEdgeList: []
+  MirrirList: []
   ArmLeftPos: {fileID: 293537383}
   ArmRightPos: {fileID: 1173469836}
   CannonPos: {fileID: 988727468}

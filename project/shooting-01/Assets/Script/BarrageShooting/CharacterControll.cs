@@ -79,7 +79,9 @@ namespace BarrageShooting
         /// *******************************************************
         void OnDrawGizmos()
         {
+#if UNITY_EDITOR
             OnGizmo();
+#endif
         }
 
         /// *******************************************************
