@@ -72,6 +72,7 @@ namespace BarrageShooting
                         EnableButton = true;
                     }
                     break;
+                case GodPhase.Stationary:
                 case GodPhase.Moved:
                     if (EnableButton)
                     {
@@ -86,7 +87,7 @@ namespace BarrageShooting
                         float dst = move.magnitude / MoveWidth;
                         float rad = Mathf.Atan2(move.x, move.y);
 
-                        PlayerControll.Instance.OnShot(rad, dst);
+                        PlayerControll.Instance.OnShot(rad, dst, phase == GodPhase.Stationary);
                     }
                     break;
                 case GodPhase.Ended:

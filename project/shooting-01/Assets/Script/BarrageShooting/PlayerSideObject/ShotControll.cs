@@ -185,7 +185,8 @@ namespace BarrageShooting
         {
             float distance = (wall_dir - Direction + (720 + 180)) % 360 - 180;
 
-            return wall_dir + distance;
+            //return wall_dir + distance;
+            return wall_dir + 90;
         }
 
     }
