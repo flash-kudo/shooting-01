@@ -55,14 +55,14 @@ MonoBehaviour:
   ShiftDamp: 0
   ColliderScale: 0
   ColliderPosition: {x: 0, y: 0}
-  ToughPoint: 1
-  AttackPoint: 0.5
+  ToughPoint: 5
+  AttackPoint: 15
   CharType: 0
   TargetDistance: 0
   MoveDulation: 50
   BlastDuration: 1
-  ColliderSpeed: 0.03
-  ColliderMax: 0.9
+  ColliderSpeed: 0.02
+  ColliderMax: 10
 --- !u!1001 &6766809252974261833
 PrefabInstance:
   m_ObjectHideFlags: 0
