@@ -139,7 +139,7 @@ namespace BarrageShooting
                 if (Target.y > 5f) Target.y = 5f;
 
                 Vector3 trg = Target - Position;
-                Distance = Vector3.Distance(new Vector3(0, 0, trg.z), trg);
+                Distance = Vector3.Distance(CannonPos.position, Target);
                 Direction = Mathf.Atan2(trg.x, trg.y) * Mathf.Rad2Deg;
 
                 ProcGranade();
@@ -204,7 +204,7 @@ namespace BarrageShooting
         private void ProcGranade()
         {
             GranadePast += CharacterControll.FRAME_TIME;
-            if (GranadePast > GranadeInterval)
+            if (GranadePast >= GranadeInterval)
             {
                 CreateGranade();
                 if (!UseShot) PlayerTimeline.PlayTimeline(PlayerTimelineManage.TimelineType.ShotCannon);
