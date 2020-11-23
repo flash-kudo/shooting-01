@@ -111,7 +111,7 @@ namespace BarrageShooting
             PlayerTimeline.OnUpdate();
         }
 
-        public void OnShot(float direction_rad, float distance, bool stationary)
+        public void OnShot(float direction_rad, float distance)
         {
             if (StageManager.Instance.IsShootable == false) return;
 
@@ -131,8 +131,7 @@ namespace BarrageShooting
                 //float dist = distance * 0.2f;
                 float dist = 0.07f;
                 Vector3 add = new Vector3(Mathf.Sin(direction_rad) * dist, Mathf.Cos(direction_rad) * dist, 0);
-                //if (distance < 0.45f) add = new Vector3();
-                if(stationary == true) add = new Vector3();
+                if (distance < 0.15f) add = new Vector3();
                 Target = Target + add;
                 if (Target.x < -3.8f) Target.x = -3.8f;
                 if (Target.x > 3.8f) Target.x = 3.8f;

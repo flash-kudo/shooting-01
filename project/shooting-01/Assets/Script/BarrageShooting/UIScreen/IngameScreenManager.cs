@@ -87,7 +87,7 @@ namespace BarrageShooting
                         float dst = move.magnitude / MoveWidth;
                         float rad = Mathf.Atan2(move.x, move.y);
 
-                        PlayerControll.Instance.OnShot(rad, dst, phase == GodPhase.Stationary);
+                        PlayerControll.Instance.OnShot(rad, dst);
                     }
                     break;
                 case GodPhase.Ended:
