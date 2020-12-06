@@ -3682,12 +3682,9 @@ MonoBehaviour:
   GranadeInterval: 0.3
   GranadeDuration: 50
   GranadeBlast: 1
-  MirrorEdge: {fileID: 1492495622312474543, guid: 2f0970c34e96a37488bab9e5a824d2ea,
-    type: 3}
   UseShot: 1
   MirrorCount: 0
   Target: {x: 0, y: 0, z: 0}
-  MirrirEdgeList: []
   MirrirList: []
   ArmLeftPos: {fileID: 293537383}
   ArmRightPos: {fileID: 1173469836}

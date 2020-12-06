@@ -118,26 +118,17 @@ namespace BarrageShooting
         {
             if (IsMirrorShot == true) return move;
 
-            for (int i = 0; i < Player.MirrirEdgeList.Count; i += 2)
+            for (int i = 0; i < Player.MirrirList.Count; i ++)
             {
-                Vector2 edge1 = Player.MirrirEdgeList[i + 0].transform.position;
-                Vector2 edge2 = Player.MirrirEdgeList[i + 1].transform.position;
-
-                Vector2 intersection;
-                bool is_hit = IsReflectWall(move, edge1, edge2, out intersection);
-                if (is_hit == true)
+                MirrorControll mirror = Player.MirrirList[i];
+                bool is_inner = Vector2.Distance(mirror.transform.localPosition, Position) < mirror.ColliderScale;
+                bool is_hit = Vector2.Distance(mirror.transform.localPosition, Position + move) < mirror.ColliderScale;
+                if ((is_inner == false) && (is_hit == true))
                 {
-                    float wall_dir = Mathf.Atan2(edge1.x - edge2.x, edge1.y - edge2.y) * Mathf.Rad2Deg;
+                    float wall_dir = mirror.transform.localRotation.eulerAngles.z;
 
-                    Direction = HitDirection(wall_dir);
+                    Direction = -wall_dir;
 
-                    //GameObject reflecteff = StageManager.Instance.InstantiateObject("Reflect".ToLower());
-                    //reflecteff.transform.position = this.transform.position;
-                    //reflecteff.transform.rotation = Quaternion.Euler(0, 0, wall_dir);
-                    //reflecteff.SetActive(true);
-
-                    move = Vector2.zero;
-                    Position = intersection;
                     AttackPoint *= MirrorPower;
                     ReflectScorePower *= ReflectPower;
                     break;

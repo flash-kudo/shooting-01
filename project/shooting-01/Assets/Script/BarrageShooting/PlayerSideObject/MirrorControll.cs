@@ -6,9 +6,6 @@ namespace BarrageShooting
 {
     public class MirrorControll : MonoBehaviour
     {
-        public GameObject MirrorEdge1;
-        public GameObject MirrorEdge2;
-
         public float ColliderScale = 0.5f;
 
         protected Vector2 Position
@@ -29,8 +26,6 @@ namespace BarrageShooting
             if (PlayerControll.Instance != null)
             {
                 PlayerControll.Instance.MirrirList.Add(this);
-                PlayerControll.Instance.MirrirEdgeList.Add(MirrorEdge1);
-                PlayerControll.Instance.MirrirEdgeList.Add(MirrorEdge2);
             }
         }
 
@@ -39,8 +34,6 @@ namespace BarrageShooting
             if (PlayerControll.Instance != null)
             {
                 PlayerControll.Instance.MirrirList.Remove(this);
-                PlayerControll.Instance.MirrirEdgeList.Remove(MirrorEdge1);
-                PlayerControll.Instance.MirrirEdgeList.Remove(MirrorEdge2);
             }
         }
 

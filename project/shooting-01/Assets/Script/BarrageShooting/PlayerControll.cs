@@ -35,8 +35,6 @@ namespace BarrageShooting
 
         private float GranadePast = 0;
 
-        public GameObject MirrorEdge;
-
         public bool UseShot;
 
         [Range(0,8)]
@@ -46,7 +44,6 @@ namespace BarrageShooting
         public Vector3 Target = new Vector3();
         private float Distance = 0;
         private float Direction = 0;
-        public List<GameObject> MirrirEdgeList;
         public List<MirrorControll> MirrirList;
 
         public Transform ArmLeftPos;

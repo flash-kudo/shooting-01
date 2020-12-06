@@ -6,7 +6,7 @@ namespace BarrageShooting
 {
     public class BuildScreenManager : MonoBehaviour
     {
-        private const bool IS_DEBUG = false;
+        private const bool IS_DEBUG = true;
 
         public GameObject MainScreen1;
         public GameObject MainScreen2;
